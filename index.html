@@ -1,571 +1,1172 @@
-
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-  integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <title>Kevin Harlley</title>
+    <link rel="shortcut icon" href="images/headshot.png" type="image/x-icon" />
+  </head>
 
-<title>Kevin Harlley</title>
-<link rel="shortcut icon" href="headshot.png" type="image/x-icon" />
-</head>
+  <style>
+    a {
+      color: #5b88fb;
+    }
 
-<style>
-  .experience-caption {
-    top: 30%;
-    font-size: 30px;
-  }
+    a:hover {
+      color: #a8c1ff;
+      text-decoration: double;
+    }
 
-  .experience-caption2 {
-    padding-top: 10%;
-    font-size: 30px;
-  }
-</style>
+    .dash-add:after {
+      content: "";
+      width: 40px;
+      height: 4px;
+      background: white;
+      position: absolute;
+      left: 46%;
+      top: 10px;
+    }
 
-<body>
+    .text-primary {
+      color: #5b88fb !important;
+    }
 
+    .bg-primary {
+      background-color: #5b88fb !important;
+    }
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="#">Kevin Eyram Harlley</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars fa-lg"></i>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav ">
+    .image-join {
+      margin-bottom: -1rem;
+    }
+
+    #About {
+      position: relative;
+    }
+
+    #Skills {
+      position: absolute;
+      bottom: -97%;
+    }
+
+    .btn-outline-primary {
+      color: #5b88fb;
+      border-color: #5b88fb;
+    }
+
+    .nav-pills .nav-link.active {
+      background-color: #5b88fb;
+    }
+
+    .btn-outline-primary:hover {
+      background-color: #5b88fb;
+      border-color: #5b88fb;
+    }
+  </style>
+  <body>
+    <!-- NAVBAR -->
+    <nav
+      id="navbar-ex"
+      class="navbar navbar-light bg-white justify-content-center fixed-top"
+    >
+      <ul class="nav nav-pills">
         <li class="nav-item">
-          <a class="nav-link" href="#Leader">Leadership</a>
+          <a class="nav-link" href="#About">About</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#Skills">Skills</a>
+        <li class="nav-item d-none d-sm-block">
+          <a class="nav-link d-none d-sm-block" href="#Skills">Skills</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#Portfolio">Portfolio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#Experience">Experience </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#Contact">Contact</a>
         </li>
       </ul>
-    </div>
-  </nav>
+    </nav>
 
-  <div class="jumbotron jumbotron-fluid bg-primary" style="min-height: 500px;">
-    <div class="container">
-        <h1 class="display-1  text-center font-weight-bold experience-caption2 text-white" style="font-size:120px;"> Kevin Eyram Harlley</h1>
-        <!-- <h1 class="display-1 font-weight-bold experience-caption2">
-          <a href="" class="typewrite text-white text-left" data-period="2000" data-type='[ "Hi, I am Kevin.", "Welcome to my website.", "Coded, Designed and Developed by me", "Enjoy." ]'>
-            <span class="wrap"></span>
-          </a>
-        </h1> -->
-    </div> 
-  </div>
+    <!-- HERO IMAGE-->
+    <div class="bg-transparent pt-5" style="min-height: 500px">
+      <p class="display-4 text-center text-primary fw-bold pt-5">
+        Kevin Eyram Harlley
+      </p>
 
-  <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
-    <div class="bg-light" style="min-height: 600px;">
-      <div class="container mt-5">
-        <div class="row pt-5">
-          <div class="col-12">
-            <p class="text-center"> <img src="headshot.png" id="About" class="img-fluid rounded-circle"
-                style="height: 400px; width: 400px; "> </p>
-          </div>
-        </div>
-        <div class="row pt-3">
-          <div class="col-12 ">
-            <div class="container">
-              <h1 class="text-center">Bio</h1>
-              <p class="text-center"> Hello there, my name is Kevin Eyram Harlley and this is my website.
-                I am currently a final year dual degree Computer Engineering major at Washington University
-                in St. Louis. As a dual degree student I received a Bachelor of Arts degree in
-                Computer Science from my previous school (DePauw University)in addition to the Bachelor of
-                Science I received on completion of my time at Washington University in 2020. I am expected to 
-		graduate in May of 2021 with a Master's in Engineering Management with a focus on DataAnalytics 
-		and am looking forward to what the future holds. I am highly interested in Robotics, Software 
-		Development and Data Science and would love to work in any of these industries. Thank you for 
-		taking the time to visit my website and I hope you have a great day wherever you are.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="text-center pt-3 image-join">
+        <img src="images/tech_dev_blue.png" class="img-fluid" />
+      </p>
     </div>
 
-    <div class="bg-light" style="min-height: 350px;">
-      <div class="container pt-5">
-        <h1 class="pt-5 text-center pb-5 text-primary" id="Leader">Leadership</h1>
-        <p class="text-center d-none d-lg-block">
-	  <span class="p-3"><a class="btn btn-outline-dark dropdown-toggle" data-toggle="collapse" href="#multiCollapseExample1"
-              role="button" aria-expanded="false" aria-controls="multiCollapseExample1">TEIMS: Public Relations</a></span>
-          <span class="p-3"><a class="btn btn-outline-dark dropdown-toggle" data-toggle="collapse" href="#multiCollapseExample2"
-              role="button" aria-expanded="false" aria-controls="multiCollapseExample2">African Students Association:
-              President</a></span>
-          <span class="p-3"><a class="btn btn-outline-dark dropdown-toggle" data-toggle="collapse" href="#multiCollapseExample3"
-              role="button" aria-expanded="false" aria-controls="multiCollapseExample3">CAS Project: Food and Drinks
-              Committee Head</a></span>
-        </p>
-        <p class="text-center d-lg-none">
-	  <p class="d-lg-none text-center"><span class="p-3"><a class="btn btn-outline-dark" data-toggle="collapse"
-                href="#multiCollapseExample1" role="button" aria-expanded="false"
-                aria-controls="multiCollapseExample1">TEIMS: Public Relations</a></span></p>
-          <p class="d-lg-none text-center"><span class="p-3"><a class="btn btn-outline-dark" data-toggle="collapse"
-                href="#multiCollapseExample2" role="button" aria-expanded="false"
-                aria-controls="multiCollapseExample2">Founder of DePauw ASA</a></span></p>
-          <p class="d-lg-none text-center"><span class="p-3"><a class="btn btn-outline-dark" data-toggle="collapse"
-                href="#multiCollapseExample3" role="button" aria-expanded="false"
-                aria-controls="multiCollapseExample3">CAS Lead</a></span></p>
-        </p>
-        <div class="row">
-	  <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
-              <div class="card card-body">
-                <ul>
-                  <li>Designed and produced newsletters and flyers for the Technology, Engineering, Information Management Society and
-		    managed external communications</li>
-                  <li>Planned seminars and workshops where members could meet and speak with industry professionals. </li>
-                  <li>Managed email communication between members and the governing body, including announcements for events. </li>
-                </ul>
-              </div>
+    <!-- SCROLLSPY SECTION BEGINNING-->
+    <div data-spy="scroll" data-target="#navbar-ex" data-offset="0">
+      <!--ABOUT ME SECTION-->
+      <div class="bg-primary p-5" id="About">
+        <div class="container pt-5 pb-5">
+          <div class="row pt-5 pb-5">
+            <div class="col-sm-6 col-12">
+              <p class="display-4 dash-add text-white text-center p-4">Bio</p>
+              <br />
+              <p class="text-white font-weight-light pt-5">
+                Hello there, my name is Kevin Eyram Harlley and this is my
+                website. I am currently a final year dual degree Computer
+                Engineering major at Washington University in St. Louis. As a
+                dual degree student I received a Bachelor of Arts degree in
+                Computer Science from my previous school (DePauw University)in
+                addition to the Bachelor of Science I received on completion of
+                my time at Washington University in 2020. I am expected to
+                graduate in May of 2021 with a Master's in Engineering
+                Management with a focus on DataAnalytics and am looking forward
+                to what the future holds. I am highly interested in Robotics,
+                Software Development and Data Science and would love to work in
+                any of these industries. Thank you for taking the time to visit
+                my website and I hope you have a great day wherever you are.
+              </p>
             </div>
-          </div>
-          <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample2">
-              <div class="card card-body">
-                <ul>
-                  <li>Founded university’s first African Student Association and increased membership from 8 to 50
-                    within a year.</li>
-                  <li>Organized meetings and seminars with guest speakers on issues concerning Africa and its
-                    development.</li>
-                  <li>Planned and hosted an African Night complete with fashion show, food sampling, dance performances
-                    and addresses by guest speakers with over 180 guests in attendance.</li>
-                  <li>Arranged and conducted an out of state trip to a African Student organization conference that
-                    allowed 5 members to network with members of African Student Associations from over 50 schools.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample3">
-              <div class="card card-body">
-                <ul>
-                  <li>Managed the food and drinks committee of my year's CAS(Community, Action, Service) project.</li>
-                  <li>Planned and held raffles to raise money for our charity funfair.</li>
-                  <li>Purchased and resold food and drinks at multiple events over the school year to raise money for
-                    the Akropong school for the blind in Ghana.</li>
-                  <li>Oversaw the marketing of foodstuffs at our charity funfair that resulted in over $12,000 raised
-                    for the Akropong school of the blind.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
+            <div class="col-sm-6 col-12">
+              <p class="text-center pt-3">
+                <img
+                  src="images/headshot.png"
+                  class="img-fluid rounded-circle"
+                  style="height: 400px; width: 400px"
+                />
+              </p>
+            </div>
+          </div>
+        </div>
 
-    <div class="bg-white container p-5" style="min-height:600px;">
-      <h1 class="pt-5 text-center pb-5 text-primary" id="Skills">Skills and Technologies</h1>
-      <div class="row">
-        <div class="col-sm-3 col-6">
-          <div class="d-flex justify-content-center">
-            <i class="fab fa-css3 fa-3x shadow p-3 mb-2 bg-white rounded rounded-circle"></i>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-center col-12" style="margin:0px;">
-              <h5 class="text-center" style="margin:0px;"> CSS </h5>
-            </div>
-            <div class="d-flex justify-content-center col-12" style="margin:0px;">
-              <p class="text-center" style="margin:0px;"><span class="badge badge-dark">Expert</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-6">
-          <div class="d-flex justify-content-center">
-            <i class="fab fa-java fa-3x shadow p-3 mb-2 bg-white rounded rounded-circle"></i>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-center col-12" style="margin:0px;">
-              <h5 class="text-center" style="margin:0px;"> Java </h5>
-            </div>
-            <div class="d-flex justify-content-center col-12" style="margin:0px;">
-              <p class="text-center" style="margin:0px;"><span class="badge badge-dark">Expert</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-6">
-          <div class="d-flex justify-content-center">
-            <i class="fab fa-windows fa-3x shadow p-3 mb-2 bg-white rounded rounded-circle"></i>
-          </div>
-          <div class="row">
-              <div class="d-flex justify-content-center col-12" style="margin:0px;">
-                <h5 class="text-center" style="margin:0px;"> Microsoft Office </h5>
-              </div>
-              <div class="d-flex justify-content-center col-12" style="margin:0px;">
-                <p class="text-center" style="margin:0px;"><span class="badge badge-dark">Expert</span></p>
-              </div>
-            </div>
-        </div>
-        <div class="col-sm-3 col-6">
-          <div class="d-flex justify-content-center">
-            <i class="fas fa-video fa-3x shadow p-3 mb-2 bg-white rounded rounded-circle"></i>
-          </div>
-          <div class="row">
-              <div class="d-flex justify-content-center col-12" style="margin:0px;">
-                <h5 class="text-center" style="margin:0px;"> Adobe Photoshop, Fireworks, Edge-Animate, After-Effects  </h5>
-              </div>
-              <div class="d-flex justify-content-center col-12" style="margin:0px;">
-                <p class="text-center" style="margin:0px;"><span class="badge badge-dark">Expert</span></p>
-              </div>
-            </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-sm-3 col-6">
-          <div class="d-flex justify-content-center">
-            <i class="fab fa-css3 fa-3x shadow p-3 mb-2 bg-white rounded rounded-circle"></i>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-center col-12" style="margin:0px;">
-              <h5 class="text-center" style="margin:0px;"> Python </h5>
-            </div>
-            <div class="d-flex justify-content-center col-12" style="margin:0px;">
-              <p class="text-center" style="margin:0px;"><span class="badge badge-dark">Expert</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-6">
-          <div class="d-flex justify-content-center">
-            <i class="fas fa-code fa-3x shadow p-3 mb-2 bg-white rounded rounded-circle"></i>
-          </div>
-          <div class="row">
-            <div class="d-flex justify-content-center col-12" style="margin:0px;">
-              <h5 class="text-center" style="margin:0px;"> AJAX </h5>
-            </div>
-            <div class="d-flex justify-content-center col-12" style="margin:0px;">
-              <p class="text-center" style="margin:0px;"><span class="badge badge-dark">Proficient</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-6">
-          <div class="d-flex justify-content-center">
-            <i class="fas fa-database fa-3x shadow p-3 mb-2 bg-white rounded rounded-circle"></i>
-          </div>
-          <div class="row">
-              <div class="d-flex justify-content-center col-12" style="margin:0px;">
-                <h5 class="text-center" style="margin:0px;"> MySQL </h5>
-              </div>
-              <div class="d-flex justify-content-center col-12" style="margin:0px;">
-                <p class="text-center" style="margin:0px;"><span class="badge badge-dark">Proficient</span></p>
-              </div>
-            </div>
-        </div>
-        <div class="col-sm-3 col-6">
-          <div class="d-flex justify-content-center">
-            <i class="fab fa-php fa-3x shadow p-3 mb-2 bg-white rounded rounded-circle"></i>
-          </div>
-          <div class="row">
-              <div class="d-flex justify-content-center col-12" style="margin:0px;">
-                <h5 class="text-center" style="margin:0px;"> PHP </h5>
-              </div>
-              <div class="d-flex justify-content-center col-12" style="margin:0px;">
-                <p class="text-center" style="margin:0px;"><span class="badge badge-dark">Proficient</span></p>
-              </div>
-            </div>
-	  </div>
-        </div>
-        
-    </div>
-      <div class="bd-example d-none d-md-block" id="Portfolio"> 
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="5000">
-              <img src="blueback.png" class="d-block w-100" alt="...">
-              <div class="carousel-caption  experience-caption d-none d-md-block">
-                  <h1 class="display-1 pt-5 font-weight-bold">Projects</h1>
-              </div>
-            </div>
-	    <div class="carousel-item" data-interval="5000">
-              <img src="blueback.png" class="d-block w-100" alt="...">
-              <div class="carousel-caption  experience-caption d-none d-md-block">
-                  <img class="" src="googlelogo.png" alt="Card image cap">
-                <h5>Google XLS</h5>
-                <p> During the summer of 2020, I assisted in the coding of Google's XLS toolchain.
-			A link to the project can be found <a href="https://github.com/google/xls"
-                      target="_blank" style="color:white">here</a>.</p>
-                      <img class="" src="google home.png" alt="Card image cap" style="max-width: 200px;">
-              </div>
-            </div>
-            <div class="carousel-item" data-interval="5000">
-              <img src="blueback.png" class="d-block w-100" alt="...">
-              <div class="carousel-caption  experience-caption d-none d-md-block">
-                  <img class="" src="qstodianlogo.png" alt="Card image cap">
-                <h5>Qstodian Website</h5>
-                <p> During the summer of 2019, I assisted in the development of the website before the company's launch.
-			A link to the website can be found <a href="https://www.qstodian.co/"
-                      target="_blank" style="color:white">here</a>.</p>
-                      <img class="" src="qstodian home.png" alt="Card image cap" style="max-width: 200px;">
-              </div>
-            </div>
-            <div class="carousel-item" data-interval="5000">
-              <img src="blueback.png" class="d-block w-100" alt="...">
-              <div class="carousel-caption  experience-caption d-none d-md-block">
-                <img class="" src="depauw.png" alt="Card image cap" style="width: 300px;">
-                <h5>Depauw Senior Project</h5>
-                <p>You can find the link to the vendor project I worked on for my Computer
-                    Science major at DePauw University <a href="https://github.com/kevineharlley/Vendor-Tracking"
-                      target="_blank" style="color:white">here</a></p>
-                <img class="" src="miihorlink.png" alt="Card image cap" style="max-width: 200px;">
-              </div>
-            </div>
-            <div class="carousel-item" data-interval="5000">
-              <img src="blueback.png" class="d-block w-100" alt="...">
-              <div class="carousel-caption  experience-caption d-none d-md-block">
-                  <img class="" src="ai.png" alt="Card image cap">
-                <h5>AI Energy Website</h5>
-                <p>A link to the AI Energy website I worked on. Over the course of one year
-                    I made improvements to the layout of the <a href="http://www.aienergygroup.com.gh/"
-                      target="_blank" style="color:white">website</a>.</p>
-                      <img class="" src="ailink.png" alt="Card image cap" style="max-width: 200px;">
-              </div>
-            </div>
-            
-            </div>
-          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
+        <!-- Hidden div to help with correction on smaller screens.-->
+        <div class="d-lg-none" style="min-height: 230px"></div>
 
-    <div class="bg-white">
-      <div class="container pt-5">
-        <h1 class="pt-5 text-center text-primary pb-5" id="Experience">My Experience</h1>
-        <div class="card-deck">
-          <div class="card shadow p-3 mb-5 bg-white rounded">
+        <!--CARD SKILLS SECTION-->
+        <div class="d-flex justify-content-center">
+          <div
+            class="card shadow-lg p-3 mb-5 bg-white rounded"
+            id="Skills"
+            style="width: 80%"
+          >
             <div class="card-body">
-              <p class="text-center rounded rounded-circle" style=""><i
-                  class="fas fa-search fa-5x bg-white text-primary rounded rounded-circle "></i></p>
-		    <h5 class="card-title text-center "><b>Qstodian - </b>Technology and Strategy Consultant <br><small> St. Louis, Missouri || May 2019 - Present</small></h5>
-              <p class="card-text">
-                <h6></h6>
-                <ul>
-                  <li>Designed and developed the company website using WordPress with assistance from the head graphic designer.</li>
-                  <li>Planned and executed the launch of the company and its flagship product, QTotal. </li>
-                  <li>Researched prospective customer's and designed the customer development plan. </li>
-                  <li>Programmed key features of the company's tablet software using C++.</li>
-                  <li>Tested the company's externally created management and provided recommendations to fix bugs and improve performance</li>
-                  <li>Installed Qstodian’s pilot system for various clients and evaluated initial responses and impressions.</li>
-                  <li>Coordinated with my team to contact new customer's and setup the company's first three pilots.</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div class="card shadow p-3 mb-5 bg-white rounded">
-            <div class="card-body">
-              <p class="text-center rounded rounded-circle" style=""><i
-                  class="fas fa-info-circle fa-5x bg-white text-primary rounded rounded-circle"></i></p>
-              <h5 class="card-title text-center"><b>AI Energy - </b>Information Technology Intern <br> <small> Accra, Ghana || August 2017 - July 2018 </small></h5>
-              <p class="card-text">
-                <ul>
-                    <li>Updated company website including integration of social network feeds and improved user interface.</li>
-                    <li>Managed AI Energy Group’s LAN including access control and integration with multiple service providers.</li>
-	            <li>Monitored overall security of AI’s systems including physical & logical setups, reviewing change management processes, etc.</li>
-                    <li>Provided technical support to staff to facilitate the day-to-day running of the company.</li>
-                    <li>Maintained operating systems and virtualization platforms, anti-virus programs, emails and cloud storage systems.</li>
-                    <li>Create backup scripts/jobs and review logs and managed onsite and offsite backups.</li>
-                  </ul>
-              </p>
-            </div>
-          </div>
-	<div class="card-body">
-              <p class="text-center rounded rounded-circle" style=""><i
-                  class="fas fa-search fa-5x bg-white text-primary rounded rounded-circle "></i></p>
-		    <h5 class="card-title text-center "><b>Google - </b>Software Engineering Intern <br><small> Portland, Oregon || May 2020 - August 2020</small></h5>
-              <p class="card-text">
-                <h6></h6>
-                <ul>
-		  <li> Wrote python code for C++ frontend of the Google XLS toolchain</li>
-		  <li> Worked on the higher-level language synthesis toolchain that allows flexible high-level descriptions of functionality to be changed into synthesizable hardware designs.</li>
-		  <li> Implemented added functionality for translating C++, classes, structs and other operations and language features.</li>
-		  <li> Presented results of work to Google XLS team </li>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </div>
+              <h5 class="card-title text-center display-4 text-primary pb-5">
+                Skills and Technologies
+              </h5>
+              <div class="row pt-3 pb-5 mb-5">
+                <div class="col-sm-4 col-12 border-right pt-5">
+                  <!-- CSS Skill Tag-->
+                  <div class="d-flex justify-content-center">
+                    <i class="fab fa-css3 fa-3x text-primary"></i>
+                  </div>
+                  <div class="row pt-2 pb-3">
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <h5 class="text-center" style="margin: 0px">CSS</h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <p class="text-center" style="margin: 0px">
+                        <span class="badge badge-dark bg-primary">Expert</span>
+                      </p>
+                    </div>
+                  </div>
 
-        <div class="card-deck">
-          <div class="card shadow p-3 mb-5 bg-white rounded">
-            <div class="card-body">
-              <p class="text-center rounded rounded-circle" style=""><i
-                  class="fas fa-laptop-code fa-5x bg-white text-primary rounded rounded-circle "></i></p>
-              <h5 class="card-title text-center "><b>DePauw University - </b>Research Assistant <br><small> Greencastle, Indiana || May 2016 - August 2016</small></h5>
-              <p class="card-text">
-                <h6></h6>
-                <ul>
-                  <li>Researched into signals and brainwaves and designed a method to calculate a unique signature
-                    using
-                    an individual's brain response to set images</li>
-                  <li> Designed a Java program that elicited brainwaves from a user and recorded the results using an Emotiv EEG headset. </li>
-                  <li> Designed and created MySQL database that saved brainwave data and Java program that processed
-                    data. </li>
-                  <li> Designed, implemented, and tested a Java program that uses brainwaves as a form of
-                    authentication.</li>
-                  <li> Presented results of research to audience of over 200 people during a poster session for student researchers.</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div class="card shadow p-3 mb-5 bg-white rounded">
-            <div class="card-body">
-              <p class="text-center rounded rounded-circle" style=""><i
-                  class="fas fa-cogs fa-5x bg-white text-primary rounded rounded-circle"></i></p>
-              <h5 class="card-title text-center"><b>DePauw University - </b>Information Technology Associate <br> <small> Greencastle, Indiana || August 2014 - August 2017 </small></h5>
-              <p class="card-text">
-                <ul>
-                    <li>Managed school computer inventory including collection, distribution, installation,
-                      replacement
-                      and repair of computers, peripherals, office phones and A/V equipment. </li>
-                    <li>Troubleshooted and resolved software and hardware issues for University staff and students
-                    </li>
-                    <li>Ensured security of campus systems by eliminating malware on computers belonging to staff and
-                      students</li>
-                    <li>Oversaw maintenance of campus printers and resolved all campus printer issues.</li>
-                    <li>Coordinated with networking department to implement a total restructuring of campus network.
-                    </li>
-                    <li>Created and updated map of campus buildings and ethernet port locations using Microsoft Visio.
-                    </li>
-                  </ul>
-              </p>
-            </div>
-          </div>
-        </div>
+                  <!-- Java Skill Tag-->
+                  <div class="d-flex justify-content-center pt-5">
+                    <i class="fab fa-java fa-3x text-primary"></i>
+                  </div>
+                  <div class="row pt-2 pb-3">
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <h5 class="text-center" style="margin: 0px">Java</h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <p class="text-center" style="margin: 0px">
+                        <span class="badge badge-dark bg-primary">Expert</span>
+                      </p>
+                    </div>
+                  </div>
 
-        <div class="card-deck">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-                <div class="card-body justify-content-center">
-                  <p class="text-center rounded rounded-circle" style=""><i
-                      class="fas fa-wrench fa-5x fa-spin bg-white text-primary rounded rounded-circle"></i></p>
-                  <h5 class="card-title text-center"><b>Washington University in St. Louis - </b>Media Intern <br><small> St. Louis, Ghana || August 2018 - Present</small></h5>
-                  <p class="card-text">
-                    <ul>
-                        <li>Managed and maintained school media inventory.</li>
-                        <li>Recorded high quality videos for school events.</li>
-                        <li>Edited school videos for redistribution using Final Cut Pro.</li>
-                      </ul>
-                  </p>
+                  <!-- Microsoft Office Skill Tag-->
+                  <div class="d-flex justify-content-center pt-5">
+                    <i class="fab fa-windows fa-3x text-primary"></i>
+                  </div>
+                  <div class="row pt-2">
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <h5 class="text-center" style="margin: 0px">
+                        Microsoft Office
+                      </h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <p class="text-center" style="margin: 0px">
+                        <span class="badge badge-dark bg-primary">Expert</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Second Column Skill Tags-->
+                <div class="col-sm-4 col-12 border-right pt-5">
+                  <!-- Adobe Skill Tag-->
+                  <div class="d-flex justify-content-center">
+                    <i class="fas fa-video fa-3x text-primary"></i>
+                  </div>
+                  <div class="row pt-2 pb-3">
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <h5 class="text-center" style="margin: 0px">
+                        Adobe Photoshop, Fireworks, Edge-Animate, After-Effects
+                      </h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <p class="text-center" style="margin: 0px">
+                        <span class="badge badge-dark bg-primary">Expert</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Python Skill Tag-->
+                  <div class="d-flex justify-content-center pt-4">
+                    <i class="fab fa-python fa-3x text-primary"></i>
+                  </div>
+                  <div class="row pt-2 pb-3">
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <h5 class="text-center" style="margin: 0px">Python</h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <p class="text-center" style="margin: 0px">
+                        <span class="badge badge-dark bg-primary">Expert</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Ajax Skill Tag-->
+                  <div class="d-flex justify-content-center pt-5">
+                    <i class="fas fa-code fa-3x text-primary"></i>
+                  </div>
+                  <div class="row pt-2">
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <h5 class="text-center" style="margin: 0px">Ajax</h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <p class="text-center" style="margin: 0px">
+                        <span class="badge badge-dark bg-primary"
+                          >Proficient</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Third Column Skill Tags-->
+                <div class="col-sm-4 col-12 pt-5">
+                  <!-- MySQL Skill Tag-->
+                  <div class="d-flex justify-content-center">
+                    <i class="fas fa-database fa-3x text-primary"></i>
+                  </div>
+                  <div class="row pt-2 pb-3">
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <h5 class="text-center" style="margin: 0px">MySQL</h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <p class="text-center" style="margin: 0px">
+                        <span class="badge badge-dark bg-primary"
+                          >Proficient</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- PHP Skill Tag-->
+                  <div class="d-flex justify-content-center pt-5">
+                    <i class="fab fa-php fa-3x text-primary"></i>
+                  </div>
+                  <div class="row pt-2 pb-3">
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <h5 class="text-center" style="margin: 0px">PHP</h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-center col-12"
+                      style="margin: 0px"
+                    >
+                      <p class="text-center" style="margin: 0px">
+                        <span class="badge badge-dark bg-primary"
+                          >Proficient</span
+                        >
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div>
-
-      <div class="bg-light pt-5 border-top" style="min-height:150px;">
-        <div class="container">
-          <div class="row">
-            <div class="col-4">
-              <h1 class="text-left text-primary" id="Contact">Contact</h1>
-            </div>
-            <div class="col-8 d-flex justify-content-end">
-              <a class="text-right p-3" href="mailto:kharlley24@gmail.com"><i
-                  class="far fa-envelope-open fa-2x text-dark"></i></a>
-              <a class="text-center p-3" href="tel:812-223-1220"><i class="fas fa-mobile-alt fa-2x text-dark"></i></a>
-              <a class="text-center p-3" href="https://www.linkedin.com/in/kevin-harlley-07400a10a/"><i
-                  class="fab fa-linkedin-in fa-2x text-dark"></i></a>
             </div>
           </div>
         </div>
+        <!--END CARD SKILLS SECTION-->
       </div>
+
+      <!-- BACKGROUND OF SKILLS SECTION-->
+      <div class="bg-white m-5 border-bottom" style="min-height: 750px"></div>
+
+      <!-- Hidden div to help with correction on smaller screens.-->
+      <div class="d-lg-none border-bottom m-5" style="min-height: 650px"></div>
+
+      <!-- Portfolio and Contact Section -->
+      <div class="container" id="Portfolio">
+        <h1 class="text-center text-primary display-4">My Portfolio</h1>
+
+        <!-- Google Intern Project Section -->
+        <div class="row pt-5 mt-4 border-bottom">
+          <div class="col-6">
+            <p class="text-center pt-3">
+              <img src="images/google_macbook.png" class="img-fluid" />
+            </p>
+          </div>
+
+          <div class="col-6 pt-5">
+            <h1 class="text-center font-weight-light">Google XLS</h1>
+            <br />
+            <p class="text-muted text-center">
+              During the summer of 2020, I assisted in the coding of Google's
+              XLS toolchain. A link to the project can be found
+              <a href="https://github.com/google/xls" target="_blank"> here</a>.
+            </p>
+            <p class="text-center">
+              <a
+                href="#"
+                data-toggle="modal"
+                data-target="#googleModal"
+                class="btn btn-outline-primary"
+                style="border-radius: 25px"
+              >
+                Learn More
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Depauw Senior Project Section -->
+        <div class="row pt-5 border-bottom">
+          <div class="col-6">
+            <p class="text-center pt-3">
+              <img
+                src="images/miihor_macbook.png"
+                class="img-fluid rounded-circle"
+              />
+            </p>
+          </div>
+
+          <div class="col-6 pt-5">
+            <h1 class="text-center font-weight-light">Depauw Senior Project</h1>
+            <br />
+            <p class="text-muted text-center">
+              You can find the link to the vendor project I worked on for my
+              Computer Science major at DePauw University below.
+            </p>
+            <p class="text-center">
+              <a
+                href="https://github.com/kevineharlley/Vendor-Tracking"
+                target="_blank"
+                class="btn btn-outline-primary"
+                style="border-radius: 25px"
+              >
+                Link to Files
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Qstodian Project Section -->
+        <div class="row pt-5 mt-4 pb-5 border-bottom">
+          <div class="col-6">
+            <p class="text-center pt-3">
+              <img
+                src="images/qstodian_macbook.png"
+                class="img-fluid rounded-circle"
+              />
+            </p>
+          </div>
+
+          <div class="col-6 pt-5">
+            <h1 class="text-center font-weight-light">Qstodian Website</h1>
+            <br />
+            <p class="text-muted text-center">
+              During the summer of 2019, I assisted in the development of the
+              website before the company's launch. A link to the website can be
+              found <a href="https://www.qstodian.co/" target="_blank">here</a>.
+            </p>
+            <p class="text-center">
+              <a
+                href="#"
+                data-toggle="modal"
+                data-target="#qstodianModal"
+                class="btn btn-outline-primary"
+                style="border-radius: 25px"
+              >
+                Learn More
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- AI Energy Intern Project Section -->
+        <div class="row pt-5 mt-4 pb-5 border-bottom">
+          <div class="col-6">
+            <p class="text-center pt-3">
+              <img src="images/ai_macbook.png" class="img-fluid" />
+            </p>
+          </div>
+
+          <div class="col-6 pt-5">
+            <h1 class="text-center font-weight-light">AI Energy Website</h1>
+            <br />
+            <p class="text-muted text-center">
+              A link to the AI Energy website I worked on. Over the course of
+              one year I made improvements to the layout of the
+              <a href="http://www.aienergygroup.com.gh/" target="_blank">
+                website</a
+              >.
+            </p>
+            <p class="text-center">
+              <a
+                href="#"
+                data-toggle="modal"
+                data-target="#aiEnergyModal"
+                class="btn btn-outline-primary"
+                style="border-radius: 25px"
+              >
+                Learn More
+              </a>
+            </p>
+          </div>
+        </div>
+        <!--END OF PORTFOLIO LAPTOP SECTION-->
+
+        <!-- Other Relevant Experience Section-->
+        <div class="container pt-5 mt-5">
+          <h1 class="text-center text-primary display-4">
+            Other Relevant Experience
+          </h1>
+          <div class="row pt-5 pb-5 border-bottom">
+            <!-- Depauw Research Assistant Section-->
+            <div class="col-sm-4 col-12">
+              <div class="d-flex justify-content-center">
+                <i
+                  class="bi bi-laptop text-primary"
+                  style="font-size: 5rem"
+                ></i>
+              </div>
+              <div class="pt-2 pb-3">
+                <h5 class="text-center text-primary" style="margin: 0px">
+                  DePauw University - Research Assistant
+                </h5>
+                <h6 class="text-center pt-2">May 2016 - August 2016</h6>
+                <p class="text-center text-muted pt-3 m-4">
+                  Researched into signals and brainwaves and designed a method
+                  to calculate a unique signature using an individual's brain
+                  response to set images
+                </p>
+                <p class="text-center">
+                  <a
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#researchModal"
+                    class="btn btn-outline-primary"
+                    style="border-radius: 25px"
+                  >
+                    Learn More
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Depauw Information Technology Associate Section-->
+            <div class="col-sm-4 col-12">
+              <div class="d-flex justify-content-center">
+                <i class="bi bi-bug text-primary" style="font-size: 5rem"></i>
+              </div>
+              <div class="pt-2 pb-3">
+                <h5 class="text-center text-primary" style="margin: 0px">
+                  DePauw University - Information Technology Associate
+                </h5>
+                <h6 class="text-center pt-2">August 2014 - August 2017</h6>
+                <p class="text-center text-muted pt-3 m-4">
+                  Managed school computer inventory including collection,
+                  distribution, installation, replacement and repair of
+                  computers, peripherals, office phones and A/V equipment.
+                </p>
+                <p class="text-center">
+                  <a
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#assosciateModal"
+                    class="btn btn-outline-primary"
+                    style="border-radius: 25px"
+                  >
+                    Learn More
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Washington University in St. Louis - Media Intern Section-->
+            <div class="col-sm-4 col-12">
+              <div class="d-flex justify-content-center">
+                <i
+                  class="bi bi-camera-reels text-primary"
+                  style="font-size: 5rem"
+                ></i>
+              </div>
+              <div class="pt-2 pb-3">
+                <h5 class="text-center text-primary" style="margin: 0px">
+                  Washington University in St. Louis - Media Intern
+                </h5>
+                <h6 class="text-center pt-2">August 2018 - Present</h6>
+                <p class="text-center text-muted pt-3 m-4">
+                  Managed and maintained school media inventory.
+                </p>
+                <p class="text-center">
+                  <a
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#mediaModal"
+                    class="btn btn-outline-primary"
+                    style="border-radius: 25px"
+                  >
+                    Learn More
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--END of first three column experience section-->
+
+          <div class="row pt-5 border-bottom">
+            <!-- TEIMS: Public Relations Section-->
+            <div class="col-sm-4 col-12">
+              <div class="d-flex justify-content-center">
+                <i
+                  class="bi bi-megaphone text-primary"
+                  style="font-size: 5rem"
+                ></i>
+              </div>
+              <div class="pt-2 pb-3">
+                <h5 class="text-center text-primary" style="margin: 0px">
+                  TEIMS: Public Relations
+                </h5>
+                <p class="text-center text-muted pt-3 m-4">
+                  Designed and produced newsletters and flyers for the
+                  Technology, Engineering, Information Management Society and
+                  managed external communications
+                </p>
+                <p class="text-center">
+                  <a
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#teimsModal"
+                    class="btn btn-outline-primary"
+                    style="border-radius: 25px"
+                  >
+                    Learn More
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <!-- African Students Association: President Section-->
+            <div class="col-sm-4 col-12">
+              <div class="d-flex justify-content-center">
+                <i
+                  class="bi bi-person-badge text-primary"
+                  style="font-size: 5rem"
+                ></i>
+              </div>
+              <div class="pt-2 pb-3">
+                <h5 class="text-center text-primary" style="margin: 0px">
+                  African Students Association: President
+                </h5>
+                <p class="text-center text-muted pt-3 m-4">
+                  Founded university’s first African Student Association and
+                  increased membership from 8 to 50 within a year.
+                </p>
+                <p class="text-center">
+                  <a
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#asaModal"
+                    class="btn btn-outline-primary"
+                    style="border-radius: 25px"
+                  >
+                    Learn More
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Food and Drinks Committee Head Section-->
+            <div class="col-sm-4 col-12">
+              <div class="d-flex justify-content-center">
+                <i
+                  class="bi bi-clipboard text-primary"
+                  style="font-size: 5rem"
+                ></i>
+              </div>
+              <div class="pt-2 pb-3">
+                <h5 class="text-center text-primary" style="margin: 0px">
+                  CAS Project: Food and Drinks Committee Head
+                </h5>
+                <p class="text-center text-muted pt-3 m-4">
+                  Managed the food and drinks committee of my year's
+                  CAS(Community, Action, Service) project.
+                </p>
+                <p class="text-center">
+                  <a
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#casModal"
+                    class="btn btn-outline-primary"
+                    style="border-radius: 25px"
+                  >
+                    Learn More
+                  </a>
+                </p>
+              </div>
+            </div>
+            <!--End of last three column section-->
+          </div>
+        </div>
+
+        <!-- MODALS SECTION-->
+        <!-- Google Swe Modal -->
+        <div class="modal fade" id="googleModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  Google - Software Engineering Intern
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Wrote python code for C++ frontend of the Google XLS
+                    toolchain
+                  </li>
+                  <li>
+                    Worked on the higher-level language synthesis toolchain that
+                    allows flexible high-level descriptions of functionality to
+                    be changed into synthesizable hardware designs.
+                  </li>
+                  <li>
+                    Implemented added functionality for translating C++,
+                    classes, structs and other operations and language features.
+                  </li>
+                  <li>Presented results of work to Google XLS team</li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Qstodian Modal Section-->
+        <div class="modal fade" id="qstodianModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  Qstodian - Technology and Strategy Consultant
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Designed and developed the company website using WordPress
+                    with assistance from the head graphic designer.
+                  </li>
+                  <li>
+                    Planned and executed the launch of the company and its
+                    flagship product, QTotal.
+                  </li>
+                  <li>
+                    Researched prospective customer's and designed the customer
+                    development plan.
+                  </li>
+                  <li>
+                    Programmed key features of the company's tablet software
+                    using C++.
+                  </li>
+                  <li>
+                    Tested the company's externally created management and
+                    provided recommendations to fix bugs and improve performance
+                  </li>
+                  <li>
+                    Installed Qstodian’s pilot system for various clients and
+                    evaluated initial responses and impressions.
+                  </li>
+                  <li>
+                    Coordinated with my team to contact new customer's and setup
+                    the company's first three pilots.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Energy Intern Modal -->
+        <div class="modal fade" id="aiEnergyModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  AI Energy - Information Technology Intern
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Updated company website including integration of social
+                    network feeds and improved user interface.
+                  </li>
+                  <li>
+                    Managed AI Energy Group’s LAN including access control and
+                    integration with multiple service providers.
+                  </li>
+                  <li>
+                    Monitored overall security of AI’s systems including
+                    physical & logical setups, reviewing change management
+                    processes, etc.
+                  </li>
+                  <li>
+                    Provided technical support to staff to facilitate the
+                    day-to-day running of the company.
+                  </li>
+                  <li>
+                    Maintained operating systems and virtualization platforms,
+                    anti-virus programs, emails and cloud storage systems.
+                  </li>
+                  <li>
+                    Create backup scripts/jobs and review logs and managed
+                    onsite and offsite backups.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Research Assistant Modal-->
+        <div class="modal fade" id="researchModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  DePauw University - Research Assistant
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Researched into signals and brainwaves and designed a method
+                    to calculate a unique signature using an individual's brain
+                    response to set images
+                  </li>
+                  <li>
+                    Designed a Java program that elicited brainwaves from a user
+                    and recorded the results using an Emotiv EEG headset.
+                  </li>
+                  <li>
+                    Designed and created MySQL database that saved brainwave
+                    data and Java program that processed data.
+                  </li>
+                  <li>
+                    Designed, implemented, and tested a Java program that uses
+                    brainwaves as a form of authentication.
+                  </li>
+                  <li>
+                    Presented results of research to audience of over 200 people
+                    during a poster session for student researchers.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Information Technology Associate Modal-->
+        <div
+          class="modal fade"
+          id="assosciateModal"
+          tabindex="-1"
+          role="dialog"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  DePauw University - Information Technology Associate
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Managed school computer inventory including collection,
+                    distribution, installation, replacement and repair of
+                    computers, peripherals, office phones and A/V equipment.
+                  </li>
+                  <li>
+                    Troubleshooted and resolved software and hardware issues for
+                    University staff and students
+                  </li>
+                  <li>
+                    Ensured security of campus systems by eliminating malware on
+                    computers belonging to staff and students
+                  </li>
+                  <li>
+                    Oversaw maintenance of campus printers and resolved all
+                    campus printer issues.
+                  </li>
+                  <li>
+                    Coordinated with networking department to implement a total
+                    restructuring of campus network.
+                  </li>
+                  <li>
+                    Created and updated map of campus buildings and ethernet
+                    port locations using Microsoft Visio.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Media Intern Modal-->
+        <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  Washington University in St. Louis - Media Intern
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>Managed and maintained school media inventory.</li>
+                  <li>Recorded high quality videos for school events.</li>
+                  <li>
+                    Edited school videos for redistribution using Final Cut Pro.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--TEIMS: Public Relations Modal-->
+        <div class="modal fade" id="teimsModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">TEIMS: Public Relations</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Designed and produced newsletters and flyers for the
+                    Technology, Engineering, Information Management Society and
+                    managed external communications
+                  </li>
+                  <li>
+                    Planned seminars and workshops where members could meet and
+                    speak with industry professionals.
+                  </li>
+                  <li>
+                    Managed email communication between members and the
+                    governing body, including announcements for events.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--ASA President Modal-->
+        <div class="modal fade" id="asaModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  African Students Association: President
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Founded university’s first African Student Association and
+                    increased membership from 8 to 50 within a year.
+                  </li>
+                  <li>
+                    Organized meetings and seminars with guest speakers on
+                    issues concerning Africa and its development.
+                  </li>
+                  <li>
+                    Planned and hosted an African Night complete with fashion
+                    show, food sampling, dance performances and addresses by
+                    guest speakers with over 180 guests in attendance.
+                  </li>
+                  <li>
+                    Arranged and conducted an out of state trip to a African
+                    Student organization conference that allowed 5 members to
+                    network with members of African Student Associations from
+                    over 50 schools.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--CAS Project Modal-->
+        <div class="modal fade" id="casModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  CAS Project: Food and Drinks Committee Head
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    Managed the food and drinks committee of my year's
+                    CAS(Community, Action, Service) project.
+                  </li>
+                  <li>
+                    Planned and held raffles to raise money for our charity
+                    funfair.
+                  </li>
+                  <li>
+                    Purchased and resold food and drinks at multiple events over
+                    the school year to raise money for the Akropong school for
+                    the blind in Ghana.
+                  </li>
+                  <li>
+                    Oversaw the marketing of foodstuffs at our charity funfair
+                    that resulted in over $12,000 raised for the Akropong school
+                    of the blind.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END OF MODAL SECTION-->
+
+        <!--Contact Section-->
+        <div class="pt-5 border-top" style="min-height: 150px" id="Contact">
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <h1 class="text-left text-primary" id="Contact">Contact</h1>
+              </div>
+              <div class="col-8 d-flex justify-content-end">
+                <a class="text-right p-3" href="mailto:kharlley24@gmail.com"
+                  ><i class="far fa-envelope-open fa-2x text-dark"></i
+                ></a>
+                <a class="text-center p-3" href="tel:812-223-1220"
+                  ><i class="fas fa-mobile-alt fa-2x text-dark"></i
+                ></a>
+                <a
+                  class="text-center p-3"
+                  href="https://www.linkedin.com/in/kevin-harlley-07400a10a/"
+                  ><i class="fab fa-linkedin-in fa-2x text-dark"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- END of my portfolio and contact section-->
+      </div>
+      <!-- END OF SCROLLSPY -->
     </div>
-  </div>
 
-  <script>
-    var TxtType = function(el, toRotate, period) {
-        this.toRotate = toRotate;
-        this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
-        this.txt = '';
-        this.tick();
-        this.isDeleting = false;
-    };
-
-    TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
-
-        if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
-
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-        var that = this;
-        var delta = 200 - Math.random() * 100;
-
-        if (this.isDeleting) { delta /= 2; }
-
-        if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
-        }
-
-        setTimeout(function() {
-        that.tick();
-        }, delta);
-    };
-
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-        document.body.appendChild(css);
-    };
-  
-  </script>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
