@@ -19,7 +19,6 @@ export function Navbar() {
             <a
               href={`#${id}`}
               className="block px-4 py-1.5 rounded text-xs tracking-widest text-slate-400 hover:text-white transition-colors duration-200"
-              style={{ fontFamily: "var(--font-mono, monospace)", letterSpacing: "0.12em" }}
             >
               {id.toUpperCase()}
             </a>

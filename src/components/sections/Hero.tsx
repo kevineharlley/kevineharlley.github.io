@@ -17,19 +17,18 @@ export function Hero() {
       </div>
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 pointer-events-none">
         <div
-          className="mb-4 px-4 py-1.5 border text-xs tracking-[0.22em] opacity-70"
-          style={{ fontFamily: "var(--font-mono, monospace)", borderColor: `rgb(from ${GO} r g b / 0.35)`, color: GO }}
+          className="mb-4 px-4 py-1.5 border text-xs tracking-[0.22em] opacity-70 font-mono border-teal text-teal rounded"
         >
           PORTFOLIO / SOLUTIONS ENGINEER
         </div>
-        <h1 className="text-5xl md:text-7xl font-light tracking-tight glow-em" style={{ color: EM }}>
+        <h1 className="text-5xl md:text-7xl font-light tracking-tight glow-em text-gold">
           Kevin Eyram
         </h1>
         <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mt-1">Harlley</h1>
         <p className="mt-5 text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
           Solutions Engineering Analyst — Deloitte — Computer Engineering &amp; Data Analytics
         </p>
-        <div className="mt-8 flex gap-6 text-xs" style={{ fontFamily: "var(--font-mono, monospace)" }}>
+        <div className="mt-8 flex gap-6 text-xs font-mono">
           {[{ c: EM, label: "emerald" }, { c: GO, label: "gold" }, { c: AM, label: "amethyst" }].map(({ c, label }) => (
             <span key={label} className="flex items-center gap-1.5 opacity-60">
               <span className="w-2 h-2 rounded-sm" style={{ background: c }} />

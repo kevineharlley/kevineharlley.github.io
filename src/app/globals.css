@@ -1,15 +1,16 @@
 ﻿@import "tailwindcss";
 
 /* ── Crystal / Chip architecture theme ─────────────────────────────────────
-   Emerald  #ffb830  — primary accent, active states, headings
-   Gold     #00d620  — secondary accent, highlights
+   Emerald  #00d620  — primary accent, active states, headings
+   Gold     #ffb830  — secondary accent, highlights
    Amethyst #a855f7  — tertiary accent, decorative, buttons
    ─────────────────────────────────────────────────────────────────────── */
 @theme {
   /* Crystal palette */
-  --color-emerald:  #ffb830;
-  --color-gold:     #00d620;
-  --color-amethyst: #a855f7;
+  --color-emerald:  #1aaf30;
+  --color-gold:     #faac1c;
+  --color-amethyst: #7002ff;
+  --color-teal:     #10d4f2;
 
   /* Surfaces */
   --color-bg:        #06060f;
@@ -102,9 +103,9 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #ffb830 20%,
-    #00c896 50%,
-    #a855f7 80%,
+    var(--color-emerald) 20%,
+    var(--color-gold) 50%,
+    var(--color-amethyst) 80%,
     transparent 100%
   );
   background-size: 200% 100%;
