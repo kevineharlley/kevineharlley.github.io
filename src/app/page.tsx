@@ -5,6 +5,7 @@ import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
+import { WorkExperience } from "@/components/sections/WorkExperience";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Experience } from "@/components/sections/Experience";
 import { Contact } from "@/components/sections/Contact";
@@ -24,9 +25,11 @@ export default function Home() {
       <TraceRule />
       <Skills />
       <TraceRule />
-      <Portfolio onSelectModal={setActiveModal} />
-      <TraceRule />
+      <WorkExperience />
+      <TraceRule />      
       <Experience onSelectModal={setActiveModal} />
+      <TraceRule />
+      <Portfolio onSelectModal={setActiveModal} />
       <TraceRule />
       <Contact />
       <ProfileModals activeModal={activeModal} onClose={close} />

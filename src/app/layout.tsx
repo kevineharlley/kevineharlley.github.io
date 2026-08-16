@@ -1,19 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Kevin Harlley",
@@ -29,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceMono.variable}`}>
+    <html lang="en" className="font-inter bg-[#06060f] text-slate-200">
       <head>
         <link
           rel="stylesheet"
@@ -43,8 +29,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="antialiased"
-        style={{ fontFamily: "var(--font-inter, system-ui, sans-serif)" }}
+        className="antialiased font-inter"
       >
         {children}
       </body>

@@ -1,6 +1,4 @@
-const EM = "var(--color-emerald)";
-const GO = "var(--color-gold)";
-const AM = "var(--color-amethyst)";
+import { ACCENT_BG } from "@/lib/accent";
 
 export function Navbar() {
   return (
@@ -9,8 +7,8 @@ export function Navbar() {
       style={{ background: "rgba(6,6,15,0.85)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(0,200,150,0.12)" }}
     >
       <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden md:flex gap-1.5">
-        {[EM, GO, AM].map((c) => (
-          <span key={c} className="w-1.5 h-1.5 rounded-full" style={{ background: c, opacity: 0.7 }} />
+        {(["emerald", "gold", "amethyst"] as const).map((accent) => (
+          <span key={accent} className={`w-1.5 h-1.5 rounded-full opacity-70 ${ACCENT_BG[accent]}`} />
         ))}
       </div>
       <ul className="flex flex-wrap justify-center gap-1">

@@ -1,9 +1,5 @@
 import dynamic from "next/dynamic";
 
-const EM = "var(--color-emerald)";
-const GO = "var(--color-gold)";
-const AM = "var(--color-amethyst)";
-
 const ChipScene = dynamic(
   () => import("@/components/ChipScene").then((m) => m.ChipScene),
   { ssr: false }
@@ -11,7 +7,7 @@ const ChipScene = dynamic(
 
 export function Hero() {
   return (
-    <section className="relative w-full" style={{ height: "100dvh", minHeight: "600px" }}>
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <ChipScene />
       </div>
@@ -21,24 +17,16 @@ export function Hero() {
         >
           PORTFOLIO / SOLUTIONS ENGINEER
         </div>
-        <h1 className="text-5xl md:text-7xl font-light tracking-tight glow-em text-gold">
+        <h1 className="text-5xl md:text-7xl font-light tracking-tight text-shadow-sm text-shadow-yellow-200 text-gold">
           Kevin Eyram
         </h1>
-        <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mt-1">Harlley</h1>
-        <p className="mt-5 text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
-          Solutions Engineering Analyst — Deloitte — Computer Engineering &amp; Data Analytics
+        <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mt-1 text-shadow-gray-300">Harlley</h1>
+        <p className="mt-5 text-emerald text-sm md:text-base max-w-md leading-relaxed">
+          Creative Technologist — Computer Engineering & Data Analytics
         </p>
-        <div className="mt-8 flex gap-6 text-xs font-mono">
-          {[{ c: EM, label: "emerald" }, { c: GO, label: "gold" }, { c: AM, label: "amethyst" }].map(({ c, label }) => (
-            <span key={label} className="flex items-center gap-1.5 opacity-60">
-              <span className="w-2 h-2 rounded-sm" style={{ background: c }} />
-              {label}
-            </span>
-          ))}
-        </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40">
-          <span className="text-xs tracking-widest" style={{ fontFamily: "var(--font-mono, monospace)", color: EM }}>SCROLL</span>
-          <span className="text-lg" style={{ color: EM }}>↓</span>
+          <span className="text-xs tracking-widest font-mono text-teal">SCROLL</span>
+          <span className="text-lg text-teal">↓</span>
         </div>
       </div>
     </section>

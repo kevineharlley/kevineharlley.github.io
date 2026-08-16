@@ -10,7 +10,7 @@
   --color-emerald:  #1aaf30;
   --color-gold:     #faac1c;
   --color-amethyst: #7002ff;
-  --color-teal:     #10d4f2;
+  --color-teal:     #10c1f2;
 
   /* Surfaces */
   --color-bg:        #06060f;
@@ -19,7 +19,7 @@
 
   /* Text */
   --color-text:      #e2e8f0;
-  --color-muted:     #475569;
+  --color-muted:     #4e5c6f;
 }
 
 html {
@@ -103,8 +103,9 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--color-emerald) 20%,
-    var(--color-gold) 50%,
+    var(--color-gold) 30%,
+    var(--color-emerald) 60%,
+    var(--color-teal) 70%,
     var(--color-amethyst) 80%,
     transparent 100%
   );
@@ -131,10 +132,45 @@ body {
   );
 }
 
+/* ── Flip card (experience cards) ────────────────────────────────────────── */
+.flip-card {
+  perspective: 1200px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
 /* ── Scrollbar styling ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar             { width: 6px; }
 ::-webkit-scrollbar-track       { background: #06060f; }
-::-webkit-scrollbar-thumb       { background: var(--color-emerald); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #ffd060; }
+::-webkit-scrollbar-thumb       { 
+  background: linear-gradient(
+    180deg,
+    var(--color-gold) 0%,
+    var(--color-emerald) 40%,
+    var(--color-teal-400) 60%,
+    var(--color-emerald) 80%,
+    var(--color-gold) 100%
+  );
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
 
 
