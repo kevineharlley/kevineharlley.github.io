@@ -256,12 +256,18 @@ function EnergySpark() {
 
   const ARC_SEGMENTS = 14;
   const ARC_LENGTH = 0.55;
-  const arcPositions = useMemo(() => new Float32Array(ARC_SEGMENTS * 3), []);
-  const arcGeometry = useMemo(() => {
-    const g = new THREE.BufferGeometry();
-    g.setAttribute("position", new THREE.BufferAttribute(arcPositions, 3));
-    return g;
-  }, [arcPositions]);
+  const arcLine = useMemo(() => {
+    const positions = new Float32Array(ARC_SEGMENTS * 3);
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const material = new THREE.LineBasicMaterial({
+      color: PALETTE.gold,
+      transparent: true,
+      opacity: 0.8,
+      linewidth: 2,
+    });
+    return new THREE.Line(geometry, material);
+  }, []);
 
   useEffect(() => {
     const startIndex = Math.floor(rng(Date.now()) * CIRCUIT_NODES.length);
@@ -295,7 +301,7 @@ function EnergySpark() {
     pos.z = 0.06;
 
     // Centralized jagged arc
-    const positions = arcRef.current.geometry.attributes.position.array as Float32Array;
+    const positions = arcLine.geometry.attributes.position.array as Float32Array;
     const backT = Math.max(0, s.progress - ARC_LENGTH / dist);
     const backPos = new THREE.Vector3().lerpVectors(fromVec, toVec, backT);
     const arcDir = new THREE.Vector3().subVectors(pos, backPos).normalize();
@@ -316,7 +322,7 @@ function EnergySpark() {
       positions[i * 3 + 1] = base.y;
       positions[i * 3 + 2] = base.z;
     }
-    arcRef.current.geometry.attributes.position.needsUpdate = true;
+    arcLine.geometry.attributes.position.needsUpdate = true;
 
     coreRef.current.position.copy(pos);
     lightRef.current.position.copy(pos);
@@ -361,8 +367,8 @@ function EnergySpark() {
     lightRef.current.color.copy(color);
     lightRef.current.intensity = intensity * 7;
 
-    (arcRef.current.material as THREE.LineBasicMaterial).color.copy(color);
-    (arcRef.current.material as THREE.LineBasicMaterial).opacity = 0.6 + s.flicker * 0.4;
+    (arcLine.material as THREE.LineBasicMaterial).color.copy(color);
+    (arcLine.material as THREE.LineBasicMaterial).opacity = 0.6 + s.flicker * 0.4;
   });
 
   return (
@@ -372,9 +378,7 @@ function EnergySpark() {
         <meshBasicMaterial color={PALETTE.gold} />
       </mesh>
       <pointLight ref={lightRef} color={PALETTE.gold} intensity={7} distance={5} decay={2} />
-      <line ref={arcRef} geometry={arcGeometry}>
-        <lineBasicMaterial color={PALETTE.gold} transparent opacity={0.8} linewidth={2} />
-      </line>
+      <primitive object={arcLine} ref={arcRef} />
     </>
   );
 }

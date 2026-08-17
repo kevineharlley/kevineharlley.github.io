@@ -6,7 +6,7 @@ export function Experience({ onSelectModal }: { onSelectModal: (key: string) => 
   return (
     <section id="Experience" className="py-24 px-4" style={{ background: "linear-gradient(180deg,#0d0d1e 0%,#06060f 100%)" }}>
       <div className="max-w-5xl mx-auto">
-        <SectionHeading title="Other Experience" labelColor="gold" />
+        <SectionHeading label="// MODULE_05" title="Other Experience" labelColor="gold" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className={`mb-2 text-xs tracking-widest opacity-50 ${ACCENT_TEXT.emerald}`} style={{ fontFamily: "var(--font-mono, monospace)" }}>RESEARCH</div>
