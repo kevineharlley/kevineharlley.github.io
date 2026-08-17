@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import type { ExperienceEntry } from "@/data/experienceData";
-import { ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_TEXT } from "@/lib/accent";
+import { ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_CHIP_BORDER, ACCENT_GLOW, ACCENT_TEXT } from "@/lib/accent";
 
 export function ExperienceCard({
-  company, role, dateRange, summary, details, logo, icon, accent = "emerald",
+  company, role, dateRange, summary, details, logo, icon, accent,
 }: ExperienceEntry) {
   const [flipped, setFlipped] = useState(false);
   const toggle = () => setFlipped((f) => !f);
 
   return (
     <div
-      className={`flip-card w-full h-80 cursor-pointer ${flipped ? "is-flipped" : ""}`}
+      className={`flip-card w-full h-80 cursor-pointer ${flipped ? "is-flipped" : ""} ${ACCENT_GLOW[accent]}`}
       onClick={toggle}
       role="button"
       tabIndex={0}
@@ -27,7 +27,7 @@ export function ExperienceCard({
     >
       <div className="flip-card-inner">
         <div
-          className={`flip-card-front chip-card rounded-lg flex flex-col items-center justify-center gap-3 p-6 text-center ${ACCENT_BORDER[accent]}`}
+          className={`flip-card-front chip-card ${ACCENT_CHIP_BORDER[accent]} rounded-lg flex flex-col items-center justify-center gap-3 p-6 text-center`}
         >
           <div
             className={`w-16 h-16 rounded-full flex items-center justify-center shrink-0 border ${ACCENT_BORDER[accent]} ${ACCENT_BG_SOFT[accent]}`}
@@ -49,7 +49,7 @@ export function ExperienceCard({
           </span>
         </div>
         <div
-          className={`flip-card-back chip-card rounded-lg p-6 overflow-y-auto text-left ${ACCENT_BORDER[accent]}`}
+          className={`flip-card-back chip-card ${ACCENT_CHIP_BORDER[accent]} rounded-lg p-6 overflow-y-auto text-left`}
         >
           <h4 className={`font-semibold text-sm mb-3 ${ACCENT_TEXT[accent]}`}>
             {company} — {role}

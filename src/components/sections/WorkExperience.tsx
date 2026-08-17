@@ -6,7 +6,7 @@ export function WorkExperience() {
   return (
     <section id="WorkExperience" className="py-24 px-4 bg-linear-180 from-[#131328] to-[#0d0d1e]">
       <div className="max-w-5xl mx-auto">
-        <SectionHeading label="// MODULE_03" title="Work Experience" />
+        <SectionHeading title="Work Experience" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {experienceData.map((entry) => (
             <ExperienceCard key={entry.id} {...entry} />

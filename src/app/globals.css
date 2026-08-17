@@ -114,12 +114,10 @@ body {
 
 /* ── Pulse glow (e.g. node indicators) ─────────────────────────────────── */
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; box-shadow: 0 0 6px rgb(from var(--color-emerald) r g b / 0.4); }
-  50%       { opacity: 1;   box-shadow: 0 0 18px rgb(from var(--color-emerald) r g b / 0.8); }
+  0%, 100% { opacity: 0.5; box-shadow: 0 0 6px rgb(from var(--glow-color) r g b / 0.4); }
+  50%       { opacity: 1;   box-shadow: 0 0 18px rgb(from var(--glow-color) r g b / 0.8); }
 }
-.pulse-node {
-  animation: pulse-glow 2.4s ease-in-out infinite;
-}
+.pulse-node { animation: pulse-glow 2.4s ease-in-out infinite; }
 
 /* ── Octagonal headshot clip (chip-package silhouette) ──────────────────── */
 .clip-chip {
