@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Kevin Harlley",
-  description: "Personal portfolio of Kevin Eyram Harlley – Solutions Engineering Analyst at Deloitte.",
+  description: "Personal portfolio of Kevin Eyram Harlley – Solutions Engineer & Creative Technologist.",
   icons: {
     icon: "/images/headshot.png",
   },
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="font-inter bg-[#06060f] text-slate-200">
+    <html lang="en" className="font-inter bg-linear-to-b from-bg to-surface text-slate-200">
       <head>
         <link
           rel="stylesheet"

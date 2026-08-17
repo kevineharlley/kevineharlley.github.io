@@ -10,7 +10,6 @@
   --color-emerald:  #1aaf30;
   --color-gold:     #faac1c;
   --color-amethyst: #7002ff;
-  --color-teal:     #10c1f2;
 
   /* Surfaces */
   --color-bg:        #06060f;
@@ -105,7 +104,7 @@ body {
     transparent 0%,
     var(--color-gold) 30%,
     var(--color-emerald) 60%,
-    var(--color-teal) 70%,
+    var(--color-teal-300) 70%,
     var(--color-amethyst) 80%,
     transparent 100%
   );
@@ -164,9 +163,9 @@ body {
   background: linear-gradient(
     180deg,
     var(--color-gold) 0%,
-    var(--color-emerald) 40%,
-    var(--color-teal-400) 60%,
-    var(--color-emerald) 80%,
+    var(--color-emerald) 30%,
+    var(--color-teal-400) 50%,
+    var(--color-emerald) 70%,
     var(--color-gold) 100%
   );
   border-radius: 3px;

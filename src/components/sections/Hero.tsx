@@ -13,9 +13,9 @@ export function Hero() {
       </div>
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 pointer-events-none">
         <div
-          className="mb-4 px-4 py-1.5 border text-xs tracking-[0.22em] opacity-70 font-mono border-teal text-teal rounded"
+          className="mb-4 px-4 py-1.5 border text-xs tracking-[0.22em] opacity-70 font-mono border-teal-500 text-teal-500 rounded"
         >
-          PORTFOLIO / SOLUTIONS ENGINEER
+          CREATIVE TECHNOLOGIST
         </div>
         <h1 className="text-5xl md:text-7xl font-light tracking-tight text-shadow-sm text-shadow-yellow-200 text-gold">
           Kevin Eyram
@@ -25,8 +25,8 @@ export function Hero() {
           Creative Technologist — Computer Engineering & Data Analytics
         </p>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40">
-          <span className="text-xs tracking-widest font-mono text-teal">SCROLL</span>
-          <span className="text-lg text-teal">↓</span>
+          <span className="text-xs tracking-widest font-mono text-teal-500">SCROLL</span>
+          <span className="text-lg text-teal-500">↓</span>
         </div>
       </div>
     </section>
