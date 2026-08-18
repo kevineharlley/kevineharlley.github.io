@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import type { ExperienceEntry } from "@/data/experienceData";
+import type { WorkExperience } from "@/data/workExperience";
 import { ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_CHIP_BORDER, ACCENT_GLOW, ACCENT_TEXT } from "@/lib/accent";
 
 export function ExperienceCard({
   company, role, dateRange, summary, details, logo, icon, accent,
-}: ExperienceEntry) {
+}: WorkExperience) {
   const [flipped, setFlipped] = useState(false);
   const toggle = () => setFlipped((f) => !f);
 

@@ -12,13 +12,17 @@
   --color-amethyst: #7002ff;
 
   /* Surfaces */
-  --color-bg:        #06060f;
+  --color-bg:        #111130;
   --color-surface:   #0d0d1e;
   --color-surface-2: #131328;
 
   /* Text */
   --color-text:      #e2e8f0;
   --color-muted:     #4e5c6f;
+
+  /* Teal stops for gradients */
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
 }
 
 html {

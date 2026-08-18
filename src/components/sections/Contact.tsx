@@ -3,7 +3,7 @@ import { ACCENT_BG, ACCENT_BORDER_SOFT, ACCENT_TEXT } from "@/lib/accent";
 
 export function Contact() {
   return (
-    <section id="Contact" className="py-16 px-4" style={{ background: "#06060f" }}>
+    <section id="Contact" className="py-16 px-4 bg-bg">
       <div className="max-w-5xl mx-auto">
         <div className="chip-card rounded-lg px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>

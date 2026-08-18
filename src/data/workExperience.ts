@@ -1,18 +1,8 @@
-import type { Accent } from "@/lib/accent";
+import type { WorkExperience } from "./types";
 
-export type ExperienceEntry = {
-  id: string;
-  company: string;
-  role: string;
-  dateRange?: string;
-  summary: string;
-  details: string[];
-  logo?: string;
-  icon?: string;
-  accent: Accent;
-};
+export type { WorkExperience } from "./types";
 
-export const experienceData: ExperienceEntry[] = [
+export const workExperiences: WorkExperience[] = [
   {
     id: "hafele",
     company: "Hafele",
@@ -20,19 +10,23 @@ export const experienceData: ExperienceEntry[] = [
     summary:
       "Managed Hafele's Configuration-To-Order Process and developed automated workflows to speed up the process",
     details: [
-      "Built modern configuration tools using the company's internal CPQ tool ConfigureOne",
+      "Managed the company’s Configure-to-Order process by leveraging Software tools such as ConfigureOne CPQ, SAP Variant Article and Microsoft Excel.",
+      "Coordinated with the IT team to stand up the company’s Configuration system after a global cyber-attack.",
     ],
     icon: "bi bi-building",
     accent: "gold",
   },
   {
-    id: "deloite",
+    id: "deloitte",
     company: "Deloitte",
     role: "Solutions Engineering Analyst",
     summary:
       "Worked as an analyst on large CPQ and ERP implementation projects.",
     details: [
-      "Managed the Data Analytics workflow for a large scale ERP implementation project.",
+      "Created process flows for various of features and functionality across architectural landscape of solution system.",
+      "Managed daily standup meetings and ensured team adhered to company’s standard Agile principles and practices.",
+      "Wrote, groomed, and managed implementation of over 600 user stories for client projects.",
+      "Tested functionality for over 100 features in digital system and assessed quality of product created by an offshore team.",
     ],
     icon: "bi bi-triangle",
     accent: "amethyst",

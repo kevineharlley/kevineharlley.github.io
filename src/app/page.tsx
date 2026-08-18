@@ -4,16 +4,17 @@ import { useState } from "react";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
-import { Skills } from "@/components/sections/Skills";
+import { Skills } from "@/components/sections/SkillSection";
 import { WorkExperience } from "@/components/sections/WorkExperience";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Experience } from "@/components/sections/Experience";
 import { Contact } from "@/components/sections/Contact";
 import { ProfileModals } from "@/components/sections/ProfileModals";
 import { TraceRule } from "@/components/ui/TraceRule";
+import type { ModalId } from "@/data";
 
 export default function Home() {
-  const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [activeModal, setActiveModal] = useState<ModalId | null>(null);
   const close = () => setActiveModal(null);
 
   return (

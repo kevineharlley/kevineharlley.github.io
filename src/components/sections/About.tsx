@@ -2,14 +2,14 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function About() {
   return (
-    <section id="About" className="py-24 px-4 bg-linear-to-b from-bg to-surface">
+    <section id="About" className="py-24 px-4 bg-linear-to-b from-surface to-bg">
       <div className="max-w-5xl mx-auto">
         <SectionHeading label="// MODULE_01" title="About Me"/>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
           <div className="md:col-span-3 chip-card rounded-lg p-8 space-y-4">
             <p className="text-slate-300 text-sm leading-relaxed">
               Hello there, my name is <span className="text-gold">Kevin Eyram Harlley</span> and this is my website.
-              I am a <span className="text-teal-500">Creative Technologist</span> with an Entrepreneural mindset.
+              I am a <span className="text-emerald">Creative Technologist</span> with an Entrepreneural mindset.
             </p>
             <p className="text-slate-400 text-sm leading-relaxed">
               I graduated in 2021 as a dual degree student from Washington University in St. Louis. I received a
