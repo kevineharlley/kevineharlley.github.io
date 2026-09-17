@@ -1,7 +1,7 @@
-import { ACCENT_BG, ACCENT_BORDER, ACCENT_CHIP_BORDER, ACCENT_GLOW, ACCENT_HOVER_BG, ACCENT_TEXT, type Accent } from "@/lib/accent";
+import { ACCENT_BG, ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_CHIP_BORDER, ACCENT_GLOW, ACCENT_HOVER_BG, ACCENT_TEXT, type Accent } from "@/lib/accent";
 
 export function ProjectCard({
-  image, title, description, linkHref, linkText, onLearnMore, accent = "emerald",
+  image, title, description, linkHref, linkText, onLearnMore, accent = "primary",
 }: {
   image: string; title: string; description: React.ReactNode;
   linkHref?: string; linkText?: string; onLearnMore?: () => void; accent?: Accent;
@@ -10,8 +10,8 @@ export function ProjectCard({
     <div
       className={`chip-card ${ACCENT_CHIP_BORDER[accent]} ${ACCENT_GLOW[accent]} rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-0 transition-all duration-300`}
     >
-      <div className="flex items-center justify-center p-6 bg-black/20">
-        <img src={image} alt={title} className="max-w-full max-h-52 object-contain" />
+      <div className={`flex items-center justify-center p-6 ${ACCENT_BG_SOFT[accent]}`}>
+        <img src={image} alt={title} className="max-w-full max-h-52 object-contain drop-shadow-lg" />
       </div>
       <div className="flex flex-col justify-center gap-4 p-8">
         <div className={`w-8 h-px ${ACCENT_BG[accent]}`} />

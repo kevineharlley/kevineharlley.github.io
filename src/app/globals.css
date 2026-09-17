@@ -1,17 +1,33 @@
 ﻿@import "tailwindcss";
 
 /* ── Crystal / Chip architecture theme ─────────────────────────────────────
-   Emerald  #00d620  — primary accent, active states, headings
-   Gold     #ffb830  — secondary accent, highlights
-   Amethyst #a855f7  — tertiary accent, decorative, buttons
+   Primary    (emerald)  — categorizes technical/engineering data   — light #00d620 / plain #0dc328 / dark #1aaf30
+   Secondary  (gold)     — categorizes business/enterprise data    — light #ffb830 / plain #fdb226 / dark #faac1c
+   Tertiary   (amethyst) — categorizes creative/leadership data     — light #a855f7 / plain #8c2cfb / dark #7002ff
+   Quaternary (teal)     — structural/brand text (headings, nav)   — light #5eead4 / plain #46dfca / dark #0f766e
+
+   The plain shade is what components use day-to-day; the light/dark toggle
+   (see [data-theme] below) swaps it for the light or dark endpoint. The
+   -light/-dark tokens stay directly available for decorative one-offs
+   (glows, gradients) that shouldn't react to the toggle.
    ─────────────────────────────────────────────────────────────────────── */
 @theme {
   /* Crystal palette */
-  --color-emerald:  #1aaf30;
-  --color-gold:     #faac1c;
-  --color-amethyst: #7002ff;
+  --color-primary-light:    #00d620;
+  --color-primary:          #0dc328;
+  --color-primary-dark:     #1aaf30;
+  --color-secondary-light:  #ffb830;
+  --color-secondary:        #fdb226;
+  --color-secondary-dark:   #faac1c;
+  --color-tertiary-light:   #a855f7;
+  --color-tertiary:         #8c2cfb;
+  --color-tertiary-dark:    #7002ff;
+  --color-quaternary-light: #5eead4;
+  --color-quaternary:       #46dfca;
+  --color-quaternary-dark:  #0f766e;
 
   /* Surfaces */
+  --color-void:      #06060f;
   --color-bg:        #111130;
   --color-surface:   #0d0d1e;
   --color-surface-2: #131328;
@@ -19,37 +35,98 @@
   /* Text */
   --color-text:      #e2e8f0;
   --color-muted:     #4e5c6f;
-
-  /* Teal stops for gradients */
-  --color-teal-300: #5eead4;
-  --color-teal-400: #2dd4bf;
 }
+
+/* Light/dark mode toggle — swaps accent intensity AND the dark surfaces for a glasslike white theme.
+   Light mode uses the -dark (deeper, more saturated) endpoints since they need to contrast against
+   near-white surfaces; dark mode keeps the brighter -light-leaning "plain" shades for pop on near-black. */
+[data-theme="light"] {
+  --color-primary:    var(--color-primary-dark);
+  --color-secondary:  var(--color-secondary-dark);
+  --color-tertiary:   var(--color-tertiary-dark);
+  --color-quaternary: var(--color-quaternary-dark);
+
+  --color-void:      #f4f5fa;
+  --color-bg:        #eef0f9;
+  --color-surface:   #f7f8fc;
+  --color-surface-2: #eceef6;
+  --color-text:      #1e2433;
+  --color-muted:     #64748b;
+}
+
+/* Frosted glass card reads as white instead of near-black in light mode. */
+[data-theme="light"] .chip-card {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgb(from var(--color-primary) r g b / 0.35);
+}
+[data-theme="light"] .chip-card-secondary { border-color: rgb(from var(--color-secondary) r g b / 0.4); }
+[data-theme="light"] .chip-card-tertiary { border-color: rgb(from var(--color-tertiary) r g b / 0.4); }
+
+/* Body-copy grays are hardcoded Tailwind slate/white/black utilities, not theme
+   tokens, so they're inverted explicitly here rather than via a CSS variable. */
+[data-theme="light"] .text-slate-100 { color: #0f172a; }
+[data-theme="light"] .text-slate-200 { color: #1e293b; }
+[data-theme="light"] .text-slate-300 { color: #334155; }
+[data-theme="light"] .text-slate-400 { color: #475569; }
+[data-theme="light"] .text-slate-600 { color: #94a3b8; }
+[data-theme="light"] .bg-slate-700   { background-color: #cbd5e1; }
+[data-theme="light"] .border-slate-700 { border-color: #cbd5e1; }
+[data-theme="light"] .text-white { color: #0f172a; }
+[data-theme="light"] .bg-black\/20 { background-color: rgb(15 23 42 / 0.06); }
+[data-theme="light"] .hover\:text-slate-200:hover { color: #1e293b; }
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #06060f;
-  color: #e2e8f0;
-  font-family: "Inter", system-ui, sans-serif;
+  background-color: var(--color-void);
+  color: var(--color-text);
+}
+
+/* Faint circuit-board dot grid to echo the hero scene in other sections' backgrounds. */
+.circuit-bg {
+  position: relative;
+}
+.circuit-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgb(from var(--color-primary) r g b / 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+::selection {
+  background: rgb(from var(--color-primary) r g b / 0.35);
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* ── Glow text utilities ────────────────────────────────────────────────── */
-.glow-em {
+.glow-primary {
   text-shadow:
-    0 0 10px rgb(from var(--color-emerald) r g b / 0.55),
-    0 0 22px rgb(from var(--color-emerald) r g b / 0.3);
+    0 0 10px rgb(from var(--color-primary) r g b / 0.55),
+    0 0 22px rgb(from var(--color-primary) r g b / 0.3);
 }
-.glow-go {
+.glow-secondary {
   text-shadow:
-    0 0 10px rgb(from var(--color-gold) r g b / 0.55),
-    0 0 22px rgb(from var(--color-gold) r g b / 0.3);
+    0 0 10px rgb(from var(--color-secondary) r g b / 0.55),
+    0 0 22px rgb(from var(--color-secondary) r g b / 0.3);
 }
-.glow-am {
+.glow-tertiary {
   text-shadow:
-    0 0 10px rgb(from var(--color-amethyst) r g b / 0.55),
-    0 0 22px rgb(from var(--color-amethyst) r g b / 0.3);
+    0 0 10px rgb(from var(--color-tertiary) r g b / 0.55),
+    0 0 22px rgb(from var(--color-tertiary) r g b / 0.3);
+}
+.glow-quaternary {
+  text-shadow:
+    0 0 10px rgb(from var(--color-quaternary) r g b / 0.55),
+    0 0 22px rgb(from var(--color-quaternary) r g b / 0.3);
 }
 
 /* ── Glass / chip card ──────────────────────────────────────────────────── */
@@ -57,7 +134,7 @@ body {
   position: relative;
   background: rgba(13, 13, 30, 0.82);
   backdrop-filter: blur(14px);
-  border: 1px solid rgb(from var(--color-emerald) r g b / 0.18);
+  border: 1px solid rgb(from var(--color-primary) r g b / 0.18);
 }
 
 /* Corner-notch decoration mimicking IC package corners */
@@ -65,7 +142,7 @@ body {
 .chip-card::after {
   content: "";
   position: absolute;
-  background: var(--color-emerald);
+  background: var(--color-primary);
   pointer-events: none;
 }
 .chip-card::before {
@@ -77,22 +154,22 @@ body {
   width: 1px; height: 36px;
 }
 
-/* Gold-variant corner */
-.chip-card-gold {
-  border-color: rgb(from var(--color-gold) r g b / 0.22);
+/* Secondary-variant corner */
+.chip-card-secondary {
+  border-color: rgb(from var(--color-secondary) r g b / 0.22);
 }
-.chip-card-gold::before,
-.chip-card-gold::after {
-  background: var(--color-gold);
+.chip-card-secondary::before,
+.chip-card-secondary::after {
+  background: var(--color-secondary);
 }
 
-/* Amethyst-variant corner */
-.chip-card-am {
-  border-color: rgb(from var(--color-amethyst) r g b / 0.22);
+/* Tertiary-variant corner */
+.chip-card-tertiary {
+  border-color: rgb(from var(--color-tertiary) r g b / 0.22);
 }
-.chip-card-am::before,
-.chip-card-am::after {
-  background: var(--color-amethyst);
+.chip-card-tertiary::before,
+.chip-card-tertiary::after {
+  background: var(--color-tertiary);
 }
 
 /* ── Animated trace-flow divider ────────────────────────────────────────── */
@@ -106,10 +183,10 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--color-gold) 30%,
-    var(--color-emerald) 60%,
-    var(--color-teal-300) 70%,
-    var(--color-amethyst) 80%,
+    var(--color-secondary-dark) 30%,
+    var(--color-primary-dark) 60%,
+    var(--color-quaternary-light) 70%,
+    var(--color-tertiary-dark) 80%,
     transparent 100%
   );
   background-size: 200% 100%;
@@ -159,19 +236,33 @@ body {
 }
 
 /* ── Scrollbar styling ──────────────────────────────────────────────────── */
-::-webkit-scrollbar             { width: 6px; }
-::-webkit-scrollbar-track       { background: #06060f; }
+::-webkit-scrollbar             { width: 6px; height: 6px; }
+::-webkit-scrollbar-track       { background: var(--color-void); }
 ::-webkit-scrollbar-thumb       { 
   background: linear-gradient(
     180deg,
-    var(--color-gold) 0%,
-    var(--color-emerald) 30%,
-    var(--color-teal-400) 50%,
-    var(--color-emerald) 70%,
-    var(--color-gold) 100%
+    var(--color-secondary-dark) 0%,
+    var(--color-primary-dark) 30%,
+    var(--color-quaternary-dark) 50%,
+    var(--color-primary-dark) 70%,
+    var(--color-secondary-dark) 100%
   );
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-secondary-dark); }
+
+/* Horizontal scroll containers (e.g. the skills grid) get a left-to-right thumb gradient. */
+.scroll-h::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary-dark) 0%,
+    var(--color-primary-dark) 30%,
+    var(--color-quaternary-dark) 50%,
+    var(--color-primary-dark) 70%,
+    var(--color-secondary-dark) 100%
+  );
+}
+.scroll-h::-webkit-scrollbar-thumb:hover { background: var(--color-secondary-dark); }
+
 
 

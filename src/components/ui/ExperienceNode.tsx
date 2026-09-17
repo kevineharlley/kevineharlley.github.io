@@ -1,7 +1,7 @@
 import { ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_TEXT, type Accent } from "@/lib/accent";
 
 export function ExperienceNode({
-  icon, title, subtitle, description, onLearnMore, accent = "emerald",
+  icon, title, subtitle, description, onLearnMore, accent = "primary",
 }: {
   icon: string; title: string; subtitle?: string; description: string;
   onLearnMore?: () => void; accent?: Accent;
@@ -14,7 +14,7 @@ export function ExperienceNode({
         >
           <i className={`${icon} text-sm ${ACCENT_TEXT[accent]}`} />
         </div>
-        <div className={`flex-1 w-px mt-2 ${ACCENT_BG_SOFT[accent]}`} style={{ minHeight: "24px" }} />
+        <div className={`flex-1 w-px mt-2 min-h-6 ${ACCENT_BG_SOFT[accent]}`} />
       </div>
       <div className="pb-8">
         <h5 className="font-semibold text-slate-100 text-sm leading-tight">{title}</h5>

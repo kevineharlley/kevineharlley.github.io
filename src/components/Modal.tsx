@@ -30,16 +30,15 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
       {/* Panel */}
       <div
         className="chip-card relative rounded-lg w-full max-w-lg max-h-[85vh] overflow-y-auto"
-        style={{ boxShadow: "0 0 40px rgb(from var(--color-emerald) r g b / 0.15)" }}
+        style={{ boxShadow: "0 0 40px rgb(from var(--color-primary) r g b / 0.15)" }}
       >
         {/* Header */}
         <div
           className="flex items-center justify-between p-5"
-          style={{ borderBottom: "1px solid rgba(255, 184, 48, 0.15)" }}
+          style={{ borderBottom: "1px solid rgb(from var(--color-secondary-light) r g b / 0.15)" }}
         >
           <h5
-            className="text-base font-semibold text-slate-100"
-            style={{ fontFamily: "var(--font-mono, monospace)", letterSpacing: "0.04em" }}
+            className="text-base font-semibold text-slate-100 font-mono"
           >
             {title}
           </h5>
@@ -58,20 +57,11 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
         {/* Footer */}
         <div
           className="flex justify-end p-4"
-          style={{ borderTop: "1px solid rgba(255, 184, 48, 0.1)" }}
+          style={{ borderTop: "1px solid rgb(from var(--color-secondary-light) r g b / 0.1)" }}
         >
           <button
             onClick={onClose}
-            className="px-5 py-1.5 rounded-full text-xs font-semibold border transition-colors duration-200"
-            style={{ color: "var(--color-emerald)", borderColor: "rgb(from var(--color-emerald) r g b / 0.4)" }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "var(--color-emerald)";
-              (e.currentTarget as HTMLElement).style.color = "#000";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "transparent";
-              (e.currentTarget as HTMLElement).style.color = "var(--color-emerald)";
-            }}
+            className="px-5 py-1.5 rounded-full text-xs font-semibold border border-primary/40 text-primary hover:bg-primary hover:text-black transition-colors duration-200"
           >
             CLOSE
           </button>

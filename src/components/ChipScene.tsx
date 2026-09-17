@@ -21,11 +21,11 @@ interface CircuitEdge {
   length: number;
 }
 
-// ── Theme palette (matches globals.css) ────────────────────────────────────
+// ── Theme palette (matches globals.css *-light tokens) ─────────────────────
 const PALETTE = {
-  gold: new THREE.Color("#ffb830"),
-  emerald: new THREE.Color("#00d620"),
-  amethyst: new THREE.Color("#a855f7"),
+  secondary: new THREE.Color("#ffb830"),
+  primary: new THREE.Color("#00d620"),
+  tertiary: new THREE.Color("#a855f7"),
 };
 
 // ── Deterministic PRNG (keep your existing rng) ────────────────────────────
@@ -138,7 +138,7 @@ function CircuitTraces() {
 // ── Via dots (flat, top-down) ──────────────────────────────────────────────
 function ViaDots() {
   const ref = useRef<THREE.InstancedMesh>(null);
-  const palette = [PALETTE.gold, PALETTE.emerald, PALETTE.amethyst];
+  const palette = [PALETTE.secondary, PALETTE.primary, PALETTE.tertiary];
 
   useEffect(() => {
     if (!ref.current) return;
@@ -229,12 +229,12 @@ const CAPACITOR_BOOST = 0.35;
 const TRANSISTOR_GAIN = 1.5;
 
 function colorForEnergy(energy: number): THREE.Color {
-  // 0 -> gold, 0.5 -> emerald, 1 -> amethyst
+  // 0 -> secondary, 0.5 -> primary, 1 -> tertiary
   const c = new THREE.Color();
   if (energy < 0.5) {
-    c.lerpColors(PALETTE.gold, PALETTE.emerald, energy * 2);
+    c.lerpColors(PALETTE.secondary, PALETTE.primary, energy * 2);
   } else {
-    c.lerpColors(PALETTE.emerald, PALETTE.amethyst, (energy - 0.5) * 2);
+    c.lerpColors(PALETTE.primary, PALETTE.tertiary, (energy - 0.5) * 2);
   }
   return c;
 }
@@ -261,7 +261,7 @@ function EnergySpark() {
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     const material = new THREE.LineBasicMaterial({
-      color: PALETTE.gold,
+      color: PALETTE.secondary,
       transparent: true,
       opacity: 0.8,
       linewidth: 2,
@@ -375,9 +375,9 @@ function EnergySpark() {
     <>
       <mesh ref={coreRef}>
         <sphereGeometry args={[1, 16, 16]} />
-        <meshBasicMaterial color={PALETTE.gold} />
+        <meshBasicMaterial color={PALETTE.secondary} />
       </mesh>
-      <pointLight ref={lightRef} color={PALETTE.gold} intensity={7} distance={5} decay={2} />
+      <pointLight ref={lightRef} color={PALETTE.secondary} intensity={7} distance={5} decay={2} />
       <primitive object={arcLine} ref={arcRef} />
     </>
   );

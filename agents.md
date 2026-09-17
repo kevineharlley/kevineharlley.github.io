@@ -35,3 +35,13 @@ Personal portfolio site for Kevin Eyram Harlley, built as a single scrolling pag
 - Raw `rgb(from var(--color-x) r g b / alpha)` syntax is only for CSS files (`globals.css`) where a class-based approach isn't possible (keyframes, pseudo-elements like `::-webkit-scrollbar-thumb`).
 
 - The `chip-card` class (plus `chip-card-gold` / `chip-card-am` variants) is the standard card/border treatment used across sections — reuse it for new cards instead of writing new border/glass styles.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

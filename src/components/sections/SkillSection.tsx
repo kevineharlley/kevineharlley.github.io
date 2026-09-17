@@ -1,17 +1,12 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { SkillChip } from "@/components/ui/SkillChip";
-import { skills } from "@/data";
+import { SkillsGrid } from "@/components/sections/SkillsGrid";
 
 export function Skills() {
   return (
-    <section id="Skills" className="py-24 px-4 bg-linear-180 from-surface to-surface-2">
-      <div className="max-w-5xl mx-auto">
-        <SectionHeading label="// MODULE_02" title="Skills &amp; Technologies" labelColor="gold" />
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {skills.map((skill) => (
-            <SkillChip key={skill.id} {...skill} />
-          ))}
-        </div>
+    <section id="Skills" className="circuit-bg py-24 px-4 bg-linear-180 from-surface to-surface-2">
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <SectionHeading title="Skills &amp; Technologies" />
+        <SkillsGrid />
       </div>
     </section>
   );

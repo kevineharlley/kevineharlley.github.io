@@ -1,13 +1,18 @@
 export * from "./types";
 export { workExperiences, type WorkExperience } from "./workExperience";
-export { skills } from "./skills";
+export { technologies, techGroupMeta, techGroupOrder } from "./technologies";
+export { coreCompetencies, competencyAreaMeta, competencyAreaOrder } from "./coreCompetencies";
 export { otherExperiences } from "./otherExperience";
 export { projects } from "./projects";
+export { education } from "./education";
+export { awards } from "./awards";
+export { contactInfo, narrative } from "./profile";
 
-import type { WorkExperience, OtherExperience, Project, ModalId } from "./types";
+import type { WorkExperience, OtherExperience, Project, ModalId, CompetencyArea } from "./types";
 import { workExperiences } from "./workExperience";
 import { otherExperiences } from "./otherExperience";
 import { projects } from "./projects";
+import { coreCompetencies, competencyAreaMeta, competencyAreaOrder } from "./coreCompetencies";
 
 export const modalRegistry: Record<ModalId, { title: string; items: string[] }> = {
   ...Object.fromEntries(
@@ -22,13 +27,16 @@ export const modalRegistry: Record<ModalId, { title: string; items: string[] }> 
       { title: p.title, items: p.details },
     ])
   ),
+  ...Object.fromEntries(
+    competencyAreaOrder.map((area: CompetencyArea) => [
+      `competency-${area}`,
+      {
+        title: competencyAreaMeta[area].label,
+        items: coreCompetencies
+          .filter((c) => c.area === area)
+          .sort((a, b) => b.level - a.level)
+          .map((c) => `${c.name} — Level ${c.level}/5`),
+      },
+    ])
+  ),
 } as Record<ModalId, { title: string; items: string[] }>;
-
-export function groupByCategory<T extends { category: string }>(items: T[]): Record<string, T[]> {
-  return items.reduce((acc, item) => {
-    const key = item.category;
-    if (!acc[key]) acc[key] = [];
-    acc[key].push(item);
-    return acc;
-  }, {} as Record<string, T[]>);
-}

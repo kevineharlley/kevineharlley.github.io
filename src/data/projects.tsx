@@ -11,12 +11,12 @@ export const projects: Project[] = [
       <>
         Assisted in coding Google&apos;s XLS toolchain — a high-level language synthesis toolchain for synthesizable
         hardware design.{" "}
-        <a href="https://github.com/google/xls" target="_blank" rel="noopener noreferrer" className="text-emerald">
+        <a href="https://github.com/google/xls" target="_blank" rel="noopener noreferrer" className="text-primary">
           GitHub →
         </a>
       </>
     ),
-    accent: "emerald",
+    accent: "primary",
     details: [
       "Wrote Python code for C++ frontend of the Google XLS toolchain.",
       "Worked on the higher-level language synthesis toolchain that allows flexible high-level descriptions of functionality to be changed into synthesizable hardware designs.",
@@ -31,13 +31,13 @@ export const projects: Project[] = [
     description: (
       <>
         Improved layout and features of the{" "}
-        <a href="http://www.aienergygroup.com.gh/" target="_blank" rel="noopener noreferrer" className="text-gold">
+        <a href="http://www.aienergygroup.com.gh/" target="_blank" rel="noopener noreferrer" className="text-secondary">
           AI Energy Group website
         </a>{" "}
         over the course of one year.
       </>
     ),
-    accent: "gold",
+    accent: "secondary",
     details: [
       "Updated company website including integration of social network feeds and improved user interface.",
       "Managed AI Energy Group's LAN including access control and integration with multiple service providers.",
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     description: "Vendor-tracking system built for my Computer Science major at DePauw University.",
     linkHref: "https://github.com/kevineharlley/Vendor-Tracking",
     linkText: "View on GitHub",
-    accent: "amethyst",
+    accent: "tertiary",
   },
   {
     id: "qstodian",
@@ -63,12 +63,12 @@ export const projects: Project[] = [
     description: (
       <>
         Assisted in developing the Qstodian website for its company launch in 2019.{" "}
-        <a href="https://www.qstodian.co/" target="_blank" rel="noopener noreferrer" className="text-emerald">
+        <a href="https://www.qstodian.co/" target="_blank" rel="noopener noreferrer" className="text-primary">
           qstodian.co →
         </a>
       </>
     ),
-    accent: "emerald",
+    accent: "primary",
     details: [
       "Designed and developed the company website using WordPress with assistance from the head graphic designer.",
       "Planned and executed the launch of the company and its flagship product, QTotal.",

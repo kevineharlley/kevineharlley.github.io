@@ -1,0 +1,264 @@
+
+
+
+Contents
+Personal Profile	2
+Contact Info:	2
+Repeating Career Patterns	2
+Career Narrative (Long Version)	3
+Resume Positioning Themes	4
+Education	5
+Soft Skills	6
+Relevant Coursework	8
+Technologies	9
+Coding	9
+Hardware	9
+Media	10
+Enterprise Software	10
+Career Timeline	12
+Configuration Engineer	12
+Solutions Engineering Analyst	14
+Software Engineering Intern	16
+Technology & Strategy Consultant	17
+Information Technology Intern	18
+Information Technology Associate	19
+Science Research Fellow	20
+Media Services Intern	21
+Leadership	22
+Public Relations Officer, Technology, Engineering, Information Management Society:	22
+President, African Students Association:	22
+Awards	23
+Appendix	24
+
+Master Career Source Document
+Personal Profile
+Name: Kevin Eyram Harlley
+Professional Identity:
+Client-facing engineer, technology consultant, and systems builder with experience translating complex business requirements into scalable technology platforms, developing full-stack software solutions and deploying custom applications with integrations into intricate enterprise environments. 
+Proven track record spanning enterprise software implementation, Configure-to-Order platforms and process flows, software engineering, consulting, IT operations, and digital transformation initiatives. Experienced in requirement discovery, technical solution design, enterprise implementation and delivering measurable business outcomes across manufacturing, technology, energy, research and higher education environments.
+Academic foundation combines Liberal Arts, Computer Science, Computer Engineering and Engineering Management through DePauw University and Washington University in St Louis’ dual-degree partnership.
+
+Contact Info:
+Address: 105 Augusta Drive, Moorestown NJ 08057
+Phone: +1(812)223-1220
+Email: kharlley24@gmail.com
+Website: https://kevineharlley.github.io/
+
+Repeating Career Patterns
+* Technology Translator: Ability to connect technical solutions with business goals.
+* Cross-Functional Collaborator: Experience working across engineering, business, research, and operations teams.
+* Builder: Experience creating, implementing, and improving systems in multiple environments.
+* Continuous Learner: Dedication to growth and self-improvement demonstrated through progression from IT operations through engineering, consulting, and enterprise technology
+
+Career Narrative (Long Version)
+My career has been defined by a consistent focus on translating complex requirements into practical technology solutions. Beginning in information technology and infrastructure support in higher education, I developed a foundation in systems administration, customer support, networking and operational technology.
+Early experiences in scientific research and enterprise IT further exposed me to data analysis, software development, information security, compliance and business operations. These opportunities broadened my understanding of how technology can be leveraged to solve real organizational challenges across a range of diverse environments.
+As my technical capabilities matured, I expanded into application and product development in different environments, contributing to the development of customer-facing applications, analytics platforms, and emerging technology solutions. This path eventually led to a software engineering internship at Google, where I contributed to an open-source compiler and high-level synthesis technology that aimed to bridge the gap between software development and specialized hardware infrastructure.
+Building on my technical and business experience, I transitioned into enterprise technology consulting at Deloitte Touche Tohmatsu, supporting global ERP and CPQ implementations valued at several million dollars. In these roles, I operated at the intersection of business and technology, helping business stakeholders and development teams organize and modernize Configure-to-Order processes, implement enterprise platforms and align technological investments with strategic business objectives.
+Presently, I continue to work as a Configuration Engineer/Developer where I serve as product owner, systems administrator, and solutions architect for my organization’s Configure-to-Order platforms supporting millions of dollars in annual revenue. My work focuses on translating product, manufacturing, and business requirements into scalable software solutions while driving digital transformation initiatives, platform modernization efforts and enterprise system optimization.
+Across every stage of my career, the common thread has been a passion for connecting people, processes, and technology to solve complex problems and deliver measurable business value.
+Resume Positioning Themes
+Depending on the role, you can position yourself as:
+1. Forward Deployed Engineer
+2. Software Engineer
+3. Solutions Engineer
+4. Technology Consultant
+5. Digital Transformation Consultant
+6. Technical Product Manager
+7. Enterprise Applications Specialist
+8. Strategy & Technology Consultant
+9. Engineering Manager
+10. Technical Program Manager
+11. Solutions Architect 
+
+
+
+Education
+Institution: DePauw University
+Bachelor of Arts (B.A.) in Computer Science
+Graduation Date: 2018
+
+
+Institution: Washington University in St. Louis
+Bachelor of Science (B.S.) in Computer Engineering
+Graduation Date: 2021
+
+
+Institution: Washington University in St. Louis
+Master of Engineering (M.Eng.) in Engineering Management (Data Analytics Focus)
+Graduation Date: 2021
+
+
+
+
+
+
+Soft Skills
+Core AreaSkillsProficiencyLeadership & EntrepreneurshipTechnology Strategy.5Strategic Planning4Executive Communication4Entrepreneurship3Startup Operations3Startup Consulting Experience4Business Growth Initiatives4Entrepreneurship Ecosystem Participation3Global Business Environments5Cross-Functional Collaboration5Stakeholder Communication4Product & Software DevelopmentSoftware Development4Agile Development4Product Delivery4Product Management4Testing & Deployment3Code Review3Engineering Collaboration3Large-Scale Software Engineering4Cloud Technologies3Product Thinking5Solution Architecture4Product Strategy4Product Configuration5System Customization3Debugging4Business Rule Implementation4Consulting & Business AnalysisTechnology Consulting4Enterprise Consulting4Business Analysis4Financial Analysis4Process Improvement4Requirements Analysis4Stakeholder Management4Client Engagement4Digital Transformation4Strategic Technology Planning4Technology Advisory4System Implementation4Business Technology Alignment4Client Solutions4Requirement Translation4Business process Analysis4Technical Support & IT OperationsIT Support5Technical Troubleshooting5Incident Management4Systems Administration5Enterprise IT operations4Infrastructure Support4Infrastructure Operations4System Automation4Business Systems4Solution Configuration3Network Administration3Enterprise Systems4Technology Deployment4User Enablement4Configuration Management3Software Implementation4Operational Support4Research & AnalyticsResearch Support3Research Methodology3Data Collection4Data Analysis4Technical Analysis4Technical Writing5Experimental Processes3Scientific Collaboration2Documentation4
+
+
+Relevant Coursework
+Core AreaCourseworkComputer Science & EngineeringData Structures & AlgorithmsComputer NetworkingFoundations of ComputationObject-Oriented Software DevelopmentComputer SystemsCompilersProgramming LanguagesRobotics LaboratoryIntroduction to Machine LearningIntroduction to Quantum ComputingOperating Systems OrganizationIntroduction to Artificial IntelligenceComputer NetworkingIntroduction to Digital Logic and Computer DesignComputer ArchitectureIntroduction to Electrical & Electronic Circuits I & IIIntroduction to Systems Software Computer Systems DesignEngineering ManagementDecision-Making and OptimizationEngineering Management and Financial IntelligenceProject Planning MethodologiesFinancial Principles of the CompanyEnterprise Data ManagementEnterprise Data StrategyFundamentals of ITProject Planning MethodologiesHuman Performance in the OrganizationFoundations of AnalyticsTechnology Strategy & MarketingInnovating for DefenseOtherCyber SecurityTechnical WritingDifferential EquationsProbability & Statistics for EngineeringFrench Level IV: Advanced FrenchIntermediate FrenchFrench ConversationEconomicsGeneral Physic I & IIGeneral Chemistry IGeneral Chemistry Lab
+
+Technologies
+Coding 
+Coding TechnologyLanguagesLevelHTML4CSS4JavaScript4Java3Python3C++3SQL4FrameworksLevelReact4TailwindCSS4React Three Fiber3Node.js4NextJS4GraphQL3ThreeJS3AngularJS3MATLAB2Erlang2CloudLevelGit4Vercel3Supabase3
+Hardware
+LanguageProficiencyVHDL3Arduino3Vivado3
+Media
+LanguageProficiencyAutodesk Suite (Inventor, Fusion, AutoCAD)Inventor3Fusion3AutoCAD2Vault3Adobe SuitePhotoshop3Fireworks2After-Effects2Edge Animate2Illustrator2Video & AnimationiMovie3Final Cut Pro3Blender2Music ProductionAbleton4Audacity3MaxForLive2
+Enterprise Software
+ApplicationProficiencyMicrosoft AppsMicrosoft 365 5Word5PowerPoint5Excel5PowerBI3Access3ERPSAP3Salesforce2Configure One CPQ4GeneralTableau3Figma3
+
+Career Timeline
+Configuration Engineer
+Date: January 2023 - Present
+Organization: Häfele America Corporation
+Experience:
+* Owned the Configure-to-Order (CTO) workstream, serving as administrator/developer for Configure One CPQ, SAP Variant Article, and supporting data tools to process more than $20M in annual configurable product sales while ensuring configuration accuracy and alignment between customer requirements and production capabilities.
+* Partnered with IT, external security consultants and business stakeholders restore the company’s Configuration systems following a global cyber-attack, enabling the recovery of critical Configure-to-Order operations over less than 6 months after the legacy infrastructure had been decommissioned and sanitized by external cybersecurity consultants. Assisted with validation testing and operational readiness activities that reestablished the critical business revenue stream dependent on Configure-to-Order sales.
+* Designed and implemented custom enhancements to Configure One CPQ using JavaScript, HTML and CSS, extending vendor-provided functionality to support business requirements, improve user experience and streamline configuration workflows.
+* Partnered with Category Managers, engineering department, production team and other business stakeholders to capture product requirements before translating complex engineering and manufacturing rules into interactive configuration experiences, supporting the successful launch and sale of products that generated more than $5M in sales.
+* Interpreted customer and business requirements and translated them into detailed manufacturing rules, bills of materials, routing structures and configuration logic that enabled accurate production execution and order fulfillment for customizable product configurations.
+* Collaborated with the Global business and technology teams on the transition to a unified global configuration platform, contributing to the consolidation of multiple fragmented systems while reducing total annual platform costs by more than 88% while improving system availability, governance and scalability.
+* Served as the administrator and primary business owner for the company’s Configure-To-Order platform supporting the customer-facing configuration of 3 -5 product lines, managing access and support for more than 3000 internal and external users while maintaining configuration accuracy rates exceeding 90% across $20M+ in annual configurable product sales.
+* Streamlined configuration development and testing processes, reducing the time required to deploy new product configurations while accelerating product releases by designing reusable configuration frameworks and templates that reduced implementation efforts for new product launches and shortened deployment timelines.
+* Led configuration design reviews and requirement-gathering while serving as the subject matter expert for Configure One CPQ and SAP Variant Article configuration, providing guidance and support to business stakeholders and cross-functional teams. Supported the development of the global Configuration Platform Strategy through active participation in global modernization initiatives spanning multiple regions and business units.
+
+
+Solutions Engineering Analyst
+Date: September 2021 – January 2023
+Organization: Deloitte
+Experience:
+* Supported two global ERP (Oracle CPQ and Salesforce) implementation programs valued at more than $5M each, collaborating with cross-functional business and technology stakeholders to define requirements, manage Agile delivery activities and oversee solution quality from early-stage information gathering through deployment and hyper care.
+* Gathered, analyzed and documented functional requirements for customer system implementations, while ensuring the alignment of business processes, customer workflows, pricing logic, and reporting capabilities across global business operations.
+* Developed end-to-end business process flows that mapped current-state and future-state process flows, use cases and system interaction diagrams, identifying opportunities for process optimization, system integration and automation across enterprise business applications.
+* Served as the lead for the Reporting & Analytics workstream on a global ERP implementation project, driving requirement definition, feature prioritization and acceptance, user stories and stakeholder alignment throughout the implementation lifecycle.
+* Coordinated and facilitated agile ceremonies including daily standups, backlog grooming sessions, sprint planning and retrospectives while promoting adherence to Deloitte delivery methodologies and Agile best practices to maintain project momentum and timelines.
+* Managed a backlog of more than 600 user stories supporting ERP implementations and enhancement requests, collaborating with business stakeholders and development teams to prioritize features and ensure successful delivery of critical business capabilities.
+* Partnered with offshore development teams to perform functional, integration and user acceptance testing for more than 100 system features, identifying bugs, coordinating defect resolution efforts and ensuring delivered capabilities met client expectations and business requirements.
+* Conducted client-facing demonstrations to executive and business stakeholders during sprint reviews and prototype demonstrations, gathering stakeholder feedback, validating requirements, building client confidence and facilitating iterative refinement throughout the development lifecycle.
+* Oversaw requirement discovery workshops with client stakeholders and technical development teams, documenting business processes, identifying gaps in current-state operations, and translating complex business requirements into detailed user stories, actionable functional specifications and implementation roadmaps while ensuring alignment between business objectives and system capabilities.
+* Applied Deloitte consulting methodologies to facilitate stakeholder workshops, analyze business processes, and deliver scalable technology solutions aligned with strategic business objectives.
+
+
+Software Engineering Intern
+Date: May 2020 – August 2020
+Organization: Google
+Experience:
+* Contributed to Google’s high-level synthesis (HLS) compiler framework toolchain XLS, developing Python-based tooling that transformed high-level software representations into synthesizable hardware descriptions used for specialized digital circuit development.
+*  Designed and executed functional validation and regression testing for XLS toolchain features, identifying bugs and ensuring correctness across multiple stages of the tool’s hardware synthesis workflow.
+*  Designed and implemented support for C++ struct and class translation within the XLS fronted, expanding language compatibility and enabling complex software constructs to be represented within the hardware synthesis pipeline.
+*  Participated in peer code reviews and source control management using GitHub, contributing production-quality code while ensuring readability, maintainability and adherence to Google’s engineering standards.
+* Independently designed, implemented, tested and delivered production-ready enhancements throughout the software development lifecycle, from requirement analysis through code review and deployment.
+* Developed automated test cases and validation procedures to ensure accurate translation of software logic into hardware representations.
+* Contributed features to a large-scale open-source compiler project while gaining experience in compiler architecture, hardware design automation, and production software development practices.
+
+
+
+
+
+Technology & Strategy Consultant
+Date: May 2019 – August 2019
+Organization: Qstodian (Startup - Company no longer operating)
+Experience:
+* Worked directly with founders, stakeholders and engineering to build and launch a technology product from concept to market while aligning on product functionality, branding and customer experience initiatives.
+* Built and maintained the company’s public-facing website using WordPress, collaborating with the head graphic designer to translate brand guidelines and product requirements into a functional website that supported marketing and product messaging.
+* Supported the go-to-market planning, execution and launch activities for the company’s flagship product lines, QTotal, QSend and QSelect helping establish brand awareness and customer adoption strategies for the newly formed startup.
+* Designed, developed and tested production software features for the company’s tablet-based solution using C++, contributing directly to the core user experience and operational capabilities of the platform.
+* Performed functional testing and quality assurance activities across proprietary software platforms, identifying defects, implementing solutions and validating performance improvements prior to release.
+* Worked within a fast-paced startup environment, contributing across product development, software engineering, testing, marketing and launch activities in support of company growth objectives.
+* Contributed to the development and refinement of smart facility management solutions designed to provide occupancy analytics and operational insights for commercial facilities.
+
+* 
+
+Information Technology Intern
+Date: August 2017 – August 2018
+Organization: AI Energy Group Ghana
+Experience:
+* Maintained and enhanced the company website using HTML, CSS and WordPress, improving usability, content delivery, and customer engagement through integrated social media, multimedia functionality and other general user experience improvements.
+* Assisted in the coordination and execution of internal audit activities supporting the organization’s preparation for ISO14001 environmental management certification by collaborating with business stakeholders to identify gaps, document process and improve organizational compliance.
+* Managed day-to-day operations and maintenance of critical technology infrastructure, including virtualization environments, cloud storage platforms, and endpoint security solutions supporting business operations across multiple locations.
+* Delivered technical support for staff, troubleshooting hardware, software, network, and electronic equipment issues to minimize downtime and ensure productivity.
+* Assisted in the administration of information security and governance practices, conducting security reviews, monitoring system controls, and supporting change management procedures to maintain compliance and operation integrity.
+* Owned backup and disaster recovery operations, including automated job scheduling, log review, recovery validation, and management of onsite and offside data protection strategies to support business continuity objectives.
+* Partnered with business leaders and operational staff to align technology solutions with business requirements and day-to-day operational needs.
+* Supported both business operation functions within a rapidly growing organization, gaining exposure to customer relationships, operational processes, compliance requirements and enterprise infrastructure management.
+
+
+Information Technology Associate
+Date: August 2014 – May 2017
+Organization: DePauw University
+Experience:
+* Participated in a large-scale campus network transformation project, working alongside network engineers to support the planning, deployment, and upgrades of infrastructure designed to improve connectivity, reliability and future scalability of the campus network.
+* Developed comprehensive network infrastructure documentation using Microsoft Visio for 14 university facilities, mapping network component locations with the goal of generating critical planning layout data that could be used to support network implementation activities. 
+* Installed, configured and deployed networking hardware throughout campus facilities, as part of a university-wide infrastructure modernization project.
+* Managed the lifecycle of university technology assets through device refurbishment, reimaging, repair and redeployment while ensuring environmentally responsible disposal of retired equipment.
+* Served as a front-line technical support resource for faculty, troubleshooting desktop, laptop, software, networking and audiovisual technology issue to minimize operational disruptions.
+* Maintained technology asset inventories including computers, peripherals, networking devices and A/V equipment supporting procurement, deployment, tracking, maintenance and replacement planning activities.
+* Delivered high-quality IT support services to a diverse user base including faculty, administrative staff, and academic departments, balancing technical problem solving with customer service excellence.
+* Created and maintained technical documentation, network diagrams, asset records and deployment inventories to support operation continuity and infrastructure planning.
+* Assisted end users with technology adoption, troubleshooting guidance, and best practices related to university computing resources and systems.
+* 
+
+Science Research Fellow
+Date: August 2014 – May 2017
+Organization: DePauw University
+Experience:
+* Designed and implemented components of a Java-based EEG data collection program that presented controlled visual stimuli to participants over a fixed interval to elicit brainwave activity that was captured and pushed into structure datasets for downstream analysis and research.
+* Developed the backend data model that supported EEG research activities, creating database structures that linked brainwave recordings to experimental stimuli and facilitated efficient retrieval and analysis of collected data using MySQL. 
+* Developed software for signal correlation and pattern comparison across EEG datasets, Supporting research into brainwave-based biometric authentication and the identification of repeatable user-specific neural signatures.
+* Communicated complex technical research findings to diverse audiences through formal presentations and poster sessions, bridging the gap between software, data analysis, and EEG concepts and accessible insights.
+* Contributed to the design and execution of controlled experiments intended to measure and compare individual brainwave patterns.
+* Participated in requirements gathering, development, testing and validation activities throughout the lifecycle of an academic research software project.
+
+
+Media Services Intern
+Date: August 2018 – March 2019 (Ended due to Covid)
+Organization: Washington University in St. Louis
+Experience:
+* Coordinated technical operations for live campus events, managing audio, video, projection and control room technologies to ensure the successful delivery of academic, administrative and campus-wide events.
+* Served as technical lead for event broadcasting activities, supporting livestream production, recording workflows, signal routing and troubleshooting during live events where downtime was not an option.
+* Produced and edited digital media content using Final Cut Pro and Adobe tools, transforming raw even recordings into polished audio and video deliverables supporting university communications and campus engagement initiatives.
+* Collaborated with faculty, staff, guest speakers and event organizers to identify technical requirements and ensure successful event execution.
+* Diagnosed and resolved audio, video, projection, and connectivity issues during live events, minimizing disruptions and maintaining production quality.
+
+
+Leadership
+Public Relations Officer, Technology, Engineering, Information Management Society: 
+Date: January 2020 – March 2020 (Ended due to Covid)
+* Led communication and outreach efforts for the Technology, Engineering & Information Management Society (TEIMS), supporting member engagement, event promotion, and organizational growth initiatives.
+* Collaborated with club leadership to coordinate professional development, networking, and community-building events for students pursuing careers in technology and engineering.
+* Established and maintained relationships with external organizations and stakeholders to expand awareness of club activities and increase opportunities for member participation.
+
+President, African Students Association: 
+Date: September 2016 – May 2017
+* Scaled the university's first African Students Association, increasing membership by more than 200% within one year and establishing a sustainable student organization focused on cultural awareness, advocacy, and community engagement.
+* Provided strategic leadership and representation for African students on campus, advocating for member interests, fostering an inclusive community, and serving as the organization's primary representative in university forums and stakeholder meetings.
+* Led the planning and execution of multiple cultural, educational, and networking initiatives that increased student engagement, strengthened the visibility of African and encouraged cross-cultural collaboration within the broader university community.
+* Organized educational programs, panel discussions, and guest speaker events focused on African culture, economic development, leadership, and contemporary issues affecting the continent.
+* Directed a flagship cultural showcase attended by more than 180 guests, managing event strategy, budgeting, logistics, stakeholder engagement, marketing, and volunteer coordination.
+* Established partnerships with peer organizations and external stakeholders to expand networking, professional development, and community-building opportunities for members.
+
+
+Awards
+* Skandalaris Center Grant
+* President’s award for Excellence, DePauw University.
+* Graduate Affiliation Scholarship, Washington University in St. Louis
+* Information Technology Associate’s Program
+
+
+Appendix
+Positioning:
+Technical Foundation
+* Media Services Intern (AV systems, live production, customer support)
+* IT Associate (Infrastructure, networking, support)
+* AI Energy (Systems administration, security, compliance)
+Software Engineering Foundation
+* Science Research Fellow (Java, MySQL, analytics)
+* Qstodian (Software development, startup environment)
+* Google (Compiler/toolchain engineering)
+Business & Enterprise Systems
+* Deloitte (Consulting, ERP/CPQ implementations, Agile delivery)
+* Häfele (CPQ administration, product ownership, platform transformation)
+

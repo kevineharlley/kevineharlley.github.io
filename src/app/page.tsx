@@ -4,13 +4,16 @@ import { useState } from "react";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { Education } from "@/components/sections/Education";
 import { Skills } from "@/components/sections/SkillSection";
+import { CoreCompetencies } from "@/components/sections/CoreCompetencies";
 import { WorkExperience } from "@/components/sections/WorkExperience";
 import { Portfolio } from "@/components/sections/Portfolio";
-import { Experience } from "@/components/sections/Experience";
+import { Leadership } from "@/components/sections/Leadership";
 import { Contact } from "@/components/sections/Contact";
 import { ProfileModals } from "@/components/sections/ProfileModals";
 import { TraceRule } from "@/components/ui/TraceRule";
+import { Reveal } from "@/components/ui/Reveal";
 import type { ModalId } from "@/data";
 
 export default function Home() {
@@ -22,17 +25,21 @@ export default function Home() {
       <Navbar />
       <Hero />
       <TraceRule />
-      <About />
+      <Reveal><About /></Reveal>
+      <Reveal><CoreCompetencies onSelectModal={setActiveModal} /></Reveal>
       <TraceRule />
-      <Skills />
       <TraceRule />
-      <WorkExperience />
+      <Reveal><Skills /></Reveal>
       <TraceRule />      
-      <Experience onSelectModal={setActiveModal} />
+      <Reveal><WorkExperience /></Reveal>
+      <TraceRule />      
+      <Reveal><Portfolio onSelectModal={setActiveModal} /></Reveal>
       <TraceRule />
-      <Portfolio onSelectModal={setActiveModal} />
+      <Reveal><Education /></Reveal>
       <TraceRule />
-      <Contact />
+      <Reveal><Leadership onSelectModal={setActiveModal} /></Reveal>
+      <TraceRule />
+      <Reveal><Contact /></Reveal>
       <ProfileModals activeModal={activeModal} onClose={close} />
     </>
   );

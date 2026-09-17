@@ -1,50 +1,50 @@
-export type Accent = "emerald" | "gold" | "amethyst";
+export type Accent = "primary" | "secondary" | "tertiary";
 
 export const ACCENT_TEXT: Record<Accent, string> = {
-  emerald: "text-emerald",
-  gold: "text-gold",
-  amethyst: "text-amethyst",
+  primary: "text-primary",
+  secondary: "text-secondary",
+  tertiary: "text-tertiary",
 };
 
 export const ACCENT_BORDER: Record<Accent, string> = {
-  emerald: "border-emerald",
-  gold: "border-gold",
-  amethyst: "border-amethyst",
+  primary: "border-primary",
+  secondary: "border-secondary",
+  tertiary: "border-tertiary",
 };
 
 export const ACCENT_BORDER_SOFT: Record<Accent, string> = {
-  emerald: "border-emerald/25",
-  gold: "border-gold/25",
-  amethyst: "border-amethyst/25",
+  primary: "border-primary/25",
+  secondary: "border-secondary/25",
+  tertiary: "border-tertiary/25",
 };
 
 export const ACCENT_BG: Record<Accent, string> = {
-  emerald: "bg-emerald",
-  gold: "bg-gold",
-  amethyst: "bg-amethyst",
+  primary: "bg-primary",
+  secondary: "bg-secondary",
+  tertiary: "bg-tertiary",
 };
 
 export const ACCENT_BG_SOFT: Record<Accent, string> = {
-  emerald: "bg-emerald/10",
-  gold: "bg-gold/10",
-  amethyst: "bg-amethyst/10",
+  primary: "bg-primary/10",
+  secondary: "bg-secondary/10",
+  tertiary: "bg-tertiary/10",
 };
 
-// Matches the border-color variants defined in globals.css (.chip-card-gold / .chip-card-am)
+// Matches the border-color variants defined in globals.css (.chip-card-secondary / .chip-card-tertiary)
 export const ACCENT_CHIP_BORDER: Record<Accent, string> = {
-  emerald: "",
-  gold: "chip-card-gold",
-  amethyst: "chip-card-am",
+  primary: "",
+  secondary: "chip-card-secondary",
+  tertiary: "chip-card-tertiary",
 };
 
 export const ACCENT_GLOW: Record<Accent, string> = {
-  emerald: "hover:shadow-lg hover:shadow-emerald/25",
-  gold: "hover:shadow-lg hover:shadow-gold/25",
-  amethyst: "hover:shadow-lg hover:shadow-amethyst/25",
+  primary: "hover:shadow-lg hover:shadow-primary/25",
+  secondary: "hover:shadow-lg hover:shadow-secondary/25",
+  tertiary: "hover:shadow-lg hover:shadow-tertiary/25",
 };
 
 export const ACCENT_HOVER_BG: Record<Accent, string> = {
-  emerald: "hover:bg-emerald",
-  gold: "hover:bg-gold",
-  amethyst: "hover:bg-amethyst",
+  primary: "hover:bg-primary",
+  secondary: "hover:bg-secondary",
+  tertiary: "hover:bg-tertiary",
 };

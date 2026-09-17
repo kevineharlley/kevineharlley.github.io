@@ -3,13 +3,62 @@ import type { Accent } from "@/lib/accent";
 
 export type { Accent } from "@/lib/accent";
 
-export interface Skill {
+export type TechGroup =
+  | "coding-languages"
+  | "coding-frameworks"
+  | "coding-cloud"
+  | "hardware"
+  | "media-autodesk"
+  | "media-adobe"
+  | "media-video"
+  | "media-music"
+  | "enterprise-microsoft"
+  | "enterprise-erp"
+  | "enterprise-general";
+
+export interface Technology {
   id: string;
   name: string;
   icon: string;
   level: number;
   accent: Accent;
-  category?: "frontend" | "backend" | "tools" | "languages" | "design";
+  group: TechGroup;
+}
+
+export type CompetencyArea = "leadership" | "product" | "consulting" | "itops" | "research";
+
+export interface CoreCompetency {
+  id: string;
+  name: string;
+  level: number;
+  area: CompetencyArea;
+}
+
+export interface EducationEntry {
+  id: string;
+  institution: string;
+  degree: string;
+  field: string;
+  focus?: string;
+  graduationYear: string;
+  accent: Accent;
+  icon?: string;
+}
+
+export interface Award {
+  id: string;
+  title: string;
+  organization?: string;
+  accent: Accent;
+  icon?: string;
+}
+
+export interface ContactInfo {
+  phone: string;
+  phoneHref: string;
+  email: string;
+  linkedin: string;
+  website: string;
 }
 
 export interface WorkExperience {
@@ -26,7 +75,7 @@ export interface WorkExperience {
 
 export interface OtherExperience {
   id: string;
-  category: "research" | "media" | "leadership";
+  category: "leadership";
   title: string;
   subtitle?: string;
   description: string;
@@ -46,6 +95,8 @@ export interface Project {
   details?: string[];
 }
 
-export type ModalId = WorkExperience["id"] | OtherExperience["id"] | Project["id"];
-
-export type OtherExperienceCategory = OtherExperience["category"];
+export type ModalId =
+  | WorkExperience["id"]
+  | OtherExperience["id"]
+  | Project["id"]
+  | `competency-${CompetencyArea}`;
