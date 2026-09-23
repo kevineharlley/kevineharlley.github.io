@@ -25,7 +25,7 @@ export interface Technology {
   group: TechGroup;
 }
 
-export type CompetencyArea = "leadership" | "product" | "consulting" | "itops" | "research";
+export type CompetencyArea = "leadership" | "product" | "consulting" | "itops" | "research" | "media";
 
 export interface CoreCompetency {
   id: string;

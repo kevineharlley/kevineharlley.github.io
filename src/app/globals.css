@@ -4,7 +4,7 @@
    Primary    (emerald)  — categorizes technical/engineering data   — light #00d620 / plain #0dc328 / dark #1aaf30
    Secondary  (gold)     — categorizes business/enterprise data    — light #ffb830 / plain #fdb226 / dark #faac1c
    Tertiary   (amethyst) — categorizes creative/leadership data     — light #a855f7 / plain #8c2cfb / dark #7002ff
-   Quaternary (teal)     — structural/brand text (headings, nav)   — light #5eead4 / plain #46dfca / dark #0f766e
+   quarternary (teal)     — structural/brand text (headings, nav)   — light #5eead4 / plain #46dfca / dark #0f766e
 
    The plain shade is what components use day-to-day; the light/dark toggle
    (see [data-theme] below) swaps it for the light or dark endpoint. The
@@ -13,28 +13,31 @@
    ─────────────────────────────────────────────────────────────────────── */
 @theme {
   /* Crystal palette */
-  --color-primary-light:    #00d620;
-  --color-primary:          #0dc328;
-  --color-primary-dark:     #1aaf30;
-  --color-secondary-light:  #ffb830;
-  --color-secondary:        #fdb226;
-  --color-secondary-dark:   #faac1c;
-  --color-tertiary-light:   #a855f7;
-  --color-tertiary:         #8c2cfb;
-  --color-tertiary-dark:    #7002ff;
-  --color-quaternary-light: #5eead4;
-  --color-quaternary:       #46dfca;
-  --color-quaternary-dark:  #0f766e;
+  --color-primary-light:    #ffb830;
+  --color-primary:          #f8ab1c;
+  --color-primary-dark:     #a56c00;
+  --color-secondary-light:  #a855f7;
+  --color-secondary:        #8c2cfb;
+  --color-secondary-dark:   #6100e0;
+  --color-tertiary-light:  #3ddc68;
+  --color-tertiary:        #17c94b;
+  --color-tertiary-dark:   #0a8f2e;
+  --color-quarternary-light: #63e3d2;
+  --color-quarternary:       #2ee8cf;
+  --color-quarternary-dark:  #0b7d74;
 
   /* Surfaces */
   --color-void:      #06060f;
   --color-bg:        #111130;
   --color-surface:   #0d0d1e;
   --color-surface-2: #131328;
+  --color-board: #07323e;
 
   /* Text */
   --color-text:      #e2e8f0;
-  --color-muted:     #4e5c6f;
+  --color-muted:     #8a97ab;
+
+  --color-accent-soft-bg-alpha: 0.1;
 }
 
 /* Light/dark mode toggle — swaps accent intensity AND the dark surfaces for a glasslike white theme.
@@ -44,23 +47,27 @@
   --color-primary:    var(--color-primary-dark);
   --color-secondary:  var(--color-secondary-dark);
   --color-tertiary:   var(--color-tertiary-dark);
-  --color-quaternary: var(--color-quaternary-dark);
+  --color-quarternary: var(--color-quarternary-dark);
+  --color-board: #127076;
 
-  --color-void:      #f4f5fa;
-  --color-bg:        #eef0f9;
-  --color-surface:   #f7f8fc;
-  --color-surface-2: #eceef6;
+  --color-void:      #d6e4e9;
+  --color-bg:        #f7f8fc;
+  --color-surface:   #fcfdff;
+  --color-surface-2: #eef0f9;
   --color-text:      #1e2433;
   --color-muted:     #64748b;
+
+  --color-accent-soft-bg-alpha: 0.2;
 }
 
 /* Frosted glass card reads as white instead of near-black in light mode. */
 [data-theme="light"] .chip-card {
-  background: rgba(255, 255, 255, 0.65);
-  border-color: rgb(from var(--color-primary) r g b / 0.35);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgb(from var(--color-primary) r g b / 0.55);
 }
-[data-theme="light"] .chip-card-secondary { border-color: rgb(from var(--color-secondary) r g b / 0.4); }
-[data-theme="light"] .chip-card-tertiary { border-color: rgb(from var(--color-tertiary) r g b / 0.4); }
+[data-theme="light"] .chip-card-secondary { border-color: rgb(from var(--color-secondary) r g b / 0.55); }
+[data-theme="light"] .chip-card-tertiary { border-color: rgb(from var(--color-tertiary) r g b / 0.55); }
+[data-theme="light"] .chip-card-quarternary { border-color: rgb(from var(--color-quarternary) r g b / 0.55); }
 
 /* Body-copy grays are hardcoded Tailwind slate/white/black utilities, not theme
    tokens, so they're inverted explicitly here rather than via a CSS variable. */
@@ -107,34 +114,46 @@ body {
   outline-offset: 2px;
 }
 
+/* ── Soft accent background utilities ───────────────────────────────────── */
+.bg-primary-soft    { background-color: rgb(from var(--color-primary) r g b / var(--color-accent-soft-bg-alpha)); }
+.bg-secondary-soft  { background-color: rgb(from var(--color-secondary) r g b / var(--color-accent-soft-bg-alpha)); }
+.bg-tertiary-soft   { background-color: rgb(from var(--color-tertiary) r g b / var(--color-accent-soft-bg-alpha)); }
+.bg-quarternary-soft { background-color: rgb(from var(--color-quarternary) r g b / var(--color-accent-soft-bg-alpha)); }
+
 /* ── Glow text utilities ────────────────────────────────────────────────── */
 .glow-primary {
   text-shadow:
-    0 0 10px rgb(from var(--color-primary) r g b / 0.55),
-    0 0 22px rgb(from var(--color-primary) r g b / 0.3);
+    0 0 6px rgb(from var(--color-primary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-primary) r g b / 0.3);
 }
 .glow-secondary {
   text-shadow:
-    0 0 10px rgb(from var(--color-secondary) r g b / 0.55),
-    0 0 22px rgb(from var(--color-secondary) r g b / 0.3);
+    0 0 6px rgb(from var(--color-secondary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-secondary) r g b / 0.3);
 }
 .glow-tertiary {
   text-shadow:
-    0 0 10px rgb(from var(--color-tertiary) r g b / 0.55),
-    0 0 22px rgb(from var(--color-tertiary) r g b / 0.3);
+    0 0 6px rgb(from var(--color-tertiary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-tertiary) r g b / 0.3);
 }
-.glow-quaternary {
+.glow-quarternary {
   text-shadow:
-    0 0 10px rgb(from var(--color-quaternary) r g b / 0.55),
-    0 0 22px rgb(from var(--color-quaternary) r g b / 0.3);
+    0 0 6px rgb(from var(--color-quarternary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-quarternary) r g b / 0.3);
 }
+
+[data-theme="light"] .glow-primary   { text-shadow: 0 0 4px rgb(from var(--color-primary) r g b / 0.8); }
+[data-theme="light"] .glow-secondary { text-shadow: 0 0 4px rgb(from var(--color-secondary) r g b / 0.8); }
+[data-theme="light"] .glow-tertiary  { text-shadow: 0 0 4px rgb(from var(--color-tertiary) r g b / 0.8); }
+[data-theme="light"] .glow-quarternary{ text-shadow: 0 0 4px rgb(from var(--color-quarternary) r g b / 0.8); }
 
 /* ── Glass / chip card ──────────────────────────────────────────────────── */
 .chip-card {
   position: relative;
   background: rgba(13, 13, 30, 0.82);
   backdrop-filter: blur(14px);
-  border: 1px solid rgb(from var(--color-primary) r g b / 0.18);
+  border: 2px solid rgb(from var(--color-primary) r g b / 0.18);
+  composes: interactive-lift;
 }
 
 /* Corner-notch decoration mimicking IC package corners */
@@ -172,6 +191,23 @@ body {
   background: var(--color-tertiary);
 }
 
+/* quarternary-variant corner */
+.chip-card-quarternary {
+  border-color: rgb(from var(--color-quarternary) r g b / 0.22);
+}
+.chip-card-quarternary::before,
+.chip-card-quarternary::after {
+  background: var(--color-quarternary);
+}
+
+.interactive-lift {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.interactive-lift:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
 /* ── Animated trace-flow divider ────────────────────────────────────────── */
 @keyframes trace-flow {
   0%   { background-position: 0% 50%; }
@@ -179,13 +215,13 @@ body {
 }
 
 .trace-line {
-  height: 1px;
+  height: 2px;
   background: linear-gradient(
     90deg,
     transparent 0%,
     var(--color-secondary-dark) 30%,
     var(--color-primary-dark) 60%,
-    var(--color-quaternary-light) 70%,
+    var(--color-quarternary-dark) 70%,
     var(--color-tertiary-dark) 80%,
     transparent 100%
   );
@@ -235,17 +271,15 @@ body {
   transform: rotateY(180deg);
 }
 
-/* ── Scrollbar styling ──────────────────────────────────────────────────── */
+/* ── Vertical Scrollbar styling ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar             { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track       { background: var(--color-void); }
 ::-webkit-scrollbar-thumb       { 
   background: linear-gradient(
     180deg,
-    var(--color-secondary-dark) 0%,
-    var(--color-primary-dark) 30%,
-    var(--color-quaternary-dark) 50%,
-    var(--color-primary-dark) 70%,
-    var(--color-secondary-dark) 100%
+    var(--color-quarternary) 0%,
+    var(--color-tertiary) 50%,
+    var(--color-quarternary) 100%
   );
   border-radius: 3px;
 }
@@ -255,11 +289,9 @@ body {
 .scroll-h::-webkit-scrollbar-thumb {
   background: linear-gradient(
     90deg,
-    var(--color-secondary-dark) 0%,
-    var(--color-primary-dark) 30%,
-    var(--color-quaternary-dark) 50%,
-    var(--color-primary-dark) 70%,
-    var(--color-secondary-dark) 100%
+    var(--color-quarternary) 0%,
+    var(--color-tertiary) 50%,
+    var(--color-quarternary) 100%
   );
 }
 .scroll-h::-webkit-scrollbar-thumb:hover { background: var(--color-secondary-dark); }

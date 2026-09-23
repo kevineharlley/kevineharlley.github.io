@@ -18,12 +18,12 @@ export function ExperienceNode({
       </div>
       <div className="pb-8">
         <h5 className="font-semibold text-slate-100 text-sm leading-tight">{title}</h5>
-        {subtitle && <span className="text-xs text-slate-500 mt-0.5 block">{subtitle}</span>}
-        <p className="text-slate-400 text-xs mt-2 leading-relaxed max-w-xs">{description}</p>
+        {subtitle && <span className="text-sm text-slate-400 mt-0.5 block">{subtitle}</span>}
+        <p className="text-slate-400 text-sm mt-2 leading-relaxed max-w-xs">{description}</p>
         {onLearnMore && (
           <button
             onClick={onLearnMore}
-            className={`mt-3 text-xs font-medium underline underline-offset-2 opacity-70 hover:opacity-100 transition-opacity ${ACCENT_TEXT[accent]}`}
+            className={`mt-3 text-sm font-medium underline underline-offset-2 opacity-70 hover:opacity-100 transition-opacity ${ACCENT_TEXT[accent]}`}
           >
             View Details ?
           </button>

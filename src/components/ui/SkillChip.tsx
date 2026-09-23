@@ -7,7 +7,7 @@ export function SkillChip({
 }: { icon: string; name: string; level: number; accent?: Accent }) {
   return (
     <div
-      className={`chip-card ${ACCENT_CHIP_BORDER[accent]} flex flex-col items-center gap-2 p-5 rounded-lg transition-all duration-300 hover:scale-105`}
+      className={`chip-card ${ACCENT_CHIP_BORDER[accent]} flex flex-col items-center gap-2 p-5 rounded-lg transition-all duration-300 hover:scale-105 interactive-lift`}
     >
       <div className="flex gap-1">
         {Array.from({ length: MAX_SKILL_LEVEL }).map((_, i) => (

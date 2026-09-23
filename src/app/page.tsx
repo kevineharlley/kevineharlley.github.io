@@ -15,24 +15,28 @@ import { ProfileModals } from "@/components/sections/ProfileModals";
 import { TraceRule } from "@/components/ui/TraceRule";
 import { Reveal } from "@/components/ui/Reveal";
 import type { ModalId } from "@/data";
+import { useActiveSectionObserver } from "@/hooks/useActiveSectionObserver";
+
+const SECTIONS = ["About", "Competencies", "Skills", "Experience", "Portfolio", "Education", "Leadership", "Contact"];
 
 export default function Home() {
   const [activeModal, setActiveModal] = useState<ModalId | null>(null);
   const close = () => setActiveModal(null);
+  const activeSection = useActiveSectionObserver(SECTIONS);
 
   return (
     <>
-      <Navbar />
+      <Navbar activeSection={activeSection} />
       <Hero />
       <TraceRule />
       <Reveal><About /></Reveal>
+      <TraceRule />
       <Reveal><CoreCompetencies onSelectModal={setActiveModal} /></Reveal>
       <TraceRule />
-      <TraceRule />
       <Reveal><Skills /></Reveal>
-      <TraceRule />      
-      <Reveal><WorkExperience /></Reveal>
-      <TraceRule />      
+      <TraceRule />
+      <Reveal><WorkExperience  /></Reveal>
+      <TraceRule />
       <Reveal><Portfolio onSelectModal={setActiveModal} /></Reveal>
       <TraceRule />
       <Reveal><Education /></Reveal>

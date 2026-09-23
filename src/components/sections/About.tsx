@@ -1,16 +1,15 @@
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageSection } from "@/components/ui/PageSection";
 import { contactInfo, narrative } from "@/data";
 
 export function About() {
   return (
-    <section id="About" className="circuit-bg py-24 px-4 bg-linear-to-b from-surface to-bg">
+    <PageSection id="About" title="About Me" accent="primary" className="circuit-bg bg-linear-to-b from-surface to-bg">
       <div className="relative z-10 max-w-5xl mx-auto">
-        <SectionHeading title="About Me"/>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
-          <div className="md:col-span-3 chip-card rounded-lg p-8 space-y-4">
+          <div className="md:col-span-3 chip-card rounded-lg p-8 space-y-4 max-w-prose mx-auto">
             <p className="text-slate-300 text-sm leading-relaxed">
-              Hello there, my name is <span className="text-secondary">Kevin Eyram Harlley</span> and this is my website.
-              I am a <span className="text-primary">Creative Technologist</span> with an Entrepreneural mindset.
+              Hello there, my name is <span className="text-primary">Kevin Eyram Harlley</span> and this is my website.
+              I am a <span className="text-quarternary">Creative Technologist</span> with an Entrepreneural mindset.
             </p>
             <p className="text-slate-400 text-sm leading-relaxed">
               I graduated in 2021 as a dual degree student from Washington University in St. Louis. I received a
@@ -45,13 +44,13 @@ export function About() {
               <img
                 src="/images/headshot.png"
                 alt="Kevin Harlley"
-                className="clip-chip w-full h-full object-cover border-6 border-secondary"
+                className="clip-chip w-full h-full object-cover border-6 border-quarternary"
               />
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </PageSection>
   );
 }
 

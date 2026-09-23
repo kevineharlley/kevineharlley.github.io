@@ -5,13 +5,13 @@ export const techGroupMeta: Record<TechGroup, { label: string; accent: Accent; o
   "coding-frameworks": { label: "FRAMEWORKS", accent: "primary", order: 2 },
   "coding-cloud": { label: "CLOUD & VERSION CONTROL", accent: "primary", order: 3 },
   hardware: { label: "HARDWARE", accent: "secondary", order: 4 },
-  "media-autodesk": { label: "AUTODESK SUITE", accent: "tertiary", order: 5 },
-  "media-adobe": { label: "ADOBE SUITE", accent: "tertiary", order: 6 },
-  "media-video": { label: "VIDEO & ANIMATION", accent: "tertiary", order: 7 },
-  "media-music": { label: "MUSIC PRODUCTION", accent: "tertiary", order: 8 },
-  "enterprise-microsoft": { label: "MICROSOFT APPS", accent: "secondary", order: 9 },
-  "enterprise-erp": { label: "ERP & CRM", accent: "secondary", order: 10 },
-  "enterprise-general": { label: "GENERAL ENTERPRISE", accent: "secondary", order: 11 },
+  "enterprise-microsoft": { label: "MICROSOFT APPS", accent: "secondary", order: 5 },
+  "enterprise-erp": { label: "ERP & CRM", accent: "secondary", order: 6 },
+  "enterprise-general": { label: "GENERAL ENTERPRISE", accent: "secondary", order: 7 },
+  "media-autodesk": { label: "AUTODESK SUITE", accent: "tertiary", order: 8 },
+  "media-adobe": { label: "ADOBE SUITE", accent: "tertiary", order: 9 },
+  "media-video": { label: "VIDEO & ANIMATION", accent: "tertiary", order: 10 },
+  "media-music": { label: "MUSIC PRODUCTION", accent: "tertiary", order: 11 },
 };
 
 export const techGroupOrder: TechGroup[] = (

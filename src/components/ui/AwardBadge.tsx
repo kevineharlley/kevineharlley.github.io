@@ -7,7 +7,7 @@ export function AwardBadge({ title, organization, accent, icon }: Award) {
       <i className={`${icon ?? "bi bi-award-fill"} text-lg shrink-0 ${ACCENT_TEXT[accent]}`} />
       <div>
         <span className="text-sm text-slate-200 block leading-tight">{title}</span>
-        {organization && <span className="text-xs text-slate-500">{organization}</span>}
+        {organization && <span className="text-sm text-slate-400">{organization}</span>}
       </div>
     </div>
   );

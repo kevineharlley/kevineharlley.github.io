@@ -40,10 +40,10 @@ export function ExperienceCard({
           </div>
           <div>
             <h4 className="font-semibold text-slate-100">{company}</h4>
-            <span className="text-xs text-slate-500 mt-0.5 block">{role}</span>
-            {dateRange && <span className="text-xs text-slate-600 block">{dateRange}</span>}
+            <span className="text-sm text-slate-400 mt-0.5 block">{role}</span>
+            {dateRange && <span className="text-sm text-slate-400 block">{dateRange}</span>}
           </div>
-          <p className="text-slate-400 text-xs leading-relaxed">{summary}</p>
+          <p className="text-slate-400 text-sm leading-relaxed">{summary}</p>
           <span className={`text-[0.65rem] font-mono opacity-50 mt-auto tracking-widest ${ACCENT_TEXT[accent]}`}>
             TAP TO FLIP
           </span>
@@ -56,7 +56,7 @@ export function ExperienceCard({
           </h4>
           <ul className="space-y-2">
             {details.map((item, i) => (
-              <li key={i} className="text-slate-400 text-xs leading-relaxed flex gap-2">
+              <li key={i} className="text-slate-400 text-sm leading-relaxed flex gap-2">
                 <span className={ACCENT_TEXT[accent]}>▸</span>
                 <span>{item}</span>
               </li>

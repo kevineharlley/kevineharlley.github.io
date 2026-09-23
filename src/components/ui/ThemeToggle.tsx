@@ -1,30 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-const STORAGE_KEY = "theme";
-type ThemeMode = "dark" | "light";
+import { useTheme } from "@/context/ThemeContext";
 
 // Binary "bit" toggle for accent intensity — 0 = dark mode, 1 = light mode (surfaces stay dark either way).
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<ThemeMode>("dark");
+  const { theme, toggleTheme } = useTheme();
 
-  useEffect(() => {
-    const current = document.documentElement.getAttribute("data-theme");
-    setTheme(current === "light" ? "light" : "dark");
-  }, []);
-
-  function toggle() {
-    const next: ThemeMode = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem(STORAGE_KEY, next);
+  // Prevent rendering on the server to avoid hydration mismatch
+  if (!theme) {
+    return null;
   }
 
   return (
     <button
       type="button"
-      onClick={toggle}
+      onClick={toggleTheme}
       role="switch"
       aria-checked={theme === "light"}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} accent mode`}

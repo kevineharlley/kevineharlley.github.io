@@ -1,32 +1,20 @@
 import dynamic from "next/dynamic";
 
 const ChipScene = dynamic(
-  () => import("@/components/ChipScene").then((m) => m.ChipScene),
+  () => import("@/components/circuit/ChipScene").then((m) => m.ChipScene),
   { ssr: false }
 );
 
 export function Hero() {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-void">
+      <div className="absolute inset-4 md:inset-10 rounded-2xl overflow-hidden">
         <ChipScene />
       </div>
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 pointer-events-none">
-        <div
-          className="mb-4 px-4 py-1.5 border text-xs tracking-[0.22em] opacity-70 font-mono border-primary text-primary rounded"
-        >
-          CREATIVE TECHNOLOGIST
-        </div>
-        <h1 className="text-5xl md:text-7xl font-light tracking-tight glow-secondary text-secondary">
-          Kevin Eyram
-        </h1>
-        <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mt-1">Harlley</h1>
-        <p className="mt-5 text-primary text-sm md:text-base max-w-md leading-relaxed">
-          Creative Technologist — Computer Engineering & Data Analytics
-        </p>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40">
-          <span className="text-xs tracking-widest font-mono text-primary">SCROLL</span>
-          <span className="text-lg text-primary">↓</span>
+      <div className="relative z-10 flex flex-col items-center justify-start h-full text-center px-6 pt-[12vh] pointer-events-none">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-30">
+          <span className="text-md tracking-widest font-mono text-quarternary">SCROLL</span>
+          <span className="text-3xl text-quarternary glow-secondary">↓</span>
         </div>
       </div>
     </section>

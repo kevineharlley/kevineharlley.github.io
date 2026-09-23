@@ -1,6 +1,7 @@
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageSection } from "@/components/ui/PageSection";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { projects, type ModalId } from "@/data";
+import { Reveal } from "../ui/Reveal";
 
 export function Portfolio({
   onSelectModal,
@@ -8,19 +9,19 @@ export function Portfolio({
   onSelectModal: (key: ModalId) => void;
 }) {
   return (
-    <section id="Portfolio" className="circuit-bg py-24 px-4 bg-linear-180 from-surface-2 to-bg">
-      <div className="relative z-10 max-w-5xl mx-auto">
-        <SectionHeading title="Portfolio" />
+    <PageSection id="Portfolio" title="Portfolio" accent="primary" className="circuit-bg bg-linear-180 from-surface-2 to-bg">
+      <div className="relative z-10 max-w-6xl mx-auto">
         <div className="flex flex-col gap-6">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              {...project}
-              onLearnMore={project.details ? () => onSelectModal(project.id) : undefined}
-            />
+          {projects.map((project, i) => (
+            <Reveal key={project.id} delay={i * 100}>
+              <ProjectCard
+                {...project}
+                onLearnMore={project.details ? () => onSelectModal(project.id) : undefined}
+              />
+            </Reveal>
           ))}
         </div>
       </div>
-    </section>
+    </PageSection>
   );
 }

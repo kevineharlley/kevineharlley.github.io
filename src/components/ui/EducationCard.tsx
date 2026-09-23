@@ -11,12 +11,12 @@ export function EducationCard({ institution, degree, field, focus, graduationYea
       </div>
       <div>
         <h4 className="font-semibold text-slate-100 text-sm">{institution}</h4>
-        <p className={`text-xs mt-1 ${ACCENT_TEXT[accent]}`}>{degree}</p>
-        <p className="text-slate-400 text-xs mt-1">
+        <p className={`text-sm mt-1 ${ACCENT_TEXT[accent]}`}>{degree}</p>
+        <p className="text-slate-400 text-sm mt-1">
           {field}
           {focus ? ` — ${focus}` : ""}
         </p>
-        <span className="text-xs text-slate-600 block mt-1">{graduationYear}</span>
+        <span className="text-sm text-slate-400 block mt-1">{graduationYear}</span>
       </div>
     </div>
   );

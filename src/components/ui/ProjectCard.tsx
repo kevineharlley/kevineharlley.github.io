@@ -20,7 +20,7 @@ export function ProjectCard({
         {onLearnMore && (
           <button
             onClick={onLearnMore}
-            className={`self-start px-6 py-2 rounded-full text-xs font-semibold border ${ACCENT_TEXT[accent]} ${ACCENT_BORDER[accent]} ${ACCENT_HOVER_BG[accent]} transition-colors duration-200 hover:text-black`}
+            className={`self-start px-6 py-2 rounded-full text-sm font-semibold border ${ACCENT_TEXT[accent]} ${ACCENT_BORDER[accent]} ${ACCENT_HOVER_BG[accent]} transition-colors duration-200 hover:text-black`}
           >
             Learn More
           </button>
@@ -28,7 +28,7 @@ export function ProjectCard({
         {linkHref && !onLearnMore && (
           <a
             href={linkHref} target="_blank" rel="noopener noreferrer"
-            className={`self-start px-6 py-2 rounded-full text-xs font-semibold border ${ACCENT_TEXT[accent]} ${ACCENT_BORDER[accent]} transition-colors duration-200`}
+            className={`self-start px-6 py-2 rounded-full text-sm font-semibold border ${ACCENT_TEXT[accent]} ${ACCENT_BORDER[accent]} transition-colors duration-200`}
           >
             {linkText ?? "View Project"}
           </a>

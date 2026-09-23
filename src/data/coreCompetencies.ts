@@ -1,11 +1,12 @@
 import type { Accent, CompetencyArea, CoreCompetency } from "./types";
 
-export const competencyAreaMeta: Record<CompetencyArea, { label: string; accent: Accent; order: number }> = {
+export const competencyAreaMeta: Record<CompetencyArea, { label: string; accent: Accent; order: number }> = {  
+  product: { label: "PRODUCT & SOFTWARE DEVELOPMENT", accent: "secondary", order: 2 },
+  consulting: { label: "CONSULTING & BUSINESS ANALYSIS", accent: "primary", order: 3 },
   leadership: { label: "LEADERSHIP & ENTREPRENEURSHIP", accent: "tertiary", order: 1 },
-  product: { label: "PRODUCT & SOFTWARE DEVELOPMENT", accent: "primary", order: 2 },
-  consulting: { label: "CONSULTING & BUSINESS ANALYSIS", accent: "secondary", order: 3 },
-  itops: { label: "TECHNICAL SUPPORT & IT OPERATIONS", accent: "primary", order: 4 },
-  research: { label: "RESEARCH & ANALYTICS", accent: "tertiary", order: 5 },
+  itops: { label: "TECHNICAL SUPPORT & IT OPERATIONS", accent: "secondary", order: 4 },
+  media: { label: "MEDIA & HUMAN-MACHINE INTERACTION", accent: "primary", order: 5 },
+  research: { label: "RESEARCH & ANALYTICS", accent: "tertiary", order: 5 },  
 };
 
 export const competencyAreaOrder: CompetencyArea[] = (
@@ -93,4 +94,8 @@ export const coreCompetencies: CoreCompetency[] = [
   { id: "experimental-processes", name: "Experimental Processes", level: 3, area: "research" },
   { id: "scientific-collaboration", name: "Scientific Collaboration", level: 2, area: "research" },
   { id: "documentation", name: "Documentation", level: 4, area: "research" },
+
+  // Media, Digital Footprint & Human-Machine Interaction
+  {id: "media", name: "Ableton", level: 4, area: "media"},
 ];
+

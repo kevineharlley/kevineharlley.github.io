@@ -21,7 +21,7 @@ export const workExperiences: WorkExperience[] = [
       "Led configuration design reviews and requirement-gathering as subject matter expert for Configure One CPQ and SAP Variant Article, supporting the global Configuration Platform Strategy across multiple regions and business units.",
     ],
     icon: "bi bi-building",
-    accent: "secondary",
+    accent: "quarternary",
   },
   {
     id: "deloitte",
@@ -75,7 +75,7 @@ export const workExperiences: WorkExperience[] = [
       "Contributed to the development of smart facility management solutions providing occupancy analytics and operational insights for commercial facilities.",
     ],
     logo: "/images/qstodianlogo.png",
-    accent: "secondary",
+    accent: "tertiary",
   },
   {
     id: "mediaIntern",
@@ -109,7 +109,7 @@ export const workExperiences: WorkExperience[] = [
       "Owned backup and disaster recovery operations, including automated job scheduling, log review, recovery validation and onsite/offsite data protection strategies.",
     ],
     logo: "/images/ai.png",
-    accent: "tertiary",
+    accent: "secondary",
   },
   {
     id: "associate",
@@ -127,7 +127,7 @@ export const workExperiences: WorkExperience[] = [
       "Maintained technology asset inventories including computers, peripherals, networking devices and A/V equipment to support procurement and deployment planning.",
     ],
     icon: "bi bi-hdd-network",
-    accent: "secondary",
+    accent: "primary",
   },
   {
     id: "research",
@@ -144,6 +144,6 @@ export const workExperiences: WorkExperience[] = [
       "Contributed to the design and execution of controlled experiments intended to measure and compare individual brainwave patterns.",
     ],
     icon: "bi bi-cpu",
-    accent: "primary",
+    accent: "secondary",
   },
 ];
