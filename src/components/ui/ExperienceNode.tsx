@@ -1,11 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import { ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_TEXT, type Accent } from "@/lib/accent";
 
 export function ExperienceNode({
-  icon, title, subtitle, description, onLearnMore, accent = "primary",
+  icon, title, subtitle, description, details, accent = "primary",
 }: {
   icon: string; title: string; subtitle?: string; description: string;
-  onLearnMore?: () => void; accent?: Accent;
+  details?: string[]; accent?: Accent;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen((o) => !o);
+
   return (
     <div className="flex gap-5">
       <div className="flex flex-col items-center">
@@ -20,12 +26,26 @@ export function ExperienceNode({
         <h5 className="font-semibold text-slate-100 text-sm leading-tight">{title}</h5>
         {subtitle && <span className="text-sm text-slate-400 mt-0.5 block">{subtitle}</span>}
         <p className="text-slate-400 text-sm mt-2 leading-relaxed max-w-xs">{description}</p>
-        {onLearnMore && (
+        
+        {isOpen && details && details.length > 0 && (
+          <div className="mt-3 pl-3 border-l-2 border-slate-700/50">
+            <ul className="space-y-1.5">
+              {details.map((item, i) => (
+                <li key={i} className="text-slate-400 text-sm leading-relaxed flex gap-2">
+                  <span className={ACCENT_TEXT[accent]}>▸</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {details && details.length > 0 && (
           <button
-            onClick={onLearnMore}
-            className={`mt-3 text-sm font-medium underline underline-offset-2 opacity-70 hover:opacity-100 transition-opacity ${ACCENT_TEXT[accent]}`}
+            onClick={toggle}
+            className={`mt-3 text-sm font-medium underline underline-offset-2 opacity-70 hover:opacity-100 transition-opacity flex items-center gap-1 ${ACCENT_TEXT[accent]}`}
           >
-            View Details ?
+            {isOpen ? "Collapse ↑" : "View Details ↓"}
           </button>
         )}
       </div>

@@ -7,53 +7,34 @@ import { ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_CHIP_BORDER, ACCENT_GLOW, ACCENT_
 export function ExperienceCard({
   company, role, dateRange, summary, details, logo, icon, accent,
 }: WorkExperience) {
-  const [flipped, setFlipped] = useState(false);
-  const toggle = () => setFlipped((f) => !f);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen((o) => !o);
 
   return (
     <div
-      className={`flip-card w-full h-80 cursor-pointer ${flipped ? "is-flipped" : ""} ${ACCENT_GLOW[accent]}`}
-      onClick={toggle}
-      role="button"
-      tabIndex={0}
-      aria-pressed={flipped}
-      aria-label={`${company} — ${role}. Press to flip for details.`}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggle();
-        }
-      }}
+      className={`chip-card ${ACCENT_CHIP_BORDER[accent]} ${ACCENT_GLOW[accent]} rounded-lg flex flex-col gap-3 p-6 text-left transition-all duration-300 w-full relative h-full`}
     >
-      <div className="flip-card-inner">
+      <div className="flex items-center gap-4">
         <div
-          className={`flip-card-front chip-card ${ACCENT_CHIP_BORDER[accent]} rounded-lg flex flex-col items-center justify-center gap-3 p-6 text-center`}
+          className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 border ${ACCENT_BORDER[accent]} ${ACCENT_BG_SOFT[accent]}`}
         >
-          <div
-            className={`w-16 h-16 rounded-full flex items-center justify-center shrink-0 border ${ACCENT_BORDER[accent]} ${ACCENT_BG_SOFT[accent]}`}
-          >
-            {logo ? (
-              <img src={logo} alt={`${company} logo`} className="max-w-10 max-h-10 object-contain" />
-            ) : (
-              <i className={`${icon} text-2xl ${ACCENT_TEXT[accent]}`} />
-            )}
-          </div>
-          <div>
-            <h4 className="font-semibold text-slate-100">{company}</h4>
-            <span className="text-sm text-slate-400 mt-0.5 block">{role}</span>
-            {dateRange && <span className="text-sm text-slate-400 block">{dateRange}</span>}
-          </div>
-          <p className="text-slate-400 text-sm leading-relaxed">{summary}</p>
-          <span className={`text-[0.65rem] font-mono opacity-50 mt-auto tracking-widest ${ACCENT_TEXT[accent]}`}>
-            TAP TO FLIP
-          </span>
+          {logo ? (
+            <img src={logo} alt={`${company} logo`} className="max-w-8 max-h-8 object-contain" />
+          ) : (
+            <i className={`${icon} text-xl ${ACCENT_TEXT[accent]}`} />
+          )}
         </div>
-        <div
-          className={`flip-card-back chip-card ${ACCENT_CHIP_BORDER[accent]} rounded-lg p-6 overflow-y-auto text-left`}
-        >
-          <h4 className={`font-semibold text-sm mb-3 ${ACCENT_TEXT[accent]}`}>
-            {company} — {role}
-          </h4>
+        <div>
+          <h4 className="font-semibold text-slate-100">{company}</h4>
+          <span className={`text-md mt-0.5 block ${ACCENT_TEXT[accent]} opacity-80`}>{role}</span>
+          {dateRange && <span className="text-sm text-slate-400 block">{dateRange}</span>}
+        </div>
+      </div>
+      
+      <p className="text-slate-400 text-sm leading-relaxed mt-2">{summary}</p>
+      
+      {isOpen && (
+        <div className="mt-4 pt-4 border-t border-slate-700/50">
           <ul className="space-y-2">
             {details.map((item, i) => (
               <li key={i} className="text-slate-400 text-sm leading-relaxed flex gap-2">
@@ -63,6 +44,16 @@ export function ExperienceCard({
             ))}
           </ul>
         </div>
+      )}
+      
+      <div className="mt-auto pt-4">
+        <button
+          onClick={toggle}
+          className={`text-sm font-medium underline underline-offset-2 opacity-70 hover:opacity-100 transition-opacity ${ACCENT_TEXT[accent]}`}
+          aria-expanded={isOpen}
+        >
+          {isOpen ? "Collapse ↑" : "View Details ↓"}
+        </button>
       </div>
     </div>
   );

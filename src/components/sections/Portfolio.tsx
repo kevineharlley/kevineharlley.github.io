@@ -1,13 +1,9 @@
 import { PageSection } from "@/components/ui/PageSection";
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { projects, type ModalId } from "@/data";
+import { projects } from "@/data";
 import { Reveal } from "../ui/Reveal";
 
-export function Portfolio({
-  onSelectModal,
-}: {
-  onSelectModal: (key: ModalId) => void;
-}) {
+export function Portfolio() {
   return (
     <PageSection id="Portfolio" title="Portfolio" accent="primary" className="circuit-bg bg-linear-180 from-surface-2 to-bg">
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -16,7 +12,7 @@ export function Portfolio({
             <Reveal key={project.id} delay={i * 100}>
               <ProjectCard
                 {...project}
-                onLearnMore={project.details ? () => onSelectModal(project.id) : undefined}
+                details={project.details}
               />
             </Reveal>
           ))}

@@ -4,7 +4,7 @@ import { ACCENT_TEXT, type Accent } from "@/lib/accent";
 export function CategoryLabel({ children, accent = "primary" }: { children: React.ReactNode; accent?: Accent }) {
   return (
     <div
-      className={`mb-2 text-xs tracking-widest opacity-50 font-mono ${ACCENT_TEXT[accent]}`}
+      className={`mb-2 text-xs tracking-widest opacity-8 font-mono ${ACCENT_TEXT[accent]}`}
     >
       {children}
     </div>

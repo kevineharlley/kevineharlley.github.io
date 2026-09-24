@@ -1,8 +1,8 @@
 import { PageSection } from "@/components/ui/PageSection";
 import { CompetencyCard } from "@/components/ui/CompetencyCard";
-import { coreCompetencies, competencyAreaMeta, competencyAreaOrder, type ModalId } from "@/data";
+import { coreCompetencies, competencyAreaMeta, competencyAreaOrder } from "@/data";
 
-export function CoreCompetencies({ onSelectModal }: { onSelectModal: (key: ModalId) => void }) {
+export function CoreCompetencies() {
   return (
     <PageSection id="Competencies" title="Core Competencies" accent="primary" className="circuit-bg bg-linear-180 from-surface to-surface-2">
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -16,7 +16,6 @@ export function CoreCompetencies({ onSelectModal }: { onSelectModal: (key: Modal
                 label={meta.label}
                 accent={meta.accent}
                 skills={skills}
-                onViewAll={() => onSelectModal(`competency-${area}`)}
               />
             );
           })}

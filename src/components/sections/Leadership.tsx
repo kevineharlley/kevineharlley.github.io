@@ -1,12 +1,8 @@
 import { PageSection } from "@/components/ui/PageSection";
 import { ExperienceNode } from "@/components/ui/ExperienceNode";
-import { otherExperiences, type ModalId } from "@/data";
+import { otherExperiences } from "@/data";
 
-export function Leadership({
-  onSelectModal,
-}: {
-  onSelectModal: (key: ModalId) => void;
-}) {
+export function Leadership() {
   return (
     <PageSection id="Leadership" title="Leadership" accent="tertiary" className="circuit-bg bg-linear-180 from-bg to-surface">
       <div className="relative z-10 max-w-3xl mx-auto">
@@ -18,7 +14,7 @@ export function Leadership({
               title={exp.title}
               subtitle={exp.subtitle}
               description={exp.description}
-              onLearnMore={() => onSelectModal(exp.id)}
+              details={exp.details}
               accent={exp.accent}
             />
           ))}

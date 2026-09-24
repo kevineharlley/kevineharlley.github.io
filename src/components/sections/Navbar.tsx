@@ -23,7 +23,7 @@ export function Navbar({ activeSection }: NavbarProps) {
             <li key={id}>
               <a
                 href={`#${id}`}
-                className={`block px-4 py-1.5 rounded text-sm tracking-widest  hover:text-quaternary transition-colors duration-200 ${activeClass}`}
+                className={`block px-4 py-1.5 rounded text-sm tracking-widest hover:text-quarternary transition-colors duration-200 ${activeClass}`}
               >
                 {id.toUpperCase()}
               </a>

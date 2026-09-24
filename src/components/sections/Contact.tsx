@@ -10,8 +10,8 @@ export function Contact() {
       <div className="relative z-10 max-w-5xl mx-auto">
         <div className="chip-card chip-card-quarternary rounded-lg px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <ChipLabel accent="quarternary">CONTACT</ChipLabel>
-            <h2 className={`text-3xl font-light mt-2 glow-quarternary ${ACCENT_TEXT.quarternary}`}>Get In Touch</h2>
+            <div ><span className="text-xs border-2 border-quarternary p-1 text-quarternary border-l-8">CONTACT</span></div>
+            <h2 className="text-3xl font-light mt-2 glow-quarternary text-quarternary">Get In Touch</h2>
             <p className="text-slate-500 text-sm mt-1">Always open to new opportunities and conversations.</p>
           </div>
           <div className="flex gap-5">

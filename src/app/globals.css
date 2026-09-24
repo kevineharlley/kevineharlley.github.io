@@ -1,10 +1,10 @@
 ﻿@import "tailwindcss";
 
 /* ── Crystal / Chip architecture theme ─────────────────────────────────────
-   Primary    (emerald)  — categorizes technical/engineering data   — light #00d620 / plain #0dc328 / dark #1aaf30
-   Secondary  (gold)     — categorizes business/enterprise data    — light #ffb830 / plain #fdb226 / dark #faac1c
-   Tertiary   (amethyst) — categorizes creative/leadership data     — light #a855f7 / plain #8c2cfb / dark #7002ff
-   quarternary (teal)     — structural/brand text (headings, nav)   — light #5eead4 / plain #46dfca / dark #0f766e
+   Primary    (sunlit gold)  — categorizes technical/engineering data   — light #00d620 / plain #0dc328 / dark #1aaf30
+   Secondary  (moonlight purple)     — categorizes business/enterprise data    — light #ffb830 / plain #fdb226 / dark #faac1c
+   Tertiary   (natural green) — categorizes creative/leadership data     — light #a855f7 / plain #8c2cfb / dark #7002ff
+   quarternary (ocean teal )     — structural/brand text (headings, nav)   — light #5eead4 / plain #46dfca / dark #0f766e
 
    The plain shade is what components use day-to-day; the light/dark toggle
    (see [data-theme] below) swaps it for the light or dark endpoint. The

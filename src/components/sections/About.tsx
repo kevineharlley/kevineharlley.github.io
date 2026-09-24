@@ -6,24 +6,24 @@ export function About() {
     <PageSection id="About" title="About Me" accent="primary" className="circuit-bg bg-linear-to-b from-surface to-bg">
       <div className="relative z-10 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
-          <div className="md:col-span-3 chip-card rounded-lg p-8 space-y-4 max-w-prose mx-auto">
-            <p className="text-slate-300 text-sm leading-relaxed">
+          <div className="md:col-span-3 chip-card rounded-lg p-8 space-y-4 max-w-prose mx-auto text-md">
+            <p className="text-slate-300  leading-relaxed">
               Hello there, my name is <span className="text-primary">Kevin Eyram Harlley</span> and this is my website.
               I am a <span className="text-quarternary">Creative Technologist</span> with an Entrepreneural mindset.
             </p>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-400 leading-relaxed">
               I graduated in 2021 as a dual degree student from Washington University in St. Louis. I received a
               Bachelor of Arts in Computer Science from DePauw University, a Bachelor of Science in Computer
               Engineering, and a Masters in Engineering Management — Data Analytics from WashU.
             </p>
-            <p className="text-slate-400 text-sm leading-relaxed">{narrative}</p>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-400 leading-relaxed">{narrative}</p>
+            <p className="text-slate-400 leading-relaxed">
               I am highly interested in Robotics, Software Development, System Implementation, Machine Learning,
               Data Science and the intersection of business and technology. I have experience with Software development 
               on both the functional and technical sides, with my most recent experiences centered around the application
               of technology in manufacturing and Enterprise Infrastructure.
             </p>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-400 leading-relaxed">
               Thank you for taking the time to visit my website and I hope you have a great day wherever you are.
             </p>
             <div className="pt-4 flex gap-4">
