@@ -7,17 +7,30 @@
 import { useMemo, useRef, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import * as THREE from "three";
-import { getCircuit, CHIP_DEFS, LAYER_COUNT, LAYER_SPACING } from "./circuitLayout";
-import {
-  Capacitor,
-  ChipPackage,
-  CommandDevice,
-  Display,
-  InputDevice,
-  Multiplexer,
-  Outlet,
-  Transistor,
-} from "./circuitComponents";
+import { BoardBuilder, LAYER_COUNT, LAYER_SPACING } from "./CircuitLayout";
+import { DeviceFactory } from "./Devices";
+import { ComponentMesh } from "./CircuitComponents";
+
+// ── Board director ─────────────────────────────────────────────────────────
+// BoardRenderer directs construction: devices from the DeviceFactory, routed
+// and built by the BoardBuilder. One cached instance shared by all consumers.
+
+let cachedBoard: Circuit | null = null;
+
+export function buildBoard(): Circuit {
+  if (!cachedBoard) {
+    cachedBoard = new BoardBuilder()
+      .withDevices(DeviceFactory.createBoardSet())
+      .route()
+      .build();
+  }
+  return cachedBoard;
+}
+
+// For HMR or testing: reset the cached board
+export function resetBoard(): void {
+  cachedBoard = null;
+}
 
 function themeColor(varName: string): THREE.Color {
   const value = getComputedStyle(document.documentElement)
@@ -65,7 +78,7 @@ function layerDim(layer: number): number {
 
 function WireField() {
   const { theme } = useTheme();
-  const circuit = getCircuit();
+  const circuit = buildBoard();
   const wireRef = useRef<THREE.InstancedMesh>(null);
   const jointRef = useRef<THREE.InstancedMesh>(null);
 
@@ -188,42 +201,13 @@ function LayerSheets() {
 // ── Device meshes ──────────────────────────────────────────────────────────
 
 function CircuitComponents() {
-  const circuit = getCircuit();
+  const circuit = buildBoard();
 
   return (
     <>
-      {circuit.components.map((comp, index) => {
-        const key = `${comp.def.id}-${index}`;
-        const position =
-          comp.node !== undefined ? circuit.nodes[comp.node].position : undefined;
-        switch (comp.def.kind) {
-          case "chip":
-            return (
-              <ChipPackage
-                key={key}
-                chip={CHIP_DEFS[comp.device]}
-                chipIndex={comp.device}
-                layer={comp.layer}
-              />
-            );
-          case "mux":
-            return <Multiplexer key={key} />;
-          case "outlet":
-            return <Outlet key={key} position={position!} />;
-          case "display":
-            return <Display key={key} position={position!} />;
-          case "input":
-            return <InputDevice key={key} position={position!} />;
-          case "command":
-            return <CommandDevice key={key} position={position!} />;
-          case "capacitor":
-            return <Capacitor key={key} position={position!} />;
-          case "transistor":
-            return <Transistor key={key} position={position!} />;
-          default:
-            return null;
-        }
-      })}
+      {circuit.components.map((comp, index) => (
+        <ComponentMesh key={`${comp.id}-${comp.instanceKey}-${index}`} component={comp} />
+      ))}
     </>
   );
 }

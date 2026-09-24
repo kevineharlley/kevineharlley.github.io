@@ -8,9 +8,11 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
-import type { ComponentBehavior, ResolvedComponent, SparkKind, SparkSlot } from "./types";
-import { getCircuit } from "./circuitLayout";
-import { PALETTE, COMPONENT_EFFECTS, useSimRefs } from "./circuitComponents";
+import type { ComponentBehavior, SparkKind, SparkSlot } from "./types";
+import type { Component } from "./Devices";
+import { buildBoard } from "./BoardRenderer";
+import { COMPONENT_EFFECTS, PALETTE } from "./Devices";
+import { useSimulation } from "./CircuitComponents";
 
 // ── Constants ──────────────────────────────────────────────────────────────
 
@@ -50,16 +52,16 @@ interface SparkFieldProps {
 }
 
 export function SparkField({ behaviors }: SparkFieldProps) {
-  const simRefs = useSimRefs();
-  const circuit = getCircuit();
+  const simRefs = useSimulation();
+  const circuit = buildBoard();
   const nodes = circuit.nodes;
 
   // Derived lookups from the unified component registry
-  const outletNode = circuit.components.find((c) => c.def.kind === "outlet")!.node!;
+  const outletNode = circuit.components.find((c) => c.kind === "outlet")!.node!;
   const componentByDevice = useMemo(() => {
-    const map = new Map<number, ResolvedComponent>();
+    const map = new Map<number, Component>();
     circuit.components.forEach((c) => {
-      if (c.def.kind === "chip" || c.def.kind === "mux") map.set(c.device, c);
+      if (c.kind === "chip" || c.kind === "mux") map.set(c.device, c);
     });
     return map;
   }, [circuit]);
@@ -325,8 +327,7 @@ export function SparkField({ behaviors }: SparkFieldProps) {
         // Command packets hitting a chip pin get consumed with a flash
         const port = circuit.portByTerminalNode.get(slot.currentNode);
         if (isCommand && port && port.device >= 0) {
-          simRefs.flashChip(
-            port.device,
+          componentByDevice.get(port.device)?.flash(
             [PALETTE.secondary, PALETTE.primary, PALETTE.tertiary][port.device % 3]
           );
           slot.active = false;
@@ -349,7 +350,7 @@ export function SparkField({ behaviors }: SparkFieldProps) {
             entryPin: slot.currentNode,
             remaining: COMPONENT_EFFECTS.chipPin.dwellSeconds ?? 0,
           };
-          simRefs.flashChip(port.device, COMPONENT_EFFECTS.chipPin.color);
+          componentByDevice.get(port.device)?.flash(COMPONENT_EFFECTS.chipPin.color);
           continue;
         }
 

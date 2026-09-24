@@ -2,24 +2,12 @@
 // Pure layout module: builds the navigable graph and assigns device ports.
 // No React, no Three.js — safe for SSR and testable in isolation.
 
-import type {
-  CircuitComponent,
-  DevicePort,
-  ResolvedComponent,
-  Vec3,
-} from "./types";
+import type { ConnectionSpec, Vec3 } from "./types";
 import { MUX_DEVICE, PASSIVE_DEVICE } from "./types";
-import {
-  CHIP_DEFS,
-  COMPONENT_DEFS,
-  MUX_CONNECTIONS,
-  MUX_LAYOUT,
-} from "./componentDefs";
-import type { ChipDef } from "./componentDefs";
+import { MUX_BAND_START, MUX_BAND_STEP } from "./Devices";
+import type { Component, Port } from "./Devices";
 
-// Re-export for consumers that need the type/data
-export type { DevicePort, ChipDef };
-export { CHIP_DEFS, MUX_LAYOUT };
+export type { ChipLayout } from "./Devices";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -48,8 +36,8 @@ export interface Circuit {
   layerEdges: CircuitEdge[][]; // edges per layer (index 0 unused)
   // Fast arrival lookup: terminal node → port. Components are the source of
   // truth; this is just an O(1) index for SparkField's hot path.
-  portByTerminalNode: Map<number, DevicePort>;
-  components: ResolvedComponent[]; // unified component instances — the single registry
+  portByTerminalNode: Map<number, Port>;
+  components: Component[]; // unified component instances — the single registry
 }
 
 // ── Layout constants ───────────────────────────────────────────────────────
@@ -96,7 +84,7 @@ function sampleRange(min: number, max: number, step: number, mustInclude: number
 
 // ── Graph builder ──────────────────────────────────────────────────────────
 
-function buildCircuit(): Circuit {
+function buildCircuit(components: Component[]): Circuit {
   const nodes: CircuitNode[] = [];
   const vias: number [] = [];
   const viaLinks: { top: number; bottom: number }[] = [];
@@ -105,9 +93,7 @@ function buildCircuit(): Circuit {
   const edges: CircuitEdge[] = [];
   const edgeSet = new Set<string>();
   const nodeIndex = new Map<string, number>();
-  const portByTerminalNode = new Map<number, DevicePort>();
-  // Unified component registry — built inline as devices are routed.
-  const components: ResolvedComponent[] = [];
+  const portByTerminalNode = new Map<number, Port>();
 
   const GRID = 0.05;
   const snap = (v: number) => Math.round(v / GRID) * GRID;
@@ -178,10 +164,10 @@ function buildCircuit(): Circuit {
 
   // Unified lane-fan router: pin → shoulder → elbow → terminal.
   // Works for both chips (fewer lanes, converged to rail) and mux (6 lanes).
-  // Pin placement is driven by the component's declared PortSpecs.
+  // Pin placement is driven by the component's declared Ports.
   const routeLaneFan = (opts: {
-    def: CircuitComponent;  // component whose ports are being routed
-    device: number;         // chip index or MUX_DEVICE
+    def: Component;      // component whose ports are being routed
+    device: number;      // chip index or MUX_DEVICE
     side: "top" | "bottom" | "left" | "right";
     layer?: number;          // crystal layer to route on (default 0 = surface)
     railTargets?: number[];  // rail node ids on that layer (defaults to surface rails)
@@ -190,7 +176,7 @@ function buildCircuit(): Circuit {
     bandSpacing: number;      // gap between lanes in the band
     bandDir: 1 | -1;          // which way the band extends from center
     connectToRail?: boolean;  // if true, run single trace from band center to rail
-  }): DevicePort[] => {
+  }): Port[] => {
     const def = opts.def;
     const layer = opts.layer ?? 0;
     const specs = def.ports.filter((p) => p.side === opts.side);
@@ -200,7 +186,7 @@ function buildCircuit(): Circuit {
     const dir = opts.side === "top" || opts.side === "right" ? 1 : -1;
     const spread = (isVertical ? w : h) * (def.portSpread ?? 0.8);
 
-    const ports: DevicePort[] = [];
+    const ports: Port[] = [];
     const edgeCoord =
       opts.side === "top" ? cy + h / 2
       : opts.side === "bottom" ? cy - h / 2
@@ -253,18 +239,12 @@ function buildCircuit(): Circuit {
         layerEdges[layer].push(edges[edges.length - 1], edges[edges.length - 2], edges[edges.length - 3]);
       }
 
-      const port: DevicePort = {
-        terminalNode,
-        outwardNode: kneeNode,
-        device: opts.device,
-        side: opts.side,
-        lane,
-        group: spec.group ?? 0,
-        componentId: def.id,
-        portId: spec.id,
-      };
-      ports.push(port);
-      portByTerminalNode.set(terminalNode, port);
+      spec.terminalNode = terminalNode;
+      spec.outwardNode = kneeNode;
+      spec.lane = lane;
+      spec.device = opts.device;
+      ports.push(spec);
+      portByTerminalNode.set(terminalNode, spec);
     }
 
     
@@ -303,97 +283,120 @@ function buildCircuit(): Circuit {
     return ports;
   };
 
-  // Route chips — pin placement comes from each component's PortSpecs.
-  // Each chip is registered as a component immediately after its ports route.
-  const chipDefs = COMPONENT_DEFS.filter((d) => d.kind === "chip");
-  const toResolved = (p: DevicePort): ResolvedComponent["ports"][number] => ({
-    spec: COMPONENT_DEFS.find((d) => d.id === p.componentId)!.ports.find((s) => s.id === p.portId)!,
-    terminalNode: p.terminalNode,
-    outwardNode: p.outwardNode,
-    device: p.device,
-    side: p.side,
-    lane: p.lane,
-    group: p.group,
-  });
+  // ── Unified connection dispatcher ──
+  // Every component on the board routes through here, driven by its declared
+  // ConnectionSpecs: target "rail" uses the lane-fan router (chips),
+  // "component" fans directly to a partner's edge (mux), "railEnd" anchors a
+  // rail-end device. No per-kind routing blocks.
+  const routeConnection = (
+    comp: Component,
+    conn: ConnectionSpec,
+    device: number,
+    railTargets?: number[]
+  ): void => {
+    const target = conn.target;
+
+    if (target.to === "rail") {
+      const side = conn.side ?? "top";
+      routeLaneFan({
+        def: comp,
+        device,
+        side,
+        layer: comp.layer,
+        railTargets,
+        shoulderLen: conn.shoulderLen ?? 0.28,
+        bandCenter:
+          side === "top" || side === "bottom"
+            ? (comp.center ?? [0, 0])[0]
+            : (comp.center ?? [0, 0])[1],
+        bandSpacing: conn.bandSpacing ?? 0.05,
+        bandDir: conn.bandDir ?? 1,
+        connectToRail: true,
+      });
+      return;
+    }
+
+    if (target.to === "component") {
+      // Fan from this component's edge directly to the partner's edge.
+      // The partner is resolved by id — no coupling to layout array order.
+      const partner = components.find((c) => c.id === target.id);
+      if (!partner) throw new Error(`routeConnection: target "${target.id}" not found`);
+      const [pcx, pcy] = partner.center ?? [0, 0];
+      const [pw, ph] = partner.size ?? [0, 0];
+      const partnerEdgeX = pcx + (target.side === "right" ? pw / 2 : -pw / 2);
+      const [cx, cy] = comp.center ?? [0, 0];
+      const [w] = comp.size ?? [0, 0];
+      const side = conn.side ?? "left";
+      const edgeX = cx + (side === "left" ? -1 : 1) * (w / 2);
+      const shoulder = conn.shoulderLen ?? 0.3;
+      // Elbow offset keys off the OWNING component's side (+ toward partner).
+      const elbow = conn.elbowOffset ?? 0.42;
+      const bandStart = conn.bandStart ?? MUX_BAND_START;
+      const bandStep = conn.bandStep ?? MUX_BAND_STEP;
+      const bandDir = conn.bandDir ?? 1;
+      const group = conn.group ?? 0;
+      const connPorts = comp.ports.filter((p) => p.side === side && p.group === group);
+      const laneCount = conn.laneCount ?? connPorts.length;
+
+      // Create lanes from partner edge to this component's edge
+      for (let lane = 0; lane < laneCount; lane++) {
+        const t = (lane + 1) / (laneCount + 1);
+        const pinY = pcy - ph / 2 + t * ph;
+        const bandY = cy + bandDir * (bandStart + lane * bandStep);
+
+        const pinNode = addNode(partnerEdgeX, pinY);
+        const shoulderNode = addNode(partnerEdgeX + (target.side === "right" ? shoulder : -shoulder), pinY);
+        const elbowNode = addNode(edgeX + (side === "left" ? elbow : -elbow), bandY);
+        const terminalNode = addNode(edgeX, bandY);
+
+        const kneeNode = addNode(edgeX + (side === "left" ? elbow : -elbow), pinY);
+        addEdge(pinNode, shoulderNode);
+        addEdge(shoulderNode, kneeNode);   // horizontal
+        addEdge(kneeNode, elbowNode);      // vertical
+        addEdge(elbowNode, terminalNode);  // horizontal
+
+        const port = connPorts[lane];
+        port.terminalNode = terminalNode;
+        port.outwardNode = elbowNode;
+        port.lane = lane;
+        port.device = device;
+        portByTerminalNode.set(terminalNode, port);
+      }
+      return;
+    }
+
+    // railEnd: single port anchored to the rail terminal node.
+    const rail = target.rail === "top" ? hRailNodes[0] : hRailNodes[1];
+    const railNode = target.end === "start" ? rail[0] : rail[rail.length - 1];
+    comp.device = PASSIVE_DEVICE;
+    comp.node = railNode;
+    comp.nodePosition = nodes[railNode].position;
+    comp.ports[0].terminalNode = railNode;
+    comp.ports[0].device = PASSIVE_DEVICE;
+    comp.ports[0].lane = 0;
+  };
+
+  // Route chips — pin placement comes from each component's Ports; each
+  // declared connection fans out through the dispatcher.
+  const chipDefs = components.filter((d) => d.kind === "chip");
 
   // Route surface chips now; inner-layer chips wait until their layer's rail
   // replication exists (see below).
-  const routeChip = (def: CircuitComponent, chipIndex: number, railTargets?: number[]) => {
-    const devicePorts: DevicePort[] = [];
-    (["top", "bottom", "left", "right"] as const).forEach((side) => {
-      if (!def.ports.some((p) => p.side === side)) return;
-      const ports = routeLaneFan({
-        def,
-        device: chipIndex,
-        side,
-        layer: def.layer ?? 0,
-        railTargets,
-        shoulderLen: 0.28,
-        bandCenter:
-          side === "top" || side === "bottom"
-            ? (def.center ?? [0, 0])[0]
-            : (def.center ?? [0, 0])[1],
-        bandSpacing: 0.05,
-        bandDir: side === "top" || side === "right" ? 1 : -1,
-        connectToRail: true,
-      });
-      devicePorts.push(...ports);
-    });
-    components.push({
-      def,
-      device: chipIndex,
-      ports: devicePorts.map(toResolved),
-      layer: def.layer ?? 0,
-    });
+  const routeChip = (def: Component, chipIndex: number, railTargets?: number[]) => {
+    def.connections.forEach((conn) => routeConnection(def, conn, chipIndex, railTargets));
+    def.device = chipIndex;
   };
 
   const chipIndexByDef = new Map(chipDefs.map((d, i) => [d, i]));
   chipDefs.forEach((def) => {
-    if ((def.layer ?? 0) === 0) routeChip(def, chipIndexByDef.get(def)!);
+    if (def.layer === 0) routeChip(def, chipIndexByDef.get(def)!);
   });
 
-  // Route mux lanes (6 lanes per connection, fanned back to partner chips)
-  const muxDef = COMPONENT_DEFS.find((d) => d.kind === "mux")!;
-  const muxPorts: DevicePort[] = [];
-  MUX_CONNECTIONS.forEach(({ chipIndex, chipSide, muxSide, group, bandDir, laneCount }) => {
-    const chip = CHIP_DEFS[chipIndex];
-    const [cx, cy] = chip.center;
-    const [width, height] = chip.size;
-    const chipEdgeX = cx + (chipSide === "right" ? width / 2 : -width / 2);
-    const muxEdgeX = MUX_LAYOUT.center[0] + (muxSide === "left" ? -1 : 1) * (MUX_LAYOUT.size[0] / 2);
-
-    // Create lanes from chip edge to mux edge
-    for (let lane = 0; lane < laneCount; lane++) {
-      const t = (lane + 1) / (laneCount + 1);
-      const pinY = cy - height / 2 + t * height;
-      const muxY = MUX_LAYOUT.center[1] + bandDir * (0.13 + lane * 0.035);
-
-      const pinNode = addNode(chipEdgeX, pinY);
-      const shoulderNode = addNode(chipEdgeX + (chipSide === "right" ? 0.3 : -0.3), pinY);
-      const elbowNode = addNode(muxEdgeX + (muxSide === "left" ? 0.42 : -0.42), muxY);
-      const terminalNode = addNode(muxEdgeX, muxY);
-
-      const kneeNode = addNode(muxEdgeX + (muxSide === "left" ? 0.42 : -0.42), pinY);
-      addEdge(pinNode, shoulderNode);
-      addEdge(shoulderNode, kneeNode);   // horizontal
-      addEdge(kneeNode, elbowNode);      // vertical
-      addEdge(elbowNode, terminalNode);  // horizontal
-
-      const port: DevicePort = {
-        terminalNode,
-        outwardNode: elbowNode,
-        device: MUX_DEVICE,
-        side: muxSide,
-        lane,
-        group,
-        componentId: muxDef.id,
-        portId: `mux-g${group}-l${lane}`,
-      };
-      muxPorts.push(port);
-      portByTerminalNode.set(terminalNode, port);
-    }
-  });
-  components.push({ def: muxDef, device: MUX_DEVICE, ports: muxPorts.map(toResolved), layer: 0 });
+  // Route mux lanes — the mux's declared connections fan out to partner chips
+  // through the same dispatcher as every other component.
+  const muxDef = components.find((d) => d.kind === "mux")!;
+  muxDef.connections.forEach((conn) => routeConnection(muxDef, conn, MUX_DEVICE));
+  muxDef.device = MUX_DEVICE;
 
   // Scatter passive components on rail nodes
   Array.from(railNodeIds).forEach((id, i) => {
@@ -402,33 +405,10 @@ function buildCircuit(): Circuit {
     else if (r > 0.9) nodes[id].type = "transistor";
   });
 
-  // Rail-end devices: single io port anchored to the rail terminal node.
-  const railDeviceNodes = {
-    outlet: hRailNodes[0][0],
-    display: hRailNodes[0][hRailNodes[0].length - 1],
-    input: hRailNodes[1][0],
-    command: hRailNodes[1][hRailNodes[1].length - 1],
-  };
-
-  (["outlet", "display", "input", "command"] as const).forEach((kind) => {
-    const def = COMPONENT_DEFS.find((d) => d.kind === kind)!;
-    components.push({
-      def,
-      device: PASSIVE_DEVICE,
-      node: railDeviceNodes[kind],
-      layer: 0,
-      ports: [
-        {
-          spec: def.ports[0],
-          terminalNode: railDeviceNodes[kind],
-          device: PASSIVE_DEVICE,
-          side: def.ports[0].side,
-          lane: 0,
-          group: 0,
-        },
-      ],
-    });
-  });
+  // Rail-end devices: each declares its rail anchor as a connection.
+  components
+    .filter((d) => d.connections.some((conn) => conn.target.to === "railEnd"))
+    .forEach((d) => routeConnection(d, d.connections[0], PASSIVE_DEVICE));
 
   // Collect vias: nodes that form a corner (bend) or terminate a trace
   const isStraightThrough = (node: CircuitNode): boolean => {
@@ -516,14 +496,13 @@ function buildCircuit(): Circuit {
   // Route inner-layer chips against their own layer's replicated rails —
   // sparks dive down a via shaft, ride the inner rail, and enter the package.
   chipDefs.forEach((def) => {
-    const layer = def.layer ?? 0;
-    if (layer === 0) return;
-    routeChip(def, chipIndexByDef.get(def)!, layerRailNodeIds[layer]);
+    if (def.layer === 0) return;
+    routeChip(def, chipIndexByDef.get(def)!, layerRailNodeIds[def.layer]);
   });
 
   // Inner passive mounts: one deterministic rail node per listed layer.
   (["capacitor", "transistor"] as const).forEach((kind) => {
-    const def = COMPONENT_DEFS.find((d) => d.kind === kind)!;
+    const def = components.find((d) => d.kind === kind)!;
     def.innerMounts?.forEach((layer) => {
       const rails = layerRailNodeIds[layer];
       if (!rails || rails.length === 0) return;
@@ -534,24 +513,30 @@ function buildCircuit(): Circuit {
 
   // Passives: inline on a rail node — both declared ports resolve to it.
   // Runs after inner mounts so every typed node (any layer) gets an instance.
+  // Each mount point becomes its own Component instance (cloneForMount) so it
+  // owns independent animation state; the prototype defs are removed.
+  const passiveMounts: Component[] = [];
+  let passiveKey = 0;
   nodes.forEach((node) => {
     if (node.type !== "capacitor" && node.type !== "transistor") return;
-    const def = COMPONENT_DEFS.find((d) => d.kind === node.type)!;
-    components.push({
-      def,
-      device: PASSIVE_DEVICE,
-      node: node.id,
-      layer: node.layer,
-      ports: def.ports.map((spec) => ({
-        spec,
-        terminalNode: node.id,
-        device: PASSIVE_DEVICE,
-        side: spec.side,
-        lane: 0,
-        group: 0,
-      })),
+    const def = components.find((d) => d.kind === node.type)!;
+    const inst = def.cloneForMount(passiveKey++);
+    inst.device = PASSIVE_DEVICE;
+    inst.node = node.id;
+    inst.nodePosition = node.position;
+    inst.layer = node.layer;
+    inst.ports.forEach((p) => {
+      p.terminalNode = node.id;
+      p.device = PASSIVE_DEVICE;
+      p.lane = 0;
     });
+    passiveMounts.push(inst);
   });
+  const active = components.filter(
+    (c) => c.kind !== "capacitor" && c.kind !== "transistor"
+  );
+  components.length = 0;
+  components.push(...active, ...passiveMounts);
 
   return {
     nodes,
@@ -565,16 +550,29 @@ function buildCircuit(): Circuit {
   };
 }
 
-// ── Public API ─────────────────────────────────────────────────────────────
+// ── Board builder ──────────────────────────────────────────────────────────
+// Fluent construction of the circuit graph. BoardRenderer acts as the
+// director: supply devices from the DeviceFactory, route, build.
 
-let cached: Circuit | null = null;
+export class BoardBuilder {
+  private devices: Component[] = [];
+  private circuit: Circuit | null = null;
 
-export function getCircuit(): Circuit {
-  if (!cached) cached = buildCircuit();
-  return cached;
-}
+  /** Supply the device list (typically DeviceFactory.createBoardSet()). */
+  withDevices(devices: Component[]): this {
+    this.devices = devices;
+    return this;
+  }
 
-// For HMR or testing: reset the cached circuit
-export function resetCircuit(): void {
-  cached = null;
+  /** Run the full routing pass: rails → surface chips → mux → layer replication → inner chips → passives. */
+  route(): this {
+    this.circuit = buildCircuit(this.devices);
+    return this;
+  }
+
+  /** Finalize and return the built circuit. Throws if route() was skipped. */
+  build(): Circuit {
+    if (!this.circuit) throw new Error("BoardBuilder: call route() before build()");
+    return this.circuit;
+  }
 }

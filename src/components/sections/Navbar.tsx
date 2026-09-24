@@ -18,7 +18,7 @@ export function Navbar({ activeSection }: NavbarProps) {
       <ul className="flex flex-wrap justify-center gap-1">
         {NAV_LINKS.map((id) => {
           const isActive = activeSection === id;
-          const activeClass = isActive ? "text-quaternary glow-quaternary" : "text-slate-400";
+          const activeClass = isActive ? "text-secondary glow-secondary-light" : "text-quarternary";
           return (
             <li key={id}>
               <a
@@ -31,7 +31,7 @@ export function Navbar({ activeSection }: NavbarProps) {
           );
         })}
       </ul>
-      <div className="absolute right-4 top-1/2 -translate-y-1/2">
+      <div className="text-quarternary absolute right-4 top-1/2 -translate-y-1/2">
         <ThemeToggle />
       </div>
     </nav>

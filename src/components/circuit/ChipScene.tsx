@@ -5,25 +5,16 @@
 // All behavior logic lives in ChipComponents; all layout lives in circuitLayout.
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { Bloom, EffectComposer, Scanline, Vignette } from "@react-three/postprocessing";
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
-import { getCircuit } from "./circuitLayout";
-import {
-  capacitorBehavior,
-  chipPinBehavior,
-  commandBehavior,
-  createMuxBehavior,
-  createSimulationRefs,
-  displayBehavior,
-  inputBehavior,
-  outletBehavior,
-  SimRefsContext,
-  transistorBehavior,
-} from "./circuitComponents";
+import { buildBoard } from "./BoardRenderer";
+import { createSimulation, SimulationContext } from "./CircuitComponents";
 import type { ComponentBehavior } from "./types";
 import { BoardRenderer } from "./BoardRenderer";
 import { SparkField } from "./SparkField";
+import { applyPalette } from "./Devices";
+import { useTheme } from "@/context/ThemeContext";
 
 // ── Camera rig ─────────────────────────────────────────────────────────────
 
@@ -78,51 +69,29 @@ function useProceduralAlphaMap() {
 
 export function ChipScene() {
   const alphaMap = useProceduralAlphaMap();
-  const circuit = getCircuit();
-  const simRefs = useRef(
-    createSimulationRefs(circuit.components.filter((c) => c.def.kind === "chip").length)
-  );
+  const circuit = buildBoard();
+  const simulation = useRef(createSimulation());
+  const { theme } = useTheme();
+  useEffect(() => {
+    applyPalette(
+      theme === "light"
+        ? { primary: "#0e9e3f", secondary: "#d9960b", tertiary: "#8b3fe0", quarternary: "#0e7490" }
+        : {} // dark = defaults
+    );
+  }, [theme]);
 
-  // Build behavior registry from the unified component list: nodeId → ComponentBehavior
+  // Behavior registry: every component self-registers the nodes it answers on.
   const behaviors = useMemo(() => {
     const map = new Map<number, ComponentBehavior>();
-    const muxComp = circuit.components.find((c) => c.def.kind === "mux")!;
-    const muxBehavior = createMuxBehavior(muxComp.ports);
-
     circuit.components.forEach((comp) => {
-      switch (comp.def.kind) {
-        case "outlet":
-          if (comp.node !== undefined) map.set(comp.node, outletBehavior);
-          break;
-        case "display":
-          if (comp.node !== undefined) map.set(comp.node, displayBehavior);
-          break;
-        case "input":
-          if (comp.node !== undefined) map.set(comp.node, inputBehavior);
-          break;
-        case "command":
-          if (comp.node !== undefined) map.set(comp.node, commandBehavior);
-          break;
-        case "capacitor":
-          if (comp.node !== undefined) map.set(comp.node, capacitorBehavior);
-          break;
-        case "transistor":
-          if (comp.node !== undefined) map.set(comp.node, transistorBehavior);
-          break;
-        case "chip":
-          comp.ports.forEach((p) => map.set(p.terminalNode, chipPinBehavior));
-          break;
-        case "mux":
-          comp.ports.forEach((p) => map.set(p.terminalNode, muxBehavior));
-          break;
-      }
+      comp.behaviorBindings().forEach((node) => map.set(node, comp));
     });
 
     return map;
   }, [circuit]);
 
   return (
-    <SimRefsContext.Provider value={simRefs.current}>
+    <SimulationContext.Provider value={simulation.current}>
       <Canvas
         camera={{ position: [0, 0, 14], fov: 45 }}
         dpr={[1, 1.5]}
@@ -132,7 +101,7 @@ export function ChipScene() {
         }}
       >
         <color attach="background" args={["var(--color-void)"]} />
-        <fog attach="fog" args={["#06060f", 22, 45]} />
+        <fog attach="fog" args={["var(--color-fog)", 22, 45]} />
 
         <ambientLight intensity={0.12} />
         <pointLight position={[0, 0, 8]} intensity={5} color="#ffffff" />
@@ -160,9 +129,11 @@ export function ChipScene() {
             height={300}
             intensity={0.6}
           />
+          <Scanline density={1.5} opacity={0.14}/>
+          <Vignette eskil={false} offset={0.1} darkness={0.55} />
         </EffectComposer>
         <CameraRig />
       </Canvas>
-    </SimRefsContext.Provider>
+    </SimulationContext.Provider>
   );
 }

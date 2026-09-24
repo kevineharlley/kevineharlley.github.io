@@ -21,10 +21,10 @@
   --color-secondary-dark:   #6100e0;
   --color-tertiary-light:  #3ddc68;
   --color-tertiary:        #17c94b;
-  --color-tertiary-dark:   #0a8f2e;
-  --color-quarternary-light: #63e3d2;
-  --color-quarternary:       #2ee8cf;
-  --color-quarternary-dark:  #0b7d74;
+  --color-tertiary-dark:   #089b0d;
+  --color-quarternary-light: #75f6e1;
+  --color-quarternary:       #2be8c9;
+  --color-quarternary-dark:  #01836e;
 
   /* Surfaces */
   --color-void:      #06060f;
@@ -48,7 +48,7 @@
   --color-secondary:  var(--color-secondary-dark);
   --color-tertiary:   var(--color-tertiary-dark);
   --color-quarternary: var(--color-quarternary-dark);
-  --color-board: #127076;
+  --color-board: #218378;
 
   --color-void:      #d6e4e9;
   --color-bg:        #f7f8fc;
@@ -145,7 +145,7 @@ body {
 [data-theme="light"] .glow-primary   { text-shadow: 0 0 4px rgb(from var(--color-primary) r g b / 0.8); }
 [data-theme="light"] .glow-secondary { text-shadow: 0 0 4px rgb(from var(--color-secondary) r g b / 0.8); }
 [data-theme="light"] .glow-tertiary  { text-shadow: 0 0 4px rgb(from var(--color-tertiary) r g b / 0.8); }
-[data-theme="light"] .glow-quarternary{ text-shadow: 0 0 4px rgb(from var(--color-quarternary) r g b / 0.8); }
+[data-theme="light"] .glow-quarternary{ text-shadow: 0 0 2px rgb(from var(--color-quarternary) r g b / 0.8); }
 
 /* ── Glass / chip card ──────────────────────────────────────────────────── */
 .chip-card {

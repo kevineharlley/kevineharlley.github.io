@@ -35,13 +35,8 @@ export interface SparkSlot {
 }
 
 // Minimal interface for the shared sim state that behaviors need access to.
-// The full SimRefs interface lives in ChipComponents to avoid cycles.
 export interface SimContext {
   paused: { value: boolean };
-  setDisplayGlow: (value: number) => void;
-  flashChip: (chipIndex: number, color: THREE.Color) => void;
-  setMuxCount: (value: number) => void;
-  setMuxPulse: (value: number) => void;
   togglePaused: () => void;
 }
 
@@ -75,92 +70,34 @@ export interface ComponentBehavior {
 export type PortSide = "top" | "bottom" | "left" | "right";
 export type PortRole = "in" | "out" | "io";
 
-// A port as declared by a component definition. The circuit builder resolves
-// specs into concrete graph nodes — the spec is the source of truth for where
-// a port lives on the package edge.
-export interface PortSpec {
-  id: string;
-  side: PortSide;
-  /** 0..1 position along the side's port spread (0.5 = centered) */
-  t: number;
-  role: PortRole;
-  /** mux lane group; everything else uses 0 or undefined */
+// Where a connection fan terminates.
+//  - "rail":      converge to the nearest board rail (chips)
+//  - "component": fan directly to a partner component's edge (mux)
+//  - "railEnd":   anchor a rail-end device to one end of a horizontal rail
+export type ConnectionTarget =
+  | { to: "rail" }
+  | { to: "component"; id: string; side: PortSide }
+  | { to: "railEnd"; rail: "top" | "bottom"; end: "start" | "end" };
+
+// Declarative routing metadata. Every component declares its connections in
+// createBoard() (devices.ts); the single dispatcher in circuitLayout.ts
+// executes them — no per-kind routing blocks. Fields are interpreted per
+// target: side/bandDir/shoulderLen/bandSpacing for "rail"; side/group/
+// laneCount/bandDir/bandStart/bandStep/shoulderLen/elbowOffset for "component";
+// none beyond target for "railEnd".
+export interface ConnectionSpec {
+  target: ConnectionTarget;
+  /** side of the OWNING component the fan leaves from */
+  side?: PortSide;
+  /** mux lane group — drives Port.group for mux behavior */
   group?: number;
-}
-
-export type ComponentKind =
-  | "chip"
-  | "mux"
-  | "outlet"
-  | "display"
-  | "input"
-  | "command"
-  | "capacitor"
-  | "transistor";
-
-// Mux-only routing metadata: how a lane group fans back out to a partner chip.
-export interface MuxConnectionSpec {
-  chipIndex: number;
-  chipSide: PortSide;
-  muxSide: PortSide;
-  group: number;
-  bandDir: 1 | -1;
-  laneCount: number;
-}
-
-/**
- * Unified component definition: every device on the board — chips, the mux,
- * rail-end devices, and passives — is one of these.
- */
-export interface CircuitComponent {
-  id: string;
-  kind: ComponentKind;
-  center?: [number, number];
-  size?: [number, number];
-  /** crystal layer the device mounts on: 0 = surface, 1..N = inner layers */
-  layer?: number;
-  /** fraction of an edge the pin spread covers (packaged devices) */
-  portSpread?: number;
-  ports: PortSpec[];
-  /** mux only: lane fan-out to partner chips */
-  connections?: MuxConnectionSpec[];
-  /** passives only: inner layers to also instantiate this type on */
-  innerMounts?: number[];
-}
-
-// A PortSpec after the builder has placed it in the graph.
-export interface ResolvedPort {
-  spec: PortSpec;
-  terminalNode: number;
-  outwardNode?: number;
-  device: number;      // chip index, MUX_DEVICE, or PASSIVE_DEVICE
-  side: PortSide;
-  lane: number;        // index within its fan-out
-  group: number;       // mux lane group; everything else uses 0
-}
-
-// A component instance mounted on the board.
-export interface ResolvedComponent {
-  def: CircuitComponent;
-  /** chip index or MUX_DEVICE for packaged devices; PASSIVE_DEVICE otherwise */
-  device: number;
-  ports: ResolvedPort[];
-  /** node-mounted components (rail devices, passives) */
-  node?: number;
-  /** crystal layer the instance is mounted on (0 = surface) */
-  layer: number;
-}
-
-// Unified port type: any node where a packet can enter or leave a device.
-export interface DevicePort {
-  terminalNode: number;  // node ON the device edge (chip pin or mux terminal)
-  outwardNode: number;   // first node OFF the device
-  device: number;        // chip index, or -1 for the mux
-  side: PortSide;
-  lane: number;          // index within its fan-out
-  group: number;         // mux lane group; chips always use 0
-  componentId: string;   // CircuitComponent id that owns this port
-  portId: string;        // PortSpec id within the component
+  bandDir?: 1 | -1;
+  laneCount?: number;
+  shoulderLen?: number;
+  elbowOffset?: number;
+  bandStart?: number;
+  bandStep?: number;
+  bandSpacing?: number;
 }
 
 export const MUX_DEVICE = -1;
