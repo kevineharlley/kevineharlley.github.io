@@ -345,6 +345,7 @@ body {
 
 /* ── Pulse glow (e.g. node indicators) ─────────────────────────────────── */
 @keyframes pulse-glow {
+
   0%,
   100% {
     opacity: 0.5;
@@ -411,7 +412,9 @@ body {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg,
       var(--color-quarternary) 0%,
-      var(--color-quinary) 50%,
+      var(--color-quarternary-light) 40%,
+      var(--color-quinary-light) 50%,
+      var(--color-quarternary-light) 60%,
       var(--color-quarternary) 100%);
   border-radius: 3px;
 }
@@ -424,7 +427,9 @@ body {
 .scroll-h::-webkit-scrollbar-thumb {
   background: linear-gradient(90deg,
       var(--color-quarternary) 0%,
-      var(--color-quinary) 50%,
+      var(--color-quarternary-light) 40%,
+      var(--color-quinary-light) 50%,
+      var(--color-quarternary-light) 60%,
       var(--color-quarternary) 100%);
 }
 
