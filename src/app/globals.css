@@ -5,8 +5,8 @@
    Secondary   (moonlight purple) — categorizes business/enterprise data    — light #a855f7 / plain #8c2cfb / dark #6100e0
    Tertiary    (natural green)    — categorizes creative/leadership data     — light #3ddc68 / plain #17c94b / dark #089b0d
    quarternary (ocean teal)       — structural/brand text (headings, nav)   — light #75f6e1 / plain #2be8c9 / dark #01836e
-   quinary     (electric coral)   — complementary accent to quarternary     — light #ff639cff / plain #ff005dff / dark #e91563ff
-                                    (light mode flame tangerine: #ea580c / #ff7a1a / #9a3412)
+   quinary     (electric coral)   — complementary accent to quarternary     — light #ff639c / plain #ff005d / dark #e91563
+                                     (light mode flame tangerine: #ea580c / #ff7a1a / #9a3412)
 
    The plain shade is what components use day-to-day; the light/dark toggle
    (see [data-theme] below) swaps it for the light or dark endpoint. The
@@ -15,255 +15,254 @@
    ─────────────────────────────────────────────────────────────────────── */
 @theme {
   /* Crystal palette */
-  --color - primary - light: #ffb830;
-  --color - primary: #f8ab1c;
-  --color - primary - dark: #a56c00;
-  --color - secondary - light: #a855f7;
-  --color - secondary: #8c2cfb;
-  --color - secondary - dark: #6100e0;
-  --color - tertiary - light: #3ddc68;
-  --color - tertiary: #17c94b;
-  --color - tertiary - dark: #089b0d;
-  --color - quarternary - light: #75f6e1;
-  --color - quarternary: #2be8c9;
-  --color - quarternary - dark: #01836e;
-  --color - quinary - light: #ff639cff;
-  --color - quinary: #ff005dff;
-  --color - quinary - dark: #e91563ff;
+  --color-primary-light: #ffb830;
+  --color-primary: #f8ab1c;
+  --color-primary-dark: #a56c00;
+  --color-secondary-light: #a855f7;
+  --color-secondary: #8c2cfb;
+  --color-secondary-dark: #6100e0;
+  --color-tertiary-light: #3ddc68;
+  --color-tertiary: #17c94b;
+  --color-tertiary-dark: #089b0d;
+  --color-quarternary-light: #75f6e1;
+  --color-quarternary: #2be8c9;
+  --color-quarternary-dark: #01836e;
+  --color-quinary-light: #ff639c;
+  --color-quinary: #ff005d;
+  --color-quinary-dark: #e91563;
 
   /* Surfaces */
-  --color - void: #06060f;
-  --color - bg: #111130;
-  --color - surface: #0d0d1e;
-  --color - surface - 2: #131328;
-  --color - board: #0f4e5fff;
-  --color - traces: #8c2cfb;
+  --color-void: #06060f;
+  --color-bg: #111130;
+  --color-surface: #0d0d1e;
+  --color-surface-2: #131328;
+  --color-board: #0f4e5f;
+  --color-traces: #8c2cfb;
 
   /* Text */
-  --color - text: #e2e8f0;
-  --color - muted: #8a97ab;
+  --color-text: #e2e8f0;
+  --color-muted: #8a97ab;
 
-  --color - accent - soft - bg - alpha: 0.1;
+  --color-accent-soft-bg-alpha: 0.1;
 }
 
 /* Light/dark mode toggle — swaps accent intensity AND the dark surfaces for a glasslike white theme.
    Light mode uses the -dark (deeper, more saturated) endpoints since they need to contrast against
    near-white surfaces; dark mode keeps the brighter -light-leaning "plain" shades for pop on near-black. */
-[data - theme="light"] {
-  --color - primary: var(--color - primary - dark);
-  --color - secondary: var(--color - secondary - dark);
-  --color - tertiary: var(--color - tertiary - dark);
-  --color - quarternary: var(--color - quarternary - dark);
-  --color - quinary: #ea580c;
-  --color - quinary - light: #ff7a1a;
-  --color - quinary - dark: #9a3412;
-  --color - board: #65d8b4ff;
+[data-theme="light"] {
+  --color-primary: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary-dark);
+  --color-tertiary: var(--color-tertiary-dark);
+  --color-quarternary: var(--color-quarternary-dark);
+  --color-quinary: #ea580c;
+  --color-quinary-light: #ff7a1a;
+  --color-quinary-dark: #9a3412;
+  --color-board: #65d8b4;
 
-  --color - void: #d6e4e9;
-  --color - bg: #f7f8fc;
-  --color - surface: #fcfdff;
-  --color - surface - 2: #eef0f9;
-  --color - text: #1e2433;
-  --color - muted: #64748b;
+  --color-void: #d6e4e9;
+  --color-bg: #f7f8fc;
+  --color-surface: #fcfdff;
+  --color-surface-2: #eef0f9;
+  --color-text: #1e2433;
+  --color-muted: #64748b;
 
-  --color - accent - soft - bg - alpha: 0.2;
+  --color-accent-soft-bg-alpha: 0.2;
 }
 
 /* Frosted glass card reads as white instead of near-black in light mode. */
-[data - theme="light"].chip - card {
+[data-theme="light"] .chip-card {
   background: rgba(255, 255, 255, 0.85);
-  border - color: rgb(from var(--color - primary) r g b / 0.55);
+  border-color: rgb(from var(--color-primary) r g b / 0.55);
 }
 
-[data - theme="light"].chip - card - secondary {
-  border - color: rgb(from var(--color - secondary) r g b / 0.55);
+[data-theme="light"] .chip-card-secondary {
+  border-color: rgb(from var(--color-secondary) r g b / 0.55);
 }
 
-[data - theme="light"].chip - card - tertiary {
-  border - color: rgb(from var(--color - tertiary) r g b / 0.55);
+[data-theme="light"] .chip-card-tertiary {
+  border-color: rgb(from var(--color-tertiary) r g b / 0.55);
 }
 
-[data - theme="light"].chip - card - quarternary {
-  border - color: rgb(from var(--color - quarternary) r g b / 0.55);
+[data-theme="light"] .chip-card-quarternary {
+  border-color: rgb(from var(--color-quarternary) r g b / 0.55);
 }
 
-[data - theme="light"].chip - card - quinary {
-  border - color: rgb(from var(--color - quinary) r g b / 0.55);
+[data-theme="light"] .chip-card-quinary {
+  border-color: rgb(from var(--color-quinary) r g b / 0.55);
 }
 
 /* Body-copy grays are hardcoded Tailwind slate/white/black utilities, not theme
    tokens, so they're inverted explicitly here rather than via a CSS variable. */
-[data - theme="light"].text - slate - 100 {
+[data-theme="light"] .text-slate-100 {
   color: #0f172a;
 }
 
-[data - theme="light"].text - slate - 200 {
+[data-theme="light"] .text-slate-200 {
   color: #1e293b;
 }
 
-[data - theme="light"].text - slate - 300 {
+[data-theme="light"] .text-slate-300 {
   color: #334155;
 }
 
-[data - theme="light"].text - slate - 400 {
+[data-theme="light"] .text-slate-400 {
   color: #475569;
 }
 
-[data - theme="light"].text - slate - 600 {
+[data-theme="light"] .text-slate-600 {
   color: #94a3b8;
 }
 
-[data - theme="light"].bg - slate - 700 {
-  background - color: #cbd5e1;
+[data-theme="light"] .bg-slate-700 {
+  background-color: #cbd5e1;
 }
 
-[data - theme="light"].border - slate - 700 {
-  border - color: #cbd5e1;
+[data-theme="light"] .border-slate-700 {
+  border-color: #cbd5e1;
 }
 
-[data - theme="light"].text - white {
+[data-theme="light"] .text-white {
   color: #0f172a;
 }
 
-[data - theme="light"].bg - black\/20 {
-  background - color: rgb(15 23 42 / 0.06);
+[data-theme="light"] .bg-black\/20 {
+  background-color: rgb(15 23 42 / 0.06);
 }
 
-[data - theme="light"].hover\: text - slate - 200:hover {
+[data-theme="light"] .hover\:text-slate-200:hover {
   color: #1e293b;
 }
 
 html {
-  scroll - behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-  background - color: var(--color - void);
-  color: var(--color - text);
+  background-color: var(--color-void);
+  color: var(--color-text);
 }
 
 /* Faint circuit-board dot grid to echo the hero scene in other sections' backgrounds. */
-.circuit - bg {
+.circuit-bg {
   position: relative;
 }
 
-.circuit - bg::before {
+.circuit-bg::before {
   content: "";
   position: absolute;
   inset: 0;
-  background - image: radial - gradient(rgb(from var(--color - primary) r g b / 0.12) 1px, transparent 1px);
-  background - size: 28px 28px;
-  pointer - events: none;
+  background-image: radial-gradient(rgb(from var(--color-primary) r g b / 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
 }
 
 ::selection {
-  background: rgb(from var(--color - primary) r g b / 0.35);
+  background: rgb(from var(--color-primary) r g b / 0.35);
   color: inherit;
 }
 
-: focus - visible {
-  outline: 2px solid var(--color - primary);
-  outline - offset: 2px;
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* ── Soft accent background utilities ───────────────────────────────────── */
-.bg - primary - soft {
-  background - color: rgb(from var(--color - primary) r g b / var(--color - accent - soft - bg - alpha));
+.bg-primary-soft {
+  background-color: rgb(from var(--color-primary) r g b / var(--color-accent-soft-bg-alpha));
 }
 
-.bg - secondary - soft {
-  background - color: rgb(from var(--color - secondary) r g b / var(--color - accent - soft - bg - alpha));
+.bg-secondary-soft {
+  background-color: rgb(from var(--color-secondary) r g b / var(--color-accent-soft-bg-alpha));
 }
 
-.bg - tertiary - soft {
-  background - color: rgb(from var(--color - tertiary) r g b / var(--color - accent - soft - bg - alpha));
+.bg-tertiary-soft {
+  background-color: rgb(from var(--color-tertiary) r g b / var(--color-accent-soft-bg-alpha));
 }
 
-.bg - quarternary - soft {
-  background - color: rgb(from var(--color - quarternary) r g b / var(--color - accent - soft - bg - alpha));
+.bg-quarternary-soft {
+  background-color: rgb(from var(--color-quarternary) r g b / var(--color-accent-soft-bg-alpha));
 }
 
-.bg - quinary - soft {
-  background - color: rgb(from var(--color - quinary) r g b / var(--color - accent - soft - bg - alpha));
+.bg-quinary-soft {
+  background-color: rgb(from var(--color-quinary) r g b / var(--color-accent-soft-bg-alpha));
 }
 
 /* ── Glow text utilities ────────────────────────────────────────────────── */
-.glow - primary {
-  text - shadow:
-    0 0 6px rgb(from var(--color - primary) r g b / 0.55),
-    0 0 18px rgb(from var(--color - primary) r g b / 0.3);
+.glow-primary {
+  text-shadow:
+    0 0 6px rgb(from var(--color-primary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-primary) r g b / 0.3);
 }
 
-.glow - secondary {
-  text - shadow:
-    0 0 6px rgb(from var(--color - secondary) r g b / 0.55),
-    0 0 18px rgb(from var(--color - secondary) r g b / 0.3);
+.glow-secondary {
+  text-shadow:
+    0 0 6px rgb(from var(--color-secondary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-secondary) r g b / 0.3);
 }
 
-.glow - tertiary {
-  text - shadow:
-    0 0 6px rgb(from var(--color - tertiary) r g b / 0.55),
-    0 0 18px rgb(from var(--color - tertiary) r g b / 0.3);
+.glow-tertiary {
+  text-shadow:
+    0 0 6px rgb(from var(--color-tertiary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-tertiary) r g b / 0.3);
 }
 
-.glow - quarternary {
-  text - shadow:
-    0 0 6px rgb(from var(--color - quarternary) r g b / 0.55),
-    0 0 18px rgb(from var(--color - quarternary) r g b / 0.3);
+.glow-quarternary {
+  text-shadow:
+    0 0 6px rgb(from var(--color-quarternary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-quarternary) r g b / 0.3);
 }
 
-.glow - quinary {
-  text - shadow:
-    0 0 6px rgb(from var(--color - quinary) r g b / 0.55),
-    0 0 18px rgb(from var(--color - quinary) r g b / 0.3);
+.glow-quinary {
+  text-shadow:
+    0 0 6px rgb(from var(--color-quinary) r g b / 0.55),
+    0 0 18px rgb(from var(--color-quinary) r g b / 0.3);
 }
 
-[data - theme="light"].glow - primary {
-  text - shadow: 0 0 4px rgb(from var(--color - primary) r g b / 0.8);
+[data-theme="light"] .glow-primary {
+  text-shadow: 0 0 4px rgb(from var(--color-primary) r g b / 0.8);
 }
 
-[data - theme="light"].glow - secondary {
-  text - shadow: 0 0 4px rgb(from var(--color - secondary) r g b / 0.8);
+[data-theme="light"] .glow-secondary {
+  text-shadow: 0 0 4px rgb(from var(--color-secondary) r g b / 0.8);
 }
 
-[data - theme="light"].glow - tertiary {
-  text - shadow: 0 0 4px rgb(from var(--color - tertiary) r g b / 0.8);
+[data-theme="light"] .glow-tertiary {
+  text-shadow: 0 0 4px rgb(from var(--color-tertiary) r g b / 0.8);
 }
 
-[data - theme="light"].glow - quarternary {
-  text - shadow: 0 0 2px rgb(from var(--color - quarternary) r g b / 0.8);
+[data-theme="light"] .glow-quarternary {
+  text-shadow: 0 0 2px rgb(from var(--color-quarternary) r g b / 0.8);
 }
 
-[data - theme="light"].glow - quinary {
-  text - shadow: 0 0 2px rgb(from var(--color - quinary) r g b / 0.8);
+[data-theme="light"] .glow-quinary {
+  text-shadow: 0 0 2px rgb(from var(--color-quinary) r g b / 0.8);
 }
 
 /* ── Glass / chip card ──────────────────────────────────────────────────── */
-.chip - card {
+.chip-card {
   position: relative;
   background: rgba(13, 13, 30, 0.82);
-  backdrop - filter: blur(14px);
-  border: 2px solid rgb(from var(--color - primary) r g b / 0.18);
-  composes: interactive - lift;
+  backdrop-filter: blur(14px);
+  border: 2px solid rgb(from var(--color-primary) r g b / 0.18);
 }
 
 /* Corner-notch decoration mimicking IC package corners */
-.chip - card:: before,
-.chip - card::after {
+.chip-card::before,
+.chip-card::after {
   content: "";
   position: absolute;
-  background: var(--color - primary);
-  pointer - events: none;
+  background: var(--color-primary);
+  pointer-events: none;
 }
 
-.chip - card::before {
+.chip-card::before {
   top: -1px;
   left: 20px;
   width: 36px;
   height: 1px;
 }
 
-.chip - card::after {
+.chip-card::after {
   left: -1px;
   top: 20px;
   width: 1px;
@@ -271,165 +270,164 @@ body {
 }
 
 /* Secondary-variant corner */
-.chip - card - secondary {
-  border - color: rgb(from var(--color - secondary) r g b / 0.22);
+.chip-card-secondary {
+  border-color: rgb(from var(--color-secondary) r g b / 0.22);
 }
 
-.chip - card - secondary:: before,
-.chip - card - secondary::after {
-  background: var(--color - secondary);
+.chip-card-secondary::before,
+.chip-card-secondary::after {
+  background: var(--color-secondary);
 }
 
 /* Tertiary-variant corner */
-.chip - card - tertiary {
-  border - color: rgb(from var(--color - tertiary) r g b / 0.22);
+.chip-card-tertiary {
+  border-color: rgb(from var(--color-tertiary) r g b / 0.22);
 }
 
-.chip - card - tertiary:: before,
-.chip - card - tertiary::after {
-  background: var(--color - tertiary);
+.chip-card-tertiary::before,
+.chip-card-tertiary::after {
+  background: var(--color-tertiary);
 }
 
 /* quarternary-variant corner */
-.chip - card - quarternary {
-  border - color: rgb(from var(--color - quarternary) r g b / 0.22);
+.chip-card-quarternary {
+  border-color: rgb(from var(--color-quarternary) r g b / 0.22);
 }
 
-.chip - card - quarternary:: before,
-.chip - card - quarternary::after {
-  background: var(--color - quarternary);
+.chip-card-quarternary::before,
+.chip-card-quarternary::after {
+  background: var(--color-quarternary);
 }
 
 /* quinary-variant corner */
-.chip - card - quinary {
-  border - color: rgb(from var(--color - quinary) r g b / 0.22);
+.chip-card-quinary {
+  border-color: rgb(from var(--color-quinary) r g b / 0.22);
 }
 
-.chip - card - quinary:: before,
-.chip - card - quinary::after {
-  background: var(--color - quinary);
+.chip-card-quinary::before,
+.chip-card-quinary::after {
+  background: var(--color-quinary);
 }
 
-.interactive - lift {
-  transition: transform 0.3s ease -in -out, box - shadow 0.3s ease -in -out;
+.interactive-lift {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.interactive - lift:hover {
+.interactive-lift:hover {
   transform: translateY(-4px) scale(1.02);
-  box - shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Animated trace-flow divider ────────────────────────────────────────── */
-@keyframes trace - flow {
-  0 % {
-    background- position: 0 % 50 %;
+@keyframes trace-flow {
+  0% {
+    background-position: 0% 50%;
   }
 
-  100 % {
-    background- position: 200 % 50 %;
+  100% {
+    background-position: 200% 50%;
   }
 }
 
-.trace - line {
+.trace-line {
   height: 2px;
-  background: linear - gradient(90deg,
-      transparent 0 %,
-      var(--color - secondary - dark) 20 %,
-      var(--color - primary - dark) 40 %,
-      var(--color - quarternary - dark) 60 %,
-      var(--color - quinary - dark) 75 %,
-      var(--color - tertiary - dark) 85 %,
-      transparent 100 %);
-  background - size: 200 % 100 %;
-  animation: trace - flow 4s linear infinite;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--color-secondary-dark) 20%,
+      var(--color-primary-dark) 40%,
+      var(--color-quarternary-dark) 60%,
+      var(--color-quinary-dark) 75%,
+      var(--color-tertiary-dark) 85%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: trace-flow 4s linear infinite;
 }
 
 /* ── Pulse glow (e.g. node indicators) ─────────────────────────────────── */
-@keyframes pulse - glow {
-
-  0 %,
-  100 % {
+@keyframes pulse-glow {
+  0%,
+  100% {
     opacity: 0.5;
-    box- shadow: 0 0 6px rgb(from var(--glow - color) r g b / 0.4);
+    box-shadow: 0 0 6px rgb(from var(--glow-color) r g b / 0.4);
   }
 
-  50 % {
+  50% {
     opacity: 1;
-    box- shadow: 0 0 18px rgb(from var(--glow - color) r g b / 0.8);
+    box-shadow: 0 0 18px rgb(from var(--glow-color) r g b / 0.8);
   }
 }
 
-.pulse - node {
-  animation: pulse - glow 2.4s ease -in -out infinite;
+.pulse-node {
+  animation: pulse-glow 2.4s ease-in-out infinite;
 }
 
 /* ── Octagonal headshot clip (chip-package silhouette) ──────────────────── */
-.clip - chip {
-  clip - path: polygon(20 % 0 %, 80 % 0 %,
-      100 % 20 %, 100 % 80 %,
-      80 % 100 %, 20 % 100 %,
-      0 % 80 %, 0 % 20 %);
+.clip-chip {
+  clip-path: polygon(20% 0%, 80% 0%,
+      100% 20%, 100% 80%,
+      80% 100%, 20% 100%,
+      0% 80%, 0% 20%);
 }
 
 /* ── Flip card (experience cards) ────────────────────────────────────────── */
-.flip - card {
+.flip-card {
   perspective: 1200px;
 }
 
-.flip - card - inner {
+.flip-card-inner {
   position: relative;
-  width: 100 %;
-  height: 100 %;
+  width: 100%;
+  height: 100%;
   transition: transform 0.6s;
-  transform - style: preserve - 3d;
+  transform-style: preserve-3d;
 }
 
-.flip - card.is - flipped.flip - card - inner {
+.flip-card.is-flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-.flip - card - front,
-.flip - card - back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   inset: 0;
-  backface - visibility: hidden;
-  -webkit - backface - visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-.flip - card - back {
+.flip-card-back {
   transform: rotateY(180deg);
 }
 
 /* ── Vertical Scrollbar styling ──────────────────────────────────────────────────── */
-:: -webkit - scrollbar {
+::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-:: -webkit - scrollbar - track {
-  background: var(--color - void);
+::-webkit-scrollbar-track {
+  background: var(--color-void);
 }
 
-:: -webkit - scrollbar - thumb {
-  background: linear - gradient(180deg,
-      var(--color - quarternary) 0 %,
-      var(--color - quinary) 50 %,
-      var(--color - quarternary) 100 %);
-  border - radius: 3px;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+      var(--color-quarternary) 0%,
+      var(--color-quinary) 50%,
+      var(--color-quarternary) 100%);
+  border-radius: 3px;
 }
 
-:: -webkit - scrollbar - thumb:hover {
-  background: var(--color - secondary - dark);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary-dark);
 }
 
 /* Horizontal scroll containers (e.g. the skills grid) get a left-to-right thumb gradient. */
-.scroll - h:: -webkit - scrollbar - thumb {
-  background: linear - gradient(90deg,
-      var(--color - quarternary) 0 %,
-      var(--color - quinary) 50 %,
-      var(--color - quarternary) 100 %);
+.scroll-h::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg,
+      var(--color-quarternary) 0%,
+      var(--color-quinary) 50%,
+      var(--color-quarternary) 100%);
 }
 
-.scroll - h:: -webkit - scrollbar - thumb:hover {
-  background: var(--color - secondary - dark);
+.scroll-h::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary-dark);
 }

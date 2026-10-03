@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { IconType } from "react-icons";
 import { ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_TEXT, type Accent } from "@/lib/accent";
 
 export function ExperienceNode({
-  icon, title, subtitle, description, details, accent = "primary",
+  icon: Icon, title, subtitle, description, details, accent = "primary",
 }: {
-  icon: string; title: string; subtitle?: string; description: string;
+  icon: IconType; title: string; subtitle?: string; description: string;
   details?: string[]; accent?: Accent;
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ export function ExperienceNode({
         <div
           className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 pulse-node border ${ACCENT_BORDER[accent]} ${ACCENT_BG_SOFT[accent]}`}
         >
-          <i className={`${icon} text-sm ${ACCENT_TEXT[accent]}`} />
+          {Icon && <Icon className={`text-sm ${ACCENT_TEXT[accent]}`} />}
         </div>
         <div className={`flex-1 w-px mt-2 min-h-6 ${ACCENT_BG_SOFT[accent]}`} />
       </div>

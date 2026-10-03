@@ -1,10 +1,11 @@
+import { IconType } from "react-icons";
 import { ACCENT_BG, ACCENT_BG_SOFT, ACCENT_CHIP_BORDER, ACCENT_TEXT, type Accent } from "@/lib/accent";
 
 const MAX_SKILL_LEVEL = 5;
 
 export function SkillChip({
-  icon, name, level, accent = "primary", brandColor,
-}: { icon: string; name: string; level: number; accent?: Accent; brandColor?: string }) {
+  icon: Icon, name, level, accent = "primary", brandColor,
+}: { icon: IconType; name: string; level: number; accent?: Accent; brandColor?: string }) {
   
   const iconColorClass = brandColor ? "" : ACCENT_TEXT[accent];
 
@@ -22,10 +23,12 @@ export function SkillChip({
           />
         ))}
       </div>
-      <i 
-        className={`${icon} text-3xl ${iconColorClass} drop-shadow-md`} 
-        style={brandColor ? { color: brandColor } : undefined} 
-      />
+      {Icon && (
+        <Icon 
+          className={`text-3xl ${iconColorClass} drop-shadow-md`} 
+          style={brandColor ? { color: brandColor } : undefined} 
+        />
+      )}
       <span className="text-sm font-medium text-center text-slate-200 leading-tight">{name}</span>
     </div>
   );

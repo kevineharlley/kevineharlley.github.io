@@ -1,4 +1,6 @@
+import { FaGraduationCap } from "react-icons/fa";
 import type { EducationEntry } from "./types";
+
 
 export const education: EducationEntry[] = [
   {
@@ -8,7 +10,7 @@ export const education: EducationEntry[] = [
     field: "Computer Science",
     graduationYear: "2018",
     accent: "primary",
-    icon: "bi bi-mortarboard-fill",
+    icon: FaGraduationCap,
   },
   {
     id: "washu-bs",
@@ -17,7 +19,7 @@ export const education: EducationEntry[] = [
     field: "Computer Engineering",
     graduationYear: "2021",
     accent: "secondary",
-    icon: "bi bi-mortarboard-fill",
+    icon: FaGraduationCap,
   },
   {
     id: "washu-meng",
@@ -27,6 +29,6 @@ export const education: EducationEntry[] = [
     focus: "Data Analytics Focus",
     graduationYear: "2021",
     accent: "tertiary",
-    icon: "bi bi-mortarboard-fill",
+    icon: FaGraduationCap,
   },
 ];

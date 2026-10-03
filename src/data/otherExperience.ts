@@ -1,4 +1,5 @@
 import type { OtherExperience } from "./types";
+import { FaBullhorn, FaIdBadge } from "react-icons/fa";
 
 export const otherExperiences: OtherExperience[] = [
   {
@@ -12,7 +13,7 @@ export const otherExperiences: OtherExperience[] = [
       "Collaborated with club leadership to coordinate professional development, networking and community-building events for students pursuing careers in technology and engineering.",
       "Established and maintained relationships with external organizations and stakeholders to expand awareness of club activities and increase opportunities for member participation.",
     ],
-    icon: "bi bi-megaphone",
+    icon: FaBullhorn,
     accent: "secondary",
   },
   {
@@ -29,7 +30,7 @@ export const otherExperiences: OtherExperience[] = [
       "Directed a flagship cultural showcase attended by more than 180 guests, managing event strategy, budgeting, logistics, stakeholder engagement, marketing and volunteer coordination.",
       "Established partnerships with peer organizations and external stakeholders to expand networking, professional development and community-building opportunities for members.",
     ],
-    icon: "bi bi-person-badge",
+    icon: FaIdBadge,
     accent: "tertiary",
   },
 ];

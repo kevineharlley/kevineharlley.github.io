@@ -14,7 +14,7 @@ import type { ComponentBehavior } from "./types";
 import { BoardRenderer } from "./BoardRenderer";
 import { SparkField } from "./SparkField";
 import { syncPaletteFromCSS } from "./Devices";
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "next-themes";
 
 // ── Camera rig ─────────────────────────────────────────────────────────────
 

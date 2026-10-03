@@ -1,5 +1,8 @@
 import { PageSection } from "@/components/ui/PageSection";
 import { contactInfo, narrative } from "@/data";
+import Image from "next/image";
+import { FaMobileAlt, FaLinkedinIn } from "react-icons/fa";
+import { FaRegEnvelopeOpen } from "react-icons/fa6";
 
 export function About() {
   return (
@@ -9,7 +12,7 @@ export function About() {
           <div className="md:col-span-3 chip-card rounded-lg p-8 space-y-4 max-w-prose mx-auto text-md">
             <p className="text-slate-300  leading-relaxed">
               Hello there, my name is <span className="text-primary">Kevin Eyram Harlley</span> and this is my website.
-              I am a <span className="text-quarternary">Creative Technologist</span> with an Entrepreneural mindset.
+              I am a <span className="text-quarternary">Creative Technologist</span> with an Entrepreneurial mindset.
             </p>
             <p className="text-slate-400 leading-relaxed">
               I graduated in 2021 as a dual degree student from Washington University in St. Louis. I received a
@@ -28,23 +31,26 @@ export function About() {
             </p>
             <div className="pt-4 flex gap-4">
               <a href={contactInfo.phoneHref} aria-label="Phone">
-                <i className="fas fa-mobile-alt text-lg text-secondary" />
+                <FaMobileAlt className="text-lg text-secondary" />
               </a>
-              <a href={`mailto:${contactInfo.email}`}>
-                <i className="far fa-envelope-open text-lg text-primary" />
+              <a href={`mailto:${contactInfo.email}`} aria-label="Email">
+                <FaRegEnvelopeOpen className="text-lg text-primary" />
               </a>              
-              <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-linkedin-in text-lg text-tertiary" />
+              <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <FaLinkedinIn className="text-lg text-tertiary" />
               </a>
             </div>
           </div>
           <div className="md:col-span-2 flex flex-col items-center gap-4">
             <div className="relative w-84 h-84 rounded-full overflow-hidden shadow-lg shadow-secondary/25">
               <div className="absolute inset-0 opacity-30"/>
-              <img
+              <Image
                 src="/images/headshot.png"
                 alt="Kevin Harlley"
+                width={336}
+                height={336}
                 className="clip-chip w-full h-full object-cover border-6 border-quarternary"
+                unoptimized
               />
             </div>
           </div>
@@ -53,4 +59,3 @@ export function About() {
     </PageSection>
   );
 }
-

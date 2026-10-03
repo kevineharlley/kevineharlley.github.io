@@ -1,6 +1,4 @@
-"use client";
-
-import { Navbar } from "@/components/sections/Navbar";
+import { NavigationWrapper } from "@/components/ui/NavigationWrapper";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Education } from "@/components/sections/Education";
@@ -12,16 +10,13 @@ import { Leadership } from "@/components/sections/Leadership";
 import { Contact } from "@/components/sections/Contact";
 import { TraceRule } from "@/components/ui/TraceRule";
 import { Reveal } from "@/components/ui/Reveal";
-import { useActiveSectionObserver } from "@/hooks/useActiveSectionObserver";
 
 const SECTIONS = ["About", "Competencies", "Skills", "Experience", "Portfolio", "Education", "Leadership", "Contact"];
 
 export default function Home() {
-  const activeSection = useActiveSectionObserver(SECTIONS);
-
   return (
     <>
-      <Navbar activeSection={activeSection} />
+      <NavigationWrapper sections={SECTIONS} />
       <Hero />
       <TraceRule />
       <Reveal><About /></Reveal>

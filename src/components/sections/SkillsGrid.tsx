@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { SkillChip } from "@/components/ui/SkillChip";
 import { technologies, techGroupMeta, techGroupOrder, type TechGroup } from "@/data";
 import { ACCENT_BG, ACCENT_BORDER, ACCENT_HOVER_BG, ACCENT_TEXT, type Accent } from "@/lib/accent";
@@ -87,18 +88,18 @@ export function SkillsGrid() {
           onClick={() => scrollPage(-1)}
           disabled={atStart}
           aria-label="Scroll to previous skills"
-          className="w-9 h-9 rounded-full border border-slate-700 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-primary hover:text-primary transition-colors"
+          className="w-9 h-9 rounded-full border border-slate-700 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-primary hover:text-primary transition-colors flex items-center justify-center"
         >
-          <i className="bi bi-chevron-left" />
+          <BiChevronLeft className="text-xl" />
         </button>
         <button
           type="button"
           onClick={() => scrollPage(1)}
           disabled={atEnd}
           aria-label="Scroll to more skills"
-          className="w-9 h-9 rounded-full border border-slate-700 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-primary hover:text-primary transition-colors"
+          className="w-9 h-9 rounded-full border border-slate-700 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-primary hover:text-primary transition-colors flex items-center justify-center"
         >
-          <i className="bi bi-chevron-right" />
+          <BiChevronRight className="text-xl" />
         </button>
       </div>
     </div>

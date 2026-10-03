@@ -1,3 +1,5 @@
+"use client";
+
 import { PageSection } from "@/components/ui/PageSection";
 import { ExperienceNode } from "@/components/ui/ExperienceNode";
 import { otherExperiences } from "@/data";

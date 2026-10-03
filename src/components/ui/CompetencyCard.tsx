@@ -22,7 +22,7 @@ export function CompetencyCard({
   const mobileExpandedSkills = sortedSkills;
 
   return (
-    <div className={`chip-card ${ACCENT_CHIP_BORDER[accent]} rounded-lg p-6 flex flex-col gap-3 relative`}>
+    <div className={`chip-card ${ACCENT_CHIP_BORDER[accent]} rounded-lg p-6 flex flex-col gap-3 relative h-full`}>
       <h4 className={`text-sm font-semibold tracking-wide ${ACCENT_TEXT[accent]}`}>{label}</h4>
       
       {/* Desktop view (always top 4) & Mobile collapsed view */}

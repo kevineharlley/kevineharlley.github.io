@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { IconType } from "react-icons";
 import type { Accent } from "@/lib/accent";
 
 export type { Accent } from "@/lib/accent";
@@ -19,7 +20,7 @@ export type TechGroup =
 export interface Technology {
   id: string;
   name: string;
-  icon: string;
+  icon: IconType;
   level: number;
   accent: Accent;
   group: TechGroup;
@@ -43,7 +44,7 @@ export interface EducationEntry {
   focus?: string;
   graduationYear: string;
   accent: Accent;
-  icon?: string;
+  icon?: IconType;
 }
 
 export interface Award {
@@ -51,7 +52,7 @@ export interface Award {
   title: string;
   organization?: string;
   accent: Accent;
-  icon?: string;
+  icon?: IconType;
 }
 
 export interface ContactInfo {
@@ -70,7 +71,7 @@ export interface WorkExperience {
   summary: string;
   details: string[];
   logo?: string;
-  icon?: string;
+  icon?: IconType;
   accent: Accent;
 }
 
@@ -81,7 +82,7 @@ export interface OtherExperience {
   subtitle?: string;
   description: string;
   details: string[];
-  icon: string;
+  icon: IconType;
   accent: Accent;
 }
 

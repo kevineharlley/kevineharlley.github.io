@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { PageSection } from "@/components/ui/PageSection";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
@@ -21,10 +22,11 @@ export function WorkExperience() {
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-6">
         {rows.map((row, rowIndex) => {
           const activeItemInRow = row.find((item) => item.id === activeId);
+          const Icon = activeItemInRow?.icon;
 
           return (
             <div key={rowIndex} className="flex flex-col gap-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                 {row.map((entry) => (
                   <ExperienceCard
                     key={entry.id}
@@ -39,9 +41,9 @@ export function WorkExperience() {
                 <div className={`hidden md:block w-full chip-card ${ACCENT_CHIP_BORDER[activeItemInRow.accent]} rounded-lg p-8 transition-all duration-300`}>
                   <div className="flex items-center gap-4 mb-4">
                     {activeItemInRow.logo ? (
-                      <img src={activeItemInRow.logo} alt="logo" className="max-w-8 max-h-8 object-contain" />
+                      <Image src={activeItemInRow.logo} alt="logo" width={32} height={32} className="max-w-8 max-h-8 object-contain" unoptimized />
                     ) : (
-                      <i className={`${activeItemInRow.icon} text-xl ${ACCENT_TEXT[activeItemInRow.accent]}`} />
+                      Icon && <Icon className={`text-xl ${ACCENT_TEXT[activeItemInRow.accent]}`} />
                     )}
                     <h4 className={`text-lg font-semibold ${ACCENT_TEXT[activeItemInRow.accent]}`}>
                       {activeItemInRow.company} — {activeItemInRow.role}

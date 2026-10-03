@@ -5,9 +5,9 @@
 // logic here — purely presentational, rebuilt only if the circuit changes.
 
 import { useMemo, useRef, useEffect } from "react";
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "next-themes";
 import * as THREE from "three";
-import { BoardBuilder, LAYER_COUNT, LAYER_SPACING } from "./CircuitLayout";
+import { BoardBuilder, LAYER_COUNT, LAYER_SPACING, type Circuit } from "./CircuitLayout";
 import { DeviceFactory } from "./Devices";
 import { ComponentMesh } from "./CircuitComponents";
 

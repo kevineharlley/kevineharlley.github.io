@@ -96,6 +96,15 @@ export const coreCompetencies: CoreCompetency[] = [
   { id: "documentation", name: "Documentation", level: 4, area: "research" },
 
   // Media, Digital Footprint & Human-Machine Interaction
-  {id: "media", name: "Ableton", level: 4, area: "media"},
+  { id: "video-editing-production", name: "Video Editing & Production", level: 3, area: "media" },
+  { id: "3d-modeling-animation", name: "3D Modeling & Animation", level: 3, area: "media" },
+  { id: "music-production-audio-engineering", name: "Music Production & Audio Engineering", level: 3, area: "media" },
+  { id: "digital-design", name: "Digital Design", level: 3, area: "media" },
+  { id: "human-computer-interaction", name: "Human-Computer Interaction", level: 3, area: "media" },
+  { id: "user-experience-design", name: "User Experience (UX) Design", level: 3, area: "media" },
+  { id: "visual-communication", name: "Visual Communication", level: 3, area: "media" },
+  { id: "sound-design", name: "Sound Design", level: 3, area: "media" },
+  { id: "interactive-media", name: "Interactive Media", level: 3, area: "media" },
+  { id: "digital-storytelling", name: "Digital Storytelling", level: 3, area: "media" },
 ];
 

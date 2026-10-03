@@ -10,6 +10,7 @@ type NavbarProps = {
 export function Navbar({ activeSection }: NavbarProps) {
   return (
     <nav
+      aria-label="Main Navigation"
       className="fixed top-0 left-0 right-0 z-50 flex justify-center py-3 px-4 bg-surface/85 backdrop-blur-lg border-b border-primary/10"
     >
       <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden md:flex gap-1.5">

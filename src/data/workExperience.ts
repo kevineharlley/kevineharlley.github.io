@@ -1,4 +1,7 @@
+import { FaBuilding, FaGoogle, FaMicrochip, FaNetworkWired, FaPlay, FaVideo } from "react-icons/fa";
 import type { WorkExperience } from "./types";
+
+
 
 export type { WorkExperience } from "./types";
 
@@ -20,7 +23,7 @@ export const workExperiences: WorkExperience[] = [
       "Streamlined configuration development and testing processes by designing reusable configuration frameworks and templates, reducing implementation effort and shortening deployment timelines for new product launches.",
       "Led configuration design reviews and requirement-gathering as subject matter expert for Configure One CPQ and SAP Variant Article, supporting the global Configuration Platform Strategy across multiple regions and business units.",
     ],
-    icon: "bi bi-building",
+    icon: FaBuilding,
     accent: "quarternary",
   },
   {
@@ -39,7 +42,7 @@ export const workExperiences: WorkExperience[] = [
       "Managed a backlog of more than 600 user stories, partnering with offshore development teams to perform functional, integration and user acceptance testing across more than 100 system features.",
       "Conducted client-facing demonstrations during sprint reviews, gathering stakeholder feedback and facilitating iterative refinement throughout the development lifecycle.",
     ],
-    icon: "bi bi-triangle",
+    icon: FaPlay,
     accent: "tertiary",
   },
   {
@@ -56,7 +59,7 @@ export const workExperiences: WorkExperience[] = [
       "Participated in peer code reviews and source control management using GitHub, contributing production-quality code aligned with Google's engineering standards.",
       "Independently designed, implemented, tested and delivered production-ready enhancements throughout the software development lifecycle.",
     ],
-    icon: "bi bi-google",
+    icon: FaGoogle,
     accent: "primary",
   },
   {
@@ -91,7 +94,7 @@ export const workExperiences: WorkExperience[] = [
       "Collaborated with faculty, staff, guest speakers and event organizers to identify technical requirements and ensure successful event execution.",
       "Diagnosed and resolved audio, video, projection and connectivity issues during live events, minimizing disruptions and maintaining production quality.",
     ],
-    icon: "bi bi-camera-reels",
+    icon: FaVideo,
     accent: "primary",
   },
   {
@@ -126,7 +129,7 @@ export const workExperiences: WorkExperience[] = [
       "Served as a front-line technical support resource for faculty, troubleshooting desktop, laptop, software, networking and audiovisual technology issues.",
       "Maintained technology asset inventories including computers, peripherals, networking devices and A/V equipment to support procurement and deployment planning.",
     ],
-    icon: "bi bi-hdd-network",
+    icon: FaNetworkWired,
     accent: "primary",
   },
   {
@@ -143,7 +146,7 @@ export const workExperiences: WorkExperience[] = [
       "Communicated complex technical research findings to diverse audiences through formal presentations and poster sessions.",
       "Contributed to the design and execution of controlled experiments intended to measure and compare individual brainwave patterns.",
     ],
-    icon: "bi bi-cpu",
+    icon: FaMicrochip,
     accent: "secondary",
   },
 ];

@@ -3,26 +3,28 @@
 import type { WorkExperience } from "@/data/workExperience";
 import { ACCENT_BG_SOFT, ACCENT_BORDER, ACCENT_CHIP_BORDER, ACCENT_GLOW, ACCENT_TEXT } from "@/lib/accent";
 
+import Image from "next/image";
+
 interface ExperienceCardProps extends WorkExperience {
   isActive: boolean;
   onToggle: () => void;
 }
 
 export function ExperienceCard({
-  company, role, dateRange, summary, details, logo, icon, accent, isActive, onToggle
+  company, role, dateRange, summary, details, logo, icon: Icon, accent, isActive, onToggle
 }: ExperienceCardProps) {
   return (
     <div
-      className={`chip-card ${ACCENT_CHIP_BORDER[accent]} ${ACCENT_GLOW[accent]} rounded-lg flex flex-col gap-3 p-6 text-left transition-all duration-300 w-full relative`}
+      className={`chip-card ${ACCENT_CHIP_BORDER[accent]} ${ACCENT_GLOW[accent]} rounded-lg flex flex-col gap-3 p-6 text-left transition-all duration-300 w-full relative h-full`}
     >
       <div className="flex items-center gap-4">
         <div
           className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 border ${ACCENT_BORDER[accent]} ${ACCENT_BG_SOFT[accent]}`}
         >
           {logo ? (
-            <img src={logo} alt={`${company} logo`} className="max-w-8 max-h-8 object-contain" />
+            <Image src={logo} alt={`${company} logo`} width={32} height={32} className="max-w-8 max-h-8 object-contain" unoptimized />
           ) : (
-            <i className={`${icon} text-xl ${ACCENT_TEXT[accent]}`} />
+            Icon && <Icon className={`text-xl ${ACCENT_TEXT[accent]}`} />
           )}
         </div>
         <div>
