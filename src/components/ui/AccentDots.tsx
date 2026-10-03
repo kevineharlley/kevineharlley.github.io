@@ -1,8 +1,8 @@
 import { ACCENT_BG, type Accent } from "@/lib/accent";
 
-const DOT_ACCENTS: Accent[] = ["primary", "secondary", "tertiary"];
+const DOT_ACCENTS: Accent[] = ["primary", "secondary", "tertiary", "quarternary", "quinary"];
 
-// Shared three-dot accent indicator used in the navbar and footer.
+// Shared five-dot accent indicator used in the navbar and footer.
 export function AccentDots({ dotClassName = "" }: { dotClassName?: string }) {
   return (
     <>

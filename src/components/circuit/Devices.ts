@@ -19,20 +19,51 @@ import { MUX_DEVICE, PASSIVE_DEVICE } from "./types";
 
 // ── Theme palette ──────────────────────────────────────────────────────────
 export const PALETTE = {
-  secondary: new THREE.Color("#ffb830"),
-  primary: new THREE.Color("#17c94b"),
-  tertiary: new THREE.Color("#a855f7"),
-  quarternary: new THREE.Color("#22d3ee"),
+  primary: new THREE.Color("#f8ab1c"),
+  secondary: new THREE.Color("#8c2cfb"),
+  tertiary: new THREE.Color("#17c94b"),
+  quarternary: new THREE.Color("#2be8c9"),
+  quinary: new THREE.Color("#ff005d"),
 };
 
-const PALETTE_DEFAULTS = { secondary: "#ffb830", primary: "#17c94b", tertiary: "#a855f7", quarternary: "#22d3ee" } as const;
+/** Palette key for per-component coloring. */
+export type AccentKey = keyof typeof PALETTE;
+
+const PALETTE_DEFAULTS: Record<AccentKey, string> = {
+  primary: "#f8ab1c",
+  secondary: "#8c2cfb",
+  tertiary: "#17c94b",
+  quarternary: "#2be8c9",
+  quinary: "#ff005d",
+};
+
+export const CSS_PALETTE_VARS: Record<AccentKey, string> = {
+  primary: "--color-primary",
+  secondary: "--color-secondary",
+  tertiary: "--color-tertiary",
+  quarternary: "--color-quarternary",
+  quinary: "--color-quinary",
+};
 
 export function applyPalette(hex: Partial<Record<AccentKey, string>>): void {
   (Object.keys(PALETTE) as AccentKey[]).forEach((k) => PALETTE[k].set(hex[k] ?? PALETTE_DEFAULTS[k]));
 }
 
-/** Palette key for per-component coloring. */
-export type AccentKey = keyof typeof PALETTE;
+/** Synchronizes Three.js PALETTE directly from document computed CSS variables. */
+export function syncPaletteFromCSS(): void {
+  if (typeof window === "undefined") return;
+  const styles = getComputedStyle(document.documentElement);
+  const colors: Partial<Record<AccentKey, string>> = {};
+
+  (Object.keys(CSS_PALETTE_VARS) as AccentKey[]).forEach((key) => {
+    const val = styles.getPropertyValue(CSS_PALETTE_VARS[key]).trim();
+    if (val) {
+      colors[key] = val;
+    }
+  });
+
+  applyPalette(colors);
+}
 
 // ── Spark effects (pure data) ──────────────────────────────────────────────
 export const COMPONENT_EFFECTS: Record<"capacitor" | "transistor" | "chipPin", SparkEffect> = {
@@ -394,7 +425,7 @@ export type MeshGeometry =
 export interface MeshSpec {
   geometry: MeshGeometry;
   /** which palette key the emissive/glow uses */
-  accent: "primary" | "secondary" | "tertiary" | "quarternary";
+  accent: AccentKey;
   /** group position offset from the mount node */
   offset: [number, number, number];
   /** animation channel this mesh reads from anim */

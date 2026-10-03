@@ -52,14 +52,14 @@ export function SkillsGrid() {
     <div>
       {/* "All" pill + one toggle pill per technology group. */}
       <div className="flex flex-wrap gap-2 mb-6">
-        <FilterPill label="ALL" accent="primary" active={activeGroups.length === 0} onClick={() => setActiveGroups([])} />
+        <FilterPill label="ALL" accent="quarternary" active={activeGroups.length === 0} onClick={() => setActiveGroups([])} />
         {techGroupOrder.map((group) => {
           const meta = techGroupMeta[group];
           return (
             <FilterPill
               key={group}
               label={meta.label}
-              accent={meta.accent}
+              accent="quarternary"
               active={activeGroups.includes(group)}
               onClick={() => toggleGroup(group)}
             />
@@ -107,17 +107,17 @@ export function SkillsGrid() {
 
 // Pill-style toggle button for a single group filter (or the "All" reset).
 function FilterPill({
-  label, active, accent, onClick,
-}: { label: string; active: boolean; accent: Accent; onClick: () => void }) {
+  label, active, accent = "quarternary", activeAccent = "quinary", onClick,
+}: { label: string; active: boolean; accent?: Accent; activeAccent?: Accent; onClick: () => void }) {
+  const currentAccent = active ? activeAccent : accent;
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`px-3 py-1.5 rounded-full text-xs tracking-widest border font-mono transition-colors duration-200 ${
-        active
-          ? `${ACCENT_BG[accent]} text-black border-transparent`
-          : `bg-transparent ${ACCENT_TEXT[accent]} ${ACCENT_BORDER[accent]} ${ACCENT_HOVER_BG[accent]} hover:text-black`
-      }`}
+      className={`px-3 py-1.5 rounded-full text-xs tracking-widest border font-mono transition-all duration-200 cursor-pointer ${active
+        ? `${ACCENT_BG[currentAccent]} text-black font-semibold border-transparent shadow-sm shadow-quinary/30`
+        : `bg-transparent ${ACCENT_TEXT[currentAccent]} ${ACCENT_BORDER[currentAccent]} hover:bg-quinary hover:text-black hover:border-transparent`
+        }`}
     >
       {label}
     </button>

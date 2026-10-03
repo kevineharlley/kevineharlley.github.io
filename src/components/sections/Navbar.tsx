@@ -18,12 +18,12 @@ export function Navbar({ activeSection }: NavbarProps) {
       <ul className="flex flex-wrap justify-center gap-1">
         {NAV_LINKS.map((id) => {
           const isActive = activeSection === id;
-          const activeClass = isActive ? "text-secondary glow-secondary-light" : "text-quarternary";
+          const activeClass = isActive ? "text-quinary glow-quinary font-medium" : "text-quarternary";
           return (
             <li key={id}>
               <a
                 href={`#${id}`}
-                className={`block px-4 py-1.5 rounded text-sm tracking-widest hover:text-quarternary transition-colors duration-200 ${activeClass}`}
+                className={`block px-4 py-1.5 rounded text-sm tracking-widest hover:text-quinary transition-colors duration-200 ${activeClass}`}
               >
                 {id.toUpperCase()}
               </a>

@@ -3,8 +3,11 @@ import { ACCENT_BG, ACCENT_BG_SOFT, ACCENT_CHIP_BORDER, ACCENT_TEXT, type Accent
 const MAX_SKILL_LEVEL = 5;
 
 export function SkillChip({
-  icon, name, level, accent = "primary",
-}: { icon: string; name: string; level: number; accent?: Accent }) {
+  icon, name, level, accent = "primary", brandColor,
+}: { icon: string; name: string; level: number; accent?: Accent; brandColor?: string }) {
+  
+  const iconColorClass = brandColor ? "" : ACCENT_TEXT[accent];
+
   return (
     <div
       className={`chip-card ${ACCENT_CHIP_BORDER[accent]} flex flex-col items-center gap-2 p-5 rounded-lg transition-all duration-300 hover:scale-105 interactive-lift`}
@@ -19,7 +22,10 @@ export function SkillChip({
           />
         ))}
       </div>
-      <i className={`${icon} text-3xl ${ACCENT_TEXT[accent]}`} />
+      <i 
+        className={`${icon} text-3xl ${iconColorClass} drop-shadow-md`} 
+        style={brandColor ? { color: brandColor } : undefined} 
+      />
       <span className="text-sm font-medium text-center text-slate-200 leading-tight">{name}</span>
     </div>
   );

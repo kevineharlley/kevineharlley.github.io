@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 // ── ChipScene: composition root ────────────────────────────────────────────
 // Assembles the Canvas, lights, board renderer, spark simulation, and camera.
@@ -13,7 +13,7 @@ import { createSimulation, SimulationContext } from "./CircuitComponents";
 import type { ComponentBehavior } from "./types";
 import { BoardRenderer } from "./BoardRenderer";
 import { SparkField } from "./SparkField";
-import { applyPalette } from "./Devices";
+import { syncPaletteFromCSS } from "./Devices";
 import { useTheme } from "@/context/ThemeContext";
 
 // ── Camera rig ─────────────────────────────────────────────────────────────
@@ -73,11 +73,19 @@ export function ChipScene() {
   const simulation = useRef(createSimulation());
   const { theme } = useTheme();
   useEffect(() => {
-    applyPalette(
-      theme === "light"
-        ? { primary: "#0e9e3f", secondary: "#d9960b", tertiary: "#8b3fe0", quarternary: "#0e7490" }
-        : {} // dark = defaults
-    );
+    syncPaletteFromCSS();
+    const frame = requestAnimationFrame(() => syncPaletteFromCSS());
+
+    const observer = new MutationObserver(() => syncPaletteFromCSS());
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
   }, [theme]);
 
   // Behavior registry: every component self-registers the nodes it answers on.
@@ -129,7 +137,7 @@ export function ChipScene() {
             height={300}
             intensity={0.6}
           />
-          <Scanline density={1.5} opacity={0.14}/>
+          <Scanline density={1.5} opacity={0.14} />
           <Vignette eskil={false} offset={0.1} darkness={0.55} />
         </EffectComposer>
         <CameraRig />

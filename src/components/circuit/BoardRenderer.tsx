@@ -55,12 +55,12 @@ function rng(seed: number): number {
 // by via links), so what renders is exactly what sparks can traverse.
 
 const LAYER_COLOR_VARS = [
-  "#d99c5c",              // layer 0: copper (top signal)
+  "--color-traces",              // layer 0: copper (top signal)
   "--color-tertiary",     // emerald
   "--color-quarternary",  // teal
   "--color-primary",      // gold
   "--color-secondary",    // amethyst
-  "--color-tertiary",     // emerald
+  "--color-quinary",      // quinary accent
   "--color-quarternary",  // teal
 ] as const;
 
@@ -229,7 +229,7 @@ function useEngravedBoardTextures(boardColor: string): {
     colorCanvas.width = w;
     colorCanvas.height = h;
     const cctx = colorCanvas.getContext("2d")!;
-    
+
     // Color map: faint tint + engraved name (alpha canvas — no solid fill)
     cctx.clearRect(0, 0, w, h);
     cctx.fillStyle = boardColor;

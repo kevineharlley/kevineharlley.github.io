@@ -23,6 +23,7 @@ export interface Technology {
   level: number;
   accent: Accent;
   group: TechGroup;
+  brandColor?: string;
 }
 
 export type CompetencyArea = "leadership" | "product" | "consulting" | "itops" | "research" | "media";
