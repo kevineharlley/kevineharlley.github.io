@@ -21,11 +21,11 @@ export default function Home() {
       <TraceRule />
       <Reveal><About /></Reveal>
       <TraceRule />
+      <Reveal><WorkExperience /></Reveal>
+      <TraceRule />
       <Reveal><CoreCompetencies /></Reveal>
       <TraceRule />
       <Reveal><Skills /></Reveal>
-      <TraceRule />
-      <Reveal><WorkExperience /></Reveal>
       <TraceRule />
       <Reveal><Portfolio /></Reveal>
       <TraceRule />

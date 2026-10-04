@@ -7,9 +7,9 @@ import { FaRegEnvelopeOpen } from "react-icons/fa6";
 export function About() {
   return (
     <PageSection id="About" title="About Me" accent="primary" className="circuit-bg bg-linear-to-b from-surface to-bg">
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
-          <div className="md:col-span-3 chip-card rounded-lg p-8 space-y-4 max-w-prose mx-auto text-md">
+          <div className="md:col-span-3 chip-card rounded-lg p-6 space-y-4 max-w-prose mx-auto text-md">
             <p className="text-slate-300  leading-relaxed">
               Hello there, my name is <span className="text-primary">Kevin Eyram Harlley</span> and this is my website.
               I am a <span className="text-quarternary">Creative Technologist</span> with an Entrepreneurial mindset.
@@ -22,7 +22,7 @@ export function About() {
             <p className="text-slate-400 leading-relaxed">{narrative}</p>
             <p className="text-slate-400 leading-relaxed">
               I am highly interested in Robotics, Software Development, System Implementation, Machine Learning,
-              Data Science and the intersection of business and technology. I have experience with Software development 
+              Data Science and the intersection of business and technology. I have experience with Software development
               on both the functional and technical sides, with my most recent experiences centered around the application
               of technology in manufacturing and Enterprise Infrastructure.
             </p>
@@ -35,7 +35,7 @@ export function About() {
               </a>
               <a href={`mailto:${contactInfo.email}`} aria-label="Email">
                 <FaRegEnvelopeOpen className="text-lg text-primary" />
-              </a>              
+              </a>
               <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FaLinkedinIn className="text-lg text-tertiary" />
               </a>
@@ -43,7 +43,7 @@ export function About() {
           </div>
           <div className="md:col-span-2 flex flex-col items-center gap-4">
             <div className="relative w-84 h-84 rounded-full overflow-hidden shadow-lg shadow-secondary/25">
-              <div className="absolute inset-0 opacity-30"/>
+              <div className="absolute inset-0 opacity-30" />
               <Image
                 src="/images/headshot.png"
                 alt="Kevin Harlley"

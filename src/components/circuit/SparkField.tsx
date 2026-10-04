@@ -8,6 +8,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
+import { useTheme } from "next-themes";
 import type { ComponentBehavior, SparkKind, SparkSlot } from "./types";
 import type { Component } from "./Devices";
 import { buildBoard } from "./BoardRenderer";
@@ -55,6 +56,7 @@ export function SparkField({ behaviors }: SparkFieldProps) {
   const simRefs = useSimulation();
   const circuit = buildBoard();
   const nodes = circuit.nodes;
+  const { theme } = useTheme();
 
   // Derived lookups from the unified component registry
   const outletNode = circuit.components.find((c) => c.kind === "outlet")!.node!;
@@ -391,19 +393,19 @@ export function SparkField({ behaviors }: SparkFieldProps) {
         <group key={i}>
           <mesh ref={(el) => { sphereRefs.current[i] = el; }} visible={false}>
             <sphereGeometry args={[1, 16, 16]} />
-            <meshBasicMaterial color={PALETTE.secondary} />
+            <meshBasicMaterial color={`#${PALETTE.secondary.getHexString()}`} />
           </mesh>
           <mesh ref={(el) => { boxRefs.current[i] = el; }} visible={false} rotation={[0, 0, Math.PI / 4]}>
             <boxGeometry args={[1.3, 1.3, 1.3]} />
-            <meshBasicMaterial color={PALETTE.tertiary} />
+            <meshBasicMaterial color={`#${PALETTE.tertiary.getHexString()}`} />
           </mesh>
           <mesh ref={(el) => { multiplexedRefs.current[i] = el; }} visible={false}>
             <octahedronGeometry args={[1, 0]} />
-            <meshBasicMaterial color={PALETTE.primary} />
+            <meshBasicMaterial color={`#${PALETTE.primary.getHexString()}`} />
           </mesh>
           <pointLight
             ref={(el) => { lightRefs.current[i] = el; }}
-            color={PALETTE.secondary}
+            color={`#${PALETTE.secondary.getHexString()}`}
             intensity={0.02}
             distance={0.48}
             decay={2}

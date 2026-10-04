@@ -9,6 +9,7 @@ import type { ThreeEvent } from "@react-three/fiber";
 import { useFrame } from "@react-three/fiber";
 import { createContext, useContext, useMemo, useRef, useEffect } from "react";
 import * as THREE from "three";
+import { useTheme } from "next-themes";
 import type { Component } from "./Devices";
 import { MESH_SPECS, MUX_CENTER, MUX_SIZE, MUX_THRESHOLD, PALETTE } from "./Devices";
 import { LAYER_SPACING } from "./CircuitLayout";
@@ -59,7 +60,9 @@ function SimpleMesh({ component }: { component: Component }) {
   const sim = useSimulation();
   const spec = MESH_SPECS[component.kind];
   const matRef = useRef<THREE.MeshStandardMaterial>(null);
+  const { theme } = useTheme();
   const accent = PALETTE[spec.accent];
+  const accentHex = `#${accent.getHexString()}`;
   const pos = component.nodePosition ?? [0, 0, 0];
   const groupPos: [number, number, number] = [
     pos[0] + spec.offset[0],
@@ -104,8 +107,8 @@ function SimpleMesh({ component }: { component: Component }) {
     const mat = (
       <meshStandardMaterial
         ref={matRef}
-        color={accent}
-        emissive={accent}
+        color={accentHex}
+        emissive={accentHex}
         emissiveIntensity={spec.animChannel === "none" ? 1.6 : 0.45}
         toneMapped={false}
         metalness={0.4}
@@ -154,7 +157,7 @@ function SimpleMesh({ component }: { component: Component }) {
           </mesh>
           <mesh position={[0.24, -0.19, 0.081]}>
             <circleGeometry args={[0.015, 8]} />
-            <meshStandardMaterial color={PALETTE.primary} emissive={PALETTE.primary} emissiveIntensity={2} toneMapped={false} />
+            <meshStandardMaterial color={`#${PALETTE.primary.getHexString()}`} emissive={`#${PALETTE.primary.getHexString()}`} emissiveIntensity={2} toneMapped={false} />
           </mesh>
         </group>
       );
@@ -220,14 +223,14 @@ function SimpleMesh({ component }: { component: Component }) {
         {component.kind === "capacitor" && (
           <mesh position={[0, 0, 0.1]}>
             <cylinderGeometry args={[0.065, 0.065, 0.015, 12]} />
-            <meshStandardMaterial color={accent} emissive={accent} emissiveIntensity={1.6} toneMapped={false} />
+            <meshStandardMaterial color={accentHex} emissive={accentHex} emissiveIntensity={1.6} toneMapped={false} />
           </mesh>
         )}
         {component.kind === "transistor" && (
           <>
             <mesh position={[0, 0.01, 0.04]}>
               <circleGeometry args={[0.028, 12]} />
-              <meshStandardMaterial color={accent} emissive={accent} emissiveIntensity={1.6} toneMapped={false} />
+              <meshStandardMaterial color={accentHex} emissive={accentHex} emissiveIntensity={1.6} toneMapped={false} />
             </mesh>
             {[-0.05, 0, 0.05].map((x, i) => (
               <mesh key={i} position={[x, -0.085, -0.04]}>
@@ -248,7 +251,9 @@ function ChipMesh({ component }: { component: Component }) {
   const groupRef = useRef<THREE.Group>(null);
   const edgeMatRef = useRef<THREE.LineBasicMaterial>(null);
   const edges = useMemo(() => new THREE.EdgesGeometry(new THREE.BoxGeometry(w, h, 0.1)), [w, h]);
+  const { theme } = useTheme();
   const accent = PALETTE[component.accent ?? "primary"];
+  const accentHex = `#${accent.getHexString()}`;
 
   // Leads derive from the declared ports — same placement math as the router.
   const leads = useMemo(() => {
@@ -307,10 +312,10 @@ function ChipMesh({ component }: { component: Component }) {
       <mesh>
         <boxGeometry args={[w, h, 0.1]} />
         {/* glossy epoxy package */}
-        <meshPhysicalMaterial color="#0d0d14" emissive={accent} emissiveIntensity={0.12} metalness={0.4} roughness={0.2} clearcoat={1} clearcoatRoughness={0.12} />
+        <meshPhysicalMaterial color="#0d0d14" emissive={accentHex} emissiveIntensity={0.12} metalness={0.4} roughness={0.2} clearcoat={1} clearcoatRoughness={0.12} />
       </mesh>
       <lineSegments geometry={edges}>
-        <lineBasicMaterial ref={edgeMatRef} color={accent} toneMapped={false} />
+        <lineBasicMaterial ref={edgeMatRef} color={accentHex} toneMapped={false} />
       </lineSegments>
       <instancedMesh ref={leadMeshRef} args={[undefined, undefined, leadCount]} key={leadCount}>
         <boxGeometry args={[1, 1, 1]} />
@@ -318,7 +323,7 @@ function ChipMesh({ component }: { component: Component }) {
       </instancedMesh>
       <mesh position={[-w / 2 + 0.08, h / 2 - 0.08, 0.06]}>
         <circleGeometry args={[0.03, 8]} />
-        <meshStandardMaterial color={accent} emissive={accent} emissiveIntensity={1.4} toneMapped={false} />
+        <meshStandardMaterial color={accentHex} emissive={accentHex} emissiveIntensity={1.4} toneMapped={false} />
       </mesh>
     </group>
   );
@@ -329,6 +334,7 @@ function MuxMesh({ component }: { component: Component }) {
   const bodyRef = useRef<THREE.MeshPhysicalMaterial>(null);
   const indicatorRefs = useRef<(THREE.MeshStandardMaterial | null)[]>([]);
   const [width, height] = MUX_SIZE;
+  const { theme } = useTheme();
 
   const grooveRefs = useRef<(THREE.MeshStandardMaterial | null)[]>([]);
   const ringRef = useRef<THREE.Mesh>(null);
@@ -366,7 +372,7 @@ function MuxMesh({ component }: { component: Component }) {
         <meshPhysicalMaterial
           ref={bodyRef}
           color="#171c26"
-          emissive={PALETTE.primary}
+          emissive={`#${PALETTE.primary.getHexString()}`}
           emissiveIntensity={0.18}
           metalness={0.82}
           roughness={0.24}
@@ -379,8 +385,8 @@ function MuxMesh({ component }: { component: Component }) {
           <boxGeometry args={[0.1, 0.18, 0.025]} />
           <meshStandardMaterial
             ref={(material) => { indicatorRefs.current[index] = material; }}
-            color={PALETTE.secondary}
-            emissive={PALETTE.secondary}
+            color={`#${PALETTE.secondary.getHexString()}`}
+            emissive={`#${PALETTE.secondary.getHexString()}`}
             emissiveIntensity={0.12}
             toneMapped={false}
           />
@@ -407,8 +413,8 @@ function MuxMesh({ component }: { component: Component }) {
           <boxGeometry args={[0.02, height * 0.8, 0.02]} />
           <meshStandardMaterial
             ref={(m) => { grooveRefs.current[i] = m; }}
-            color={PALETTE.primary}
-            emissive={PALETTE.primary}
+            color={`#${PALETTE.primary.getHexString()}`}
+            emissive={`#${PALETTE.primary.getHexString()}`}
             emissiveIntensity={0.15}
             toneMapped={false}
           />
@@ -417,7 +423,7 @@ function MuxMesh({ component }: { component: Component }) {
       {/* scan ring */}
       <mesh ref={ringRef} position={[0, 0, 0.1]}>
         <torusGeometry args={[Math.min(width, height) * 0.55, 0.012, 6, 40]} />
-        <meshStandardMaterial color={PALETTE.quarternary} emissive={PALETTE.quarternary} emissiveIntensity={1.1} toneMapped={false} transparent opacity={0.7} />
+        <meshStandardMaterial color={`#${PALETTE.quarternary.getHexString()}`} emissive={`#${PALETTE.quarternary.getHexString()}`} emissiveIntensity={1.1} toneMapped={false} transparent opacity={0.7} />
       </mesh>
     </group>
   );

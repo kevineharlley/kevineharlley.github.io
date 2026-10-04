@@ -202,6 +202,7 @@ function LayerSheets() {
 
 function CircuitComponents() {
   const circuit = buildBoard();
+  const { theme } = useTheme();
 
   return (
     <>

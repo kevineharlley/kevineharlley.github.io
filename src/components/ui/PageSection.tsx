@@ -12,8 +12,8 @@ type PageSectionProps = {
 
 export function PageSection({ id, title, accent, className, children }: PageSectionProps) {
   return (
-    <section id={id} className={`py-24 sm:py-32 ${className}`}>
-      <div className="container mx-auto px-6 sm:px-8">
+    <section id={id} className={`py-16 sm:py-24 ${className}`}>
+      <div className="container mx-auto px-2 sm:px-8">
         <SectionHeading title={title} accent={accent} />
         {children}
       </div>

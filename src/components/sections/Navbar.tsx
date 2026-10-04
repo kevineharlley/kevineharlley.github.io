@@ -16,7 +16,7 @@ export function Navbar({ activeSection }: NavbarProps) {
       <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden md:flex gap-1.5">
         <AccentDots dotClassName="opacity-70" />
       </div>
-      <ul className="flex flex-wrap justify-center gap-1">
+      <ul className="flex md:flex-wrap justify-start md:justify-center gap-1 overflow-x-auto scroll-h pb-2 md:pb-0 px-2 w-full md:w-auto">
         {NAV_LINKS.map((id) => {
           const isActive = activeSection === id;
           const activeClass = isActive ? "text-quinary glow-quinary font-medium" : "text-quarternary";

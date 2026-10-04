@@ -6,7 +6,7 @@
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Bloom, EffectComposer, Scanline, Vignette } from "@react-three/postprocessing";
-import { Suspense, useEffect, useMemo, useRef } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { buildBoard } from "./BoardRenderer";
 import { createSimulation, SimulationContext } from "./CircuitComponents";
@@ -38,6 +38,48 @@ function CameraRig() {
   });
 
   return null;
+}
+
+// ── Environment synchronization ────────────────────────────────────────────
+
+function SceneEnvironment() {
+  const { theme } = useTheme();
+  const { scene } = useThree();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const styles = getComputedStyle(document.documentElement);
+    const voidColor = styles.getPropertyValue("--color-void").trim() || "#06060f";
+    const bg = new THREE.Color(voidColor);
+    scene.background = bg;
+    scene.fog = new THREE.Fog(bg, 22, 45);
+  }, [theme, scene]);
+
+  return null;
+}
+
+function VignettePlane({ alphaMap }: { alphaMap: THREE.Texture }) {
+  const { theme } = useTheme();
+  const [color, setColor] = useState<string>("#06060f");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const styles = getComputedStyle(document.documentElement);
+    setColor(styles.getPropertyValue("--color-void").trim() || "#06060f");
+  }, [theme]);
+
+  return (
+    <mesh position={[0, 0, -2.6]}>
+      <planeGeometry args={[100, 100]} />
+      <meshStandardMaterial
+        color={color}
+        metalness={0.65}
+        roughness={0.2}
+        transparent
+        alphaMap={alphaMap}
+      />
+    </mesh>
+  );
 }
 
 // ── Procedural alpha map for vignette plane ────────────────────────────────
@@ -72,6 +114,7 @@ export function ChipScene() {
   const circuit = buildBoard();
   const simulation = useRef(createSimulation());
   const { theme } = useTheme();
+  
   useEffect(() => {
     syncPaletteFromCSS();
     const frame = requestAnimationFrame(() => syncPaletteFromCSS());
@@ -108,8 +151,7 @@ export function ChipScene() {
           gl.domElement.addEventListener("webglcontextlost", (e) => e.preventDefault());
         }}
       >
-        <color attach="background" args={["var(--color-void)"]} />
-        <fog attach="fog" args={["var(--color-fog)", 22, 45]} />
+        <SceneEnvironment />
 
         <ambientLight intensity={0.12} />
         <pointLight position={[0, 0, 8]} intensity={5} color="#ffffff" />
@@ -118,16 +160,7 @@ export function ChipScene() {
         <Suspense fallback={null}>
           <BoardRenderer />
           <SparkField behaviors={behaviors} />
-          <mesh position={[0, 0, -2.6]}>
-            <planeGeometry args={[100, 100]} />
-            <meshStandardMaterial
-              color="#000"
-              metalness={0.65}
-              roughness={0.2}
-              transparent
-              alphaMap={alphaMap}
-            />
-          </mesh>
+          <VignettePlane alphaMap={alphaMap} />
         </Suspense>
 
         <EffectComposer>
@@ -145,3 +178,4 @@ export function ChipScene() {
     </SimulationContext.Provider>
   );
 }
+

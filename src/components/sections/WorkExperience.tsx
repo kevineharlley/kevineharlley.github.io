@@ -18,7 +18,7 @@ export function WorkExperience() {
   const rows = chunkArray(workExperiences, 3);
 
   return (
-    <PageSection id="WorkExperience" title="Work Experience" accent="secondary" className="circuit-bg bg-linear-180 from-surface-2 to-bg">
+    <PageSection id="Experience" title="Work Experience" accent="secondary" className="circuit-bg bg-linear-180 from-surface-2 to-bg">
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-6">
         {rows.map((row, rowIndex) => {
           const activeItemInRow = row.find((item) => item.id === activeId);
