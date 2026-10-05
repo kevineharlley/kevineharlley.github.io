@@ -10,7 +10,8 @@ Personal portfolio site for Kevin Eyram Harlley, built as a single scrolling pag
 
 - **3D/animation**: `three`, `@react-three/fiber`, `@react-three/drei` for the hero canvas ([src/components/ChipScene.tsx](src/components/ChipScene.tsx)). Client components using these must be dynamically imported with `ssr: false`.
 
-- **Icons**: Font Awesome 5 and Bootstrap Icons, loaded via CDN `<link>` tags in [src/app/layout.tsx](src/app/layout.tsx) (use `fab fa-*`/`fas fa-*`/`far fa-*` or `bi bi-*` classes, no npm icon packages).
+- **Icons**: Use the `react-icons` npm package for both UI elements and brand logos (e.g. `FaReact`, `FaHtml5`). 
+  > **Note**: To prevent memory exhaustion (OOM) during the GitHub Pages build on Linux runners, `react-icons` must be optimized via `optimizePackageImports: ["react-icons"]` in `next.config.ts`. Do not use CDN `<link>` tags for icons.
 
 - **Package manager**: pnpm (see `pnpm-lock.yaml` / `pnpm-workspace.yaml`). Use `pnpm`, not `npm`/`yarn`.
 
