@@ -1,7 +1,7 @@
 import { AccentDots } from "@/components/ui/AccentDots";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
-const NAV_LINKS = ["About", "Competencies", "Skills", "Experience", "Portfolio", "Education", "Leadership", "Contact"] as const;
+const NAV_LINKS = ["About", "Experience", "Competencies", "Skills", "Portfolio", "Education", "Leadership", "Contact"] as const;
 
 type NavbarProps = {
   activeSection: string | null;

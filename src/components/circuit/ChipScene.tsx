@@ -114,7 +114,7 @@ export function ChipScene() {
   const circuit = buildBoard();
   const simulation = useRef(createSimulation());
   const { theme } = useTheme();
-  
+
   useEffect(() => {
     syncPaletteFromCSS();
     const frame = requestAnimationFrame(() => syncPaletteFromCSS());

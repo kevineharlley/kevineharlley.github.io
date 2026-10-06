@@ -98,151 +98,151 @@ function SimpleMesh({ component }: { component: Component }) {
   const onClick =
     component.kind === "outlet"
       ? (e: ThreeEvent<MouseEvent>) => {
-          e.stopPropagation();
-          component.onClick?.(sim);
-        }
+        e.stopPropagation();
+        component.onClick?.(sim);
+      }
       : undefined;
 
-      // Animated material — the mesh carrying matRef is driven by animChannel.
-    const mat = (
-      <meshStandardMaterial
-        ref={matRef}
-        color={accentHex}
-        emissive={accentHex}
-        emissiveIntensity={spec.animChannel === "none" ? 1.6 : 0.45}
-        toneMapped={false}
-        metalness={0.4}
-        roughness={0.4}
-      />
-    );
-    const darkMetal = <meshStandardMaterial color="#15161f" metalness={0.75} roughness={0.35} />;
-  
-    // ── Corner devices: bespoke models ──
-  
-    if (component.kind === "outlet") {
-      // Power socket: hex housing, glowing core, gold retaining ring, center pin.
-      return (
-        <group position={groupPos}>
-          <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.05]}>
-            <cylinderGeometry args={[0.26, 0.3, 0.1, 6]} />
-            {darkMetal}
-          </mesh>
-          <mesh onClick={onClick} rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.08]}>
-            <cylinderGeometry args={[0.15, 0.15, 0.14, 24]} />
-            {mat}
-          </mesh>
-          <mesh position={[0, 0, 0.15]}>
-            <torusGeometry args={[0.19, 0.02, 8, 24]} />
-            <meshStandardMaterial color="#d6b879" metalness={0.95} roughness={0.2} />
-          </mesh>
-          <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.16]}>
-            <cylinderGeometry args={[0.035, 0.035, 0.06, 12]} />
-            <meshStandardMaterial color="#0a0a10" metalness={0.9} roughness={0.2} />
-          </mesh>
-        </group>
-      );
-    }
-  
-    if (component.kind === "display") {
-      // Screen: dark bezel, glowing panel, status LED.
-      return (
-        <group position={groupPos}>
-          <mesh position={[0, 0, 0.04]}>
-            <boxGeometry args={[0.62, 0.46, 0.07]} />
-            {darkMetal}
-          </mesh>
-          <mesh position={[0, 0, 0.08]}>
-            <boxGeometry args={[0.5, 0.34, 0.02]} />
-            {mat}
-          </mesh>
-          <mesh position={[0.24, -0.19, 0.081]}>
-            <circleGeometry args={[0.015, 8]} />
-            <meshStandardMaterial color={`#${PALETTE.primary.getHexString()}`} emissive={`#${PALETTE.primary.getHexString()}`} emissiveIntensity={2} toneMapped={false} />
-          </mesh>
-        </group>
-      );
-    }
-  
-    if (component.kind === "input") {
-      // Sensor mast: stepped base, metal stem, glowing orb tip.
-      return (
-        <group position={groupPos}>
-          <mesh position={[0, 0, 0.03]}>
-            <cylinderGeometry args={[0.15, 0.19, 0.06, 16]} />
-            {darkMetal}
-          </mesh>
-          <mesh position={[0, 0, 0.15]}>
-            <cylinderGeometry args={[0.03, 0.05, 0.2, 10]} />
-            <meshStandardMaterial color="#9aa0b0" metalness={0.9} roughness={0.25} />
-          </mesh>
-          <mesh position={[0, 0, 0.3]}>
-            <sphereGeometry args={[0.1, 16, 12]} />
-            {mat}
-          </mesh>
-        </group>
-      );
-    }
-  
-    if (component.kind === "command") {
-      // Command crystal: octahedron hovering over an octagonal plinth.
-      return (
-        <group position={groupPos}>
-          <mesh position={[0, 0, 0.03]}>
-            <cylinderGeometry args={[0.13, 0.17, 0.05, 8]} />
-            {darkMetal}
-          </mesh>
-          <mesh position={[0, 0, 0.18]} rotation={[0, 0, Math.PI / 4]}>
-            <octahedronGeometry args={[0.12]} />
-            {mat}
-          </mesh>
-        </group>
-      );
-    }
-  
-    // ── Passives: generic body + scaled-down accents ──
-    const body = (() => {
-      const g = spec.geometry;
-      switch (g.type) {
-        case "box":
-          return <boxGeometry args={g.args} />;
-        case "cylinder":
-          return <cylinderGeometry args={g.args} />;
-        case "sphere":
-          return <sphereGeometry args={g.args} />;
-        default:
-          return null;
-      }
-    })();
-  
+  // Animated material — the mesh carrying matRef is driven by animChannel.
+  const mat = (
+    <meshStandardMaterial
+      ref={matRef}
+      color={accentHex}
+      emissive={accentHex}
+      emissiveIntensity={spec.animChannel === "none" ? 1.6 : 0.45}
+      toneMapped={false}
+      metalness={0.4}
+      roughness={0.4}
+    />
+  );
+  const darkMetal = <meshStandardMaterial color="#15161f" metalness={0.75} roughness={0.35} />;
+
+  // ── Corner devices: bespoke models ──
+
+  if (component.kind === "outlet") {
+    // Power socket: hex housing, glowing core, gold retaining ring, center pin.
     return (
       <group position={groupPos}>
-        <mesh>
-          {body}
+        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.05]}>
+          <cylinderGeometry args={[0.26, 0.3, 0.1, 6]} />
+          {darkMetal}
+        </mesh>
+        <mesh onClick={onClick} rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.08]}>
+          <cylinderGeometry args={[0.15, 0.15, 0.14, 24]} />
           {mat}
         </mesh>
-        {component.kind === "capacitor" && (
-          <mesh position={[0, 0, 0.1]}>
-            <cylinderGeometry args={[0.065, 0.065, 0.015, 12]} />
-            <meshStandardMaterial color={accentHex} emissive={accentHex} emissiveIntensity={1.6} toneMapped={false} />
-          </mesh>
-        )}
-        {component.kind === "transistor" && (
-          <>
-            <mesh position={[0, 0.01, 0.04]}>
-              <circleGeometry args={[0.028, 12]} />
-              <meshStandardMaterial color={accentHex} emissive={accentHex} emissiveIntensity={1.6} toneMapped={false} />
-            </mesh>
-            {[-0.05, 0, 0.05].map((x, i) => (
-              <mesh key={i} position={[x, -0.085, -0.04]}>
-                <boxGeometry args={[0.014, 0.09, 0.014]} />
-                <meshStandardMaterial color="#c0c0c0" metalness={0.9} roughness={0.2} />
-              </mesh>
-            ))}
-          </>
-        )}
+        <mesh position={[0, 0, 0.15]}>
+          <torusGeometry args={[0.19, 0.02, 8, 24]} />
+          <meshStandardMaterial color="#d6b879" metalness={0.95} roughness={0.2} />
+        </mesh>
+        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.16]}>
+          <cylinderGeometry args={[0.035, 0.035, 0.06, 12]} />
+          <meshStandardMaterial color="#0a0a10" metalness={0.9} roughness={0.2} />
+        </mesh>
       </group>
     );
   }
+
+  if (component.kind === "display") {
+    // Screen: dark bezel, glowing panel, status LED.
+    return (
+      <group position={groupPos}>
+        <mesh position={[0, 0, 0.04]}>
+          <boxGeometry args={[0.62, 0.46, 0.07]} />
+          {darkMetal}
+        </mesh>
+        <mesh position={[0, 0, 0.08]}>
+          <boxGeometry args={[0.5, 0.34, 0.02]} />
+          {mat}
+        </mesh>
+        <mesh position={[0.24, -0.19, 0.081]}>
+          <circleGeometry args={[0.015, 8]} />
+          <meshStandardMaterial color={`#${PALETTE.primary.getHexString()}`} emissive={`#${PALETTE.primary.getHexString()}`} emissiveIntensity={2} toneMapped={false} />
+        </mesh>
+      </group>
+    );
+  }
+
+  if (component.kind === "input") {
+    // Sensor mast: stepped base, metal stem, glowing orb tip.
+    return (
+      <group position={groupPos}>
+        <mesh position={[0, 0, 0.03]}>
+          <cylinderGeometry args={[0.15, 0.19, 0.06, 16]} />
+          {darkMetal}
+        </mesh>
+        <mesh position={[0, 0, 0.15]}>
+          <cylinderGeometry args={[0.03, 0.05, 0.2, 10]} />
+          <meshStandardMaterial color="#9aa0b0" metalness={0.9} roughness={0.25} />
+        </mesh>
+        <mesh position={[0, 0, 0.3]}>
+          <sphereGeometry args={[0.1, 16, 12]} />
+          {mat}
+        </mesh>
+      </group>
+    );
+  }
+
+  if (component.kind === "command") {
+    // Command crystal: octahedron hovering over an octagonal plinth.
+    return (
+      <group position={groupPos}>
+        <mesh position={[0, 0, 0.03]}>
+          <cylinderGeometry args={[0.13, 0.17, 0.05, 8]} />
+          {darkMetal}
+        </mesh>
+        <mesh position={[0, 0, 0.18]} rotation={[0, 0, Math.PI / 4]}>
+          <octahedronGeometry args={[0.12]} />
+          {mat}
+        </mesh>
+      </group>
+    );
+  }
+
+  // ── Passives: generic body + scaled-down accents ──
+  const body = (() => {
+    const g = spec.geometry;
+    switch (g.type) {
+      case "box":
+        return <boxGeometry args={g.args} />;
+      case "cylinder":
+        return <cylinderGeometry args={g.args} />;
+      case "sphere":
+        return <sphereGeometry args={g.args} />;
+      default:
+        return null;
+    }
+  })();
+
+  return (
+    <group position={groupPos}>
+      <mesh>
+        {body}
+        {mat}
+      </mesh>
+      {component.kind === "capacitor" && (
+        <mesh position={[0, 0, 0.1]}>
+          <cylinderGeometry args={[0.065, 0.065, 0.015, 12]} />
+          <meshStandardMaterial color={accentHex} emissive={accentHex} emissiveIntensity={1.6} toneMapped={false} />
+        </mesh>
+      )}
+      {component.kind === "transistor" && (
+        <>
+          <mesh position={[0, 0.01, 0.04]}>
+            <circleGeometry args={[0.028, 12]} />
+            <meshStandardMaterial color={accentHex} emissive={accentHex} emissiveIntensity={1.6} toneMapped={false} />
+          </mesh>
+          {[-0.05, 0, 0.05].map((x, i) => (
+            <mesh key={i} position={[x, -0.085, -0.04]}>
+              <boxGeometry args={[0.014, 0.09, 0.014]} />
+              <meshStandardMaterial color="#c0c0c0" metalness={0.9} roughness={0.2} />
+            </mesh>
+          ))}
+        </>
+      )}
+    </group>
+  );
+}
 
 // Chip package: reads its own anim.flash for the edge glow / scale pop.
 function ChipMesh({ component }: { component: Component }) {
@@ -263,9 +263,9 @@ function ChipMesh({ component }: { component: Component }) {
       const along = -((isVertical ? w : h) * spread) / 2 + p.t * (isVertical ? w : h) * spread;
       const pos: [number, number, number] =
         p.side === "top" ? [along, h / 2 + 0.04, 0]
-        : p.side === "bottom" ? [along, -h / 2 - 0.04, 0]
-        : p.side === "left" ? [-w / 2 - 0.04, along, 0]
-        : [w / 2 + 0.04, along, 0];
+          : p.side === "bottom" ? [along, -h / 2 - 0.04, 0]
+            : p.side === "left" ? [-w / 2 - 0.04, along, 0]
+              : [w / 2 + 0.04, along, 0];
       const size: [number, number, number] = isVertical ? [0.045, 0.09, 0.03] : [0.09, 0.045, 0.03];
       return { id: p.id, pos, size };
     });

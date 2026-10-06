@@ -375,10 +375,10 @@ export function SparkField({ behaviors }: SparkFieldProps) {
       // interpolated depth: 0 on surface, up to LAYER_COUNT-1 deep
       const depth = from.layer + (to.layer - from.layer) * Math.min(1, slot.progress);
       const attenuation = Math.pow(0.8, depth); // ~40% dimmer per layer
-      
+
       const intensity = (1 + slot.energy * 3) * (1 + slot.flicker) * attenuation;
       light.intensity = intensity * (isCommand ? 2 : 3) * baseScale;
-      
+
       core.scale.setScalar((isMultiplexed ? 0.085 : 0.055) * boostScale * baseScale * (0.6 + 0.4 * attenuation));
       (arcLine.material as THREE.LineBasicMaterial).opacity = (0.6 + slot.flicker * 0.4) * attenuation;
 

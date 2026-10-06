@@ -11,7 +11,7 @@ import { Contact } from "@/components/sections/Contact";
 import { TraceRule } from "@/components/ui/TraceRule";
 import { Reveal } from "@/components/ui/Reveal";
 
-const SECTIONS = ["About", "Competencies", "Skills", "Experience", "Portfolio", "Education", "Leadership", "Contact"];
+const SECTIONS = ["About", "Experience", "Competencies", "Skills", "Portfolio", "Education", "Leadership", "Contact"];
 
 export default function Home() {
   return (
