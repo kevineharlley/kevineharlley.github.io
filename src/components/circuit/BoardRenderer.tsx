@@ -7,9 +7,9 @@
 import { useMemo, useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
 import * as THREE from "three";
-import { BoardBuilder, LAYER_COUNT, LAYER_SPACING, type Circuit } from "./CircuitLayout";
+import { BoardBuilder, LAYER_COUNT, LAYER_SPACING, type Circuit } from "./circuitLayout";
 import { DeviceFactory } from "./Devices";
-import { ComponentMesh } from "./CircuitComponents";
+import { ComponentMesh } from "./circuitComponents";
 
 // ── Board director ─────────────────────────────────────────────────────────
 // BoardRenderer directs construction: devices from the DeviceFactory, routed

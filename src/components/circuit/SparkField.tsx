@@ -13,7 +13,7 @@ import type { ComponentBehavior, SparkKind, SparkSlot } from "./types";
 import type { Component } from "./Devices";
 import { buildBoard } from "./BoardRenderer";
 import { COMPONENT_EFFECTS, PALETTE } from "./Devices";
-import { useSimulation } from "./CircuitComponents";
+import { useSimulation } from "./circuitComponents";
 
 // ── Constants ──────────────────────────────────────────────────────────────
 

@@ -9,7 +9,7 @@ import { Bloom, EffectComposer, Scanline, Vignette } from "@react-three/postproc
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { buildBoard } from "./BoardRenderer";
-import { createSimulation, SimulationContext } from "./CircuitComponents";
+import { createSimulation, SimulationContext } from "./circuitComponents";
 import type { ComponentBehavior } from "./types";
 import { BoardRenderer } from "./BoardRenderer";
 import { SparkField } from "./SparkField";
