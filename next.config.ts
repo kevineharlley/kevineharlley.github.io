@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ["react-icons"],
+    useTypeScriptCli: true,
   },
 };
 
