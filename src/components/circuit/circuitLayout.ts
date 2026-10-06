@@ -86,7 +86,7 @@ function sampleRange(min: number, max: number, step: number, mustInclude: number
 
 function buildCircuit(components: Component[]): Circuit {
   const nodes: CircuitNode[] = [];
-  const vias: number [] = [];
+  const vias: number[] = [];
   const viaLinks: { top: number; bottom: number }[] = [];
   const layerNodes: number[][] = Array.from({ length: LAYER_COUNT }, () => []);
   const layerEdges: CircuitEdge[][] = Array.from({ length: LAYER_COUNT }, () => []);
@@ -97,7 +97,7 @@ function buildCircuit(components: Component[]): Circuit {
 
   const GRID = 0.05;
   const snap = (v: number) => Math.round(v / GRID) * GRID;
-  
+
   const addNode = (x: number, y: number, layer = 0): number => {
     nodes.push({
       id: nodes.length,
@@ -189,9 +189,9 @@ function buildCircuit(components: Component[]): Circuit {
     const ports: Port[] = [];
     const edgeCoord =
       opts.side === "top" ? cy + h / 2
-      : opts.side === "bottom" ? cy - h / 2
-      : opts.side === "left" ? cx - w / 2
-      : cx + w / 2;
+        : opts.side === "bottom" ? cy - h / 2
+          : opts.side === "left" ? cx - w / 2
+            : cx + w / 2;
 
     for (let lane = 0; lane < specs.length; lane++) {
       const spec = specs[lane];
@@ -220,7 +220,7 @@ function buildCircuit(components: Component[]): Circuit {
       );
       // shoulder → knee → elbow → terminal: all 90°
 
-      
+
       const elbowNode = addNode(
         isVertical ? pinAlong : edgeCoord + dir * (opts.shoulderLen + 0.42),
         isVertical ? band : edgeCoord + dir * (opts.shoulderLen + 0.42),
@@ -247,7 +247,7 @@ function buildCircuit(components: Component[]): Circuit {
       portByTerminalNode.set(terminalNode, spec);
     }
 
-    
+
 
     if (opts.connectToRail && ports.length > 0) {
       const midPort = ports[Math.floor(ports.length / 2)];
@@ -264,14 +264,14 @@ function buildCircuit(components: Component[]): Circuit {
       const kneeNode =
         layer === 0
           ? getOrCreateNode(
-              isVertical ? midPos[0] : railPos[0],
-              isVertical ? railPos[1] : midPos[1]
-            )
+            isVertical ? midPos[0] : railPos[0],
+            isVertical ? railPos[1] : midPos[1]
+          )
           : addNode(
-              isVertical ? midPos[0] : railPos[0],
-              isVertical ? railPos[1] : midPos[1],
-              layer
-            );
+            isVertical ? midPos[0] : railPos[0],
+            isVertical ? railPos[1] : midPos[1],
+            layer
+          );
 
       addEdge(midPort.terminalNode, kneeNode);
       addEdge(kneeNode, railNode);

@@ -10,11 +10,11 @@ import { useFrame } from "@react-three/fiber";
 import { createContext, useContext, useMemo, useRef, useEffect } from "react";
 import * as THREE from "three";
 import { useTheme } from "next-themes";
-import type { Component } from "./Devices";
-import { MESH_SPECS, MUX_CENTER, MUX_SIZE, MUX_THRESHOLD, PALETTE } from "./Devices";
-import { LAYER_SPACING } from "./CircuitLayout";
+import type { Component } from "./devices";
+import { MESH_SPECS, MUX_CENTER, MUX_SIZE, MUX_THRESHOLD, PALETTE } from "./devices";
+import { LAYER_SPACING } from "./circuitLayout";
 
-export { PALETTE } from "./Devices";
+export { PALETTE } from "./devices";
 
 // ── Global simulation state (pause only) ───────────────────────────────────
 
